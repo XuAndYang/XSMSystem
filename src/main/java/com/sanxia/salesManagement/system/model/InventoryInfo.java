@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class InventoryInfo {
@@ -9,15 +10,17 @@ public class InventoryInfo {
 
     private String goodsName;
 
-    private Long purchasePrice;
+    private BigDecimal purchasePrice;
 
-    private Long purchaseTotal;
+    private BigDecimal purchaseTotalPrice;
+
+    private Integer saleNumber;
+
+    private BigDecimal saleTotalPrice;
+
+    private BigDecimal profit;
 
     private Integer remainingNumber;
-
-    private Long saleTotal;
-
-    private Long profit;
 
     private Date takeTime;
 
@@ -45,20 +48,44 @@ public class InventoryInfo {
         this.goodsName = goodsName;
     }
 
-    public Long getPurchasePrice() {
+    public BigDecimal getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(Long purchasePrice) {
+    public void setPurchasePrice(BigDecimal purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
-    public Long getPurchaseTotal() {
-        return purchaseTotal;
+    public BigDecimal getPurchaseTotalPrice() {
+        return purchaseTotalPrice;
     }
 
-    public void setPurchaseTotal(Long purchaseTotal) {
-        this.purchaseTotal = purchaseTotal;
+    public void setPurchaseTotalPrice(BigDecimal purchaseTotalPrice) {
+        this.purchaseTotalPrice = purchaseTotalPrice;
+    }
+
+    public Integer getSaleNumber() {
+        return saleNumber;
+    }
+
+    public void setSaleNumber(Integer saleNumber) {
+        this.saleNumber = saleNumber;
+    }
+
+    public BigDecimal getSaleTotalPrice() {
+        return saleTotalPrice;
+    }
+
+    public void setSaleTotalPrice(BigDecimal saleTotalPrice) {
+        this.saleTotalPrice = saleTotalPrice;
+    }
+
+    public BigDecimal getProfit() {
+        return profit;
+    }
+
+    public void setProfit(BigDecimal profit) {
+        this.profit = profit;
     }
 
     public Integer getRemainingNumber() {
@@ -67,22 +94,6 @@ public class InventoryInfo {
 
     public void setRemainingNumber(Integer remainingNumber) {
         this.remainingNumber = remainingNumber;
-    }
-
-    public Long getSaleTotal() {
-        return saleTotal;
-    }
-
-    public void setSaleTotal(Long saleTotal) {
-        this.saleTotal = saleTotal;
-    }
-
-    public Long getProfit() {
-        return profit;
-    }
-
-    public void setProfit(Long profit) {
-        this.profit = profit;
     }
 
     public Date getTakeTime() {

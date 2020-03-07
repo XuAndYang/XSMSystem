@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class SupplierGoods {
@@ -15,7 +16,7 @@ public class SupplierGoods {
 
     private Date supplyTime;
 
-    private Long supplyPrice;
+    private BigDecimal supplyPrice;
 
     private Integer number;
 
@@ -67,11 +68,11 @@ public class SupplierGoods {
         this.supplyTime = supplyTime;
     }
 
-    public Long getSupplyPrice() {
+    public BigDecimal getSupplyPrice() {
         return supplyPrice;
     }
 
-    public void setSupplyPrice(Long supplyPrice) {
+    public void setSupplyPrice(BigDecimal supplyPrice) {
         this.supplyPrice = supplyPrice;
     }
 

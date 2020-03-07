@@ -33,6 +33,8 @@
             <div class="layui-row">
                 <form class="layui-form" action="<%=basePath%>userController/update.do">
                 <input type="hidden" name="user_id" value="${user.userId }">
+                <input type="hidden" name="login_name" value="${user.loginName }">
+                
                     <div class="layui-form-item">
                         <label for="name" class="layui-form-label">
                             <span class="x-red">*</span>姓名</label>
@@ -41,13 +43,7 @@
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red">*</span>请输入您的真实姓名</div></div>
                             
-                    <div class="layui-form-item">
-                        <label for="login_name" class="layui-form-label">
-                            <span class="x-red">*</span>用户名</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="login_name" name="login_name" value="${user.loginName }" required="" lay-verify="login_name" autocomplete="off" class="layui-input"></div>
-                    </div>
-                    
+                     
                     <div class="layui-form-item">
                         <label for="password" class="layui-form-label">
                             <span class="x-red">*</span>密码</label>
@@ -60,19 +56,47 @@
                         <div class="layui-input-inline">
                             <input type="password" id="repassword" name="repassword" required=""  value="${user.password }" lay-verify="repassword" autocomplete="off" class="layui-input"></div>
                     </div>
-                    <div class="layui-form-item">
-                        <label for="create_time" class="layui-form-label">
-                            <span class="x-red">*</span>创建时间</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="create_time" name="create_time" value="<fmt:formatDate value='${user.createTime}' type='date' pattern='yyyy-MM-dd'/>" required="" lay-verify="create_time" autocomplete="off" class="layui-input"></div>
-                    </div>
+                    
+                    <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">
+                      <label for="login_name3" class="layui-form-label">
+                            <span class="x-red"></span>创建时间</label>
+                            <input class="layui-input"  autocomplete="off" placeholder="请输入创建时间" name="create_time" value="<fmt:formatDate value='${user.createTime}'  type='date' pattern='yyyy-MM-dd'/>" id="start" style="width:190px">
+                     </div>
+                    
                     <div class="layui-form-item">
                         <label for="repassword" class="layui-form-label"></label>
                         <button class="layui-btn" lay-filter="add" lay-submit="" >确认修改</button></div>
                 </form>
             </div>
         </div>
-        <script>layui.use(['form', 'layer','jquery'],
+        <script>
+        layui.use(['laydate','form'], function(){
+            var laydate = layui.laydate;
+            var  form = layui.form;
+
+
+            // 监听全选
+            form.on('checkbox(checkall)', function(data){
+
+              if(data.elem.checked){
+                $('tbody input').prop('checked',true);
+              }else{
+                $('tbody input').prop('checked',false);
+              }
+              form.render('checkbox');
+            }); 
+            
+            //执行一个laydate实例
+            laydate.render({
+              elem: '#start' //指定元素
+            });
+
+            //执行一个laydate实例
+            laydate.render({
+              elem: '#end' //指定元素
+            });
+ });
+        layui.use(['form', 'layer','jquery'],
             function() {
                 $ = layui.jquery;
                 var form = layui.form,

@@ -68,4 +68,21 @@
       permission_id = #{permissionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  
+  
+   <delete id="deleteRolePermissionByRole_id" parameterType="java.lang.Integer" >
+    delete from role_permisson
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+  
+  
+   <insert id="insertRolePermissionByRolePermission" parameterType="com.sanxia.salesManagement.system.model.RolePermisson" >
+    insert into role_permisson (id, role_id, permission_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{permissionId,jdbcType=INTEGER}
+      )
+  </insert>
 </mapper>

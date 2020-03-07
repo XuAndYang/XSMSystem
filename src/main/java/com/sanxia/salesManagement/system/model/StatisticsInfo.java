@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class StatisticsInfo {
@@ -11,11 +12,11 @@ public class StatisticsInfo {
 
     private Date statisticTime;
 
-    private Long totalWork;
+    private BigDecimal totalWork;
 
-    private Long totalOver;
+    private BigDecimal totalOver;
 
-    private Long totalOff;
+    private BigDecimal totalOff;
 
     private String attendance;
 
@@ -51,27 +52,27 @@ public class StatisticsInfo {
         this.statisticTime = statisticTime;
     }
 
-    public Long getTotalWork() {
+    public BigDecimal getTotalWork() {
         return totalWork;
     }
 
-    public void setTotalWork(Long totalWork) {
+    public void setTotalWork(BigDecimal totalWork) {
         this.totalWork = totalWork;
     }
 
-    public Long getTotalOver() {
+    public BigDecimal getTotalOver() {
         return totalOver;
     }
 
-    public void setTotalOver(Long totalOver) {
+    public void setTotalOver(BigDecimal totalOver) {
         this.totalOver = totalOver;
     }
 
-    public Long getTotalOff() {
+    public BigDecimal getTotalOff() {
         return totalOff;
     }
 
-    public void setTotalOff(Long totalOff) {
+    public void setTotalOff(BigDecimal totalOff) {
         this.totalOff = totalOff;
     }
 

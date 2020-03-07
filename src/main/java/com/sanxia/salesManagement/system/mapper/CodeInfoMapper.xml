@@ -6,7 +6,7 @@
     <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
     <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
     <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL" />
-    <result column="goods_code" property="goodsCode" jdbcType="INTEGER" />
+    <result column="goods_code" property="goodsCode" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, goods_id, goods_name, goods_price, goods_code
@@ -25,7 +25,7 @@
     insert into code_info (id, goods_id, goods_name, 
       goods_price, goods_code)
     values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, 
-      #{goodsPrice,jdbcType=DECIMAL}, #{goodsCode,jdbcType=INTEGER})
+      #{goodsPrice,jdbcType=DECIMAL}, #{goodsCode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sanxia.salesManagement.system.model.CodeInfo" >
     insert into code_info
@@ -60,7 +60,7 @@
         #{goodsPrice,jdbcType=DECIMAL},
       </if>
       <if test="goodsCode != null" >
-        #{goodsCode,jdbcType=INTEGER},
+        #{goodsCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -77,7 +77,7 @@
         goods_price = #{goodsPrice,jdbcType=DECIMAL},
       </if>
       <if test="goodsCode != null" >
-        goods_code = #{goodsCode,jdbcType=INTEGER},
+        goods_code = #{goodsCode,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -87,7 +87,7 @@
     set goods_id = #{goodsId,jdbcType=INTEGER},
       goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_price = #{goodsPrice,jdbcType=DECIMAL},
-      goods_code = #{goodsCode,jdbcType=INTEGER}
+      goods_code = #{goodsCode,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

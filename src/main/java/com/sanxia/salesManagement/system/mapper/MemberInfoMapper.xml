@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.sanxia.salesManagement.system.model.MemberInfo" >
     <id column="vip_id" property="vipId" jdbcType="INTEGER" />
     <result column="vip_name" property="vipName" jdbcType="VARCHAR" />
-    <result column="vip_tel" property="vipTel" jdbcType="INTEGER" />
+    <result column="vip_tel" property="vipTel" jdbcType="VARCHAR" />
     <result column="vip_birthday" property="vipBirthday" jdbcType="DATE" />
     <result column="join_time" property="joinTime" jdbcType="DATE" />
     <result column="vip_address" property="vipAddress" jdbcType="VARCHAR" />
@@ -26,7 +26,7 @@
     insert into member_info (vip_id, vip_name, vip_tel, 
       vip_birthday, join_time, vip_address
       )
-    values (#{vipId,jdbcType=INTEGER}, #{vipName,jdbcType=VARCHAR}, #{vipTel,jdbcType=INTEGER}, 
+    values (#{vipId,jdbcType=INTEGER}, #{vipName,jdbcType=VARCHAR}, #{vipTel,jdbcType=VARCHAR}, 
       #{vipBirthday,jdbcType=DATE}, #{joinTime,jdbcType=DATE}, #{vipAddress,jdbcType=VARCHAR}
       )
   </insert>
@@ -60,7 +60,7 @@
         #{vipName,jdbcType=VARCHAR},
       </if>
       <if test="vipTel != null" >
-        #{vipTel,jdbcType=INTEGER},
+        #{vipTel,jdbcType=VARCHAR},
       </if>
       <if test="vipBirthday != null" >
         #{vipBirthday,jdbcType=DATE},
@@ -80,7 +80,7 @@
         vip_name = #{vipName,jdbcType=VARCHAR},
       </if>
       <if test="vipTel != null" >
-        vip_tel = #{vipTel,jdbcType=INTEGER},
+        vip_tel = #{vipTel,jdbcType=VARCHAR},
       </if>
       <if test="vipBirthday != null" >
         vip_birthday = #{vipBirthday,jdbcType=DATE},
@@ -97,7 +97,7 @@
   <update id="updateByPrimaryKey" parameterType="com.sanxia.salesManagement.system.model.MemberInfo" >
     update member_info
     set vip_name = #{vipName,jdbcType=VARCHAR},
-      vip_tel = #{vipTel,jdbcType=INTEGER},
+      vip_tel = #{vipTel,jdbcType=VARCHAR},
       vip_birthday = #{vipBirthday,jdbcType=DATE},
       join_time = #{joinTime,jdbcType=DATE},
       vip_address = #{vipAddress,jdbcType=VARCHAR}

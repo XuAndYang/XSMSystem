@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class DiscountInfo {
@@ -9,7 +10,7 @@ public class DiscountInfo {
 
     private String goodsName;
 
-    private Long discount;
+    private BigDecimal discount;
 
     private Date startTime;
 
@@ -39,11 +40,11 @@ public class DiscountInfo {
         this.goodsName = goodsName;
     }
 
-    public Long getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Long discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 

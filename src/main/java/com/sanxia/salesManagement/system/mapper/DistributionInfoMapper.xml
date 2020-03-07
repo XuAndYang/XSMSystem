@@ -9,7 +9,7 @@
     <result column="distribution_time" property="distributionTime" jdbcType="DATE" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="distribution_name" property="distributionName" jdbcType="VARCHAR" />
-    <result column="distribution_tel" property="distributionTel" jdbcType="INTEGER" />
+    <result column="distribution_tel" property="distributionTel" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     distribution_id, goods_id, goods_name, goods_number, distribution_time, address, 
@@ -31,7 +31,7 @@
       distribution_name, distribution_tel)
     values (#{distributionId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, 
       #{goodsNumber,jdbcType=INTEGER}, #{distributionTime,jdbcType=DATE}, #{address,jdbcType=VARCHAR}, 
-      #{distributionName,jdbcType=VARCHAR}, #{distributionTel,jdbcType=INTEGER})
+      #{distributionName,jdbcType=VARCHAR}, #{distributionTel,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sanxia.salesManagement.system.model.DistributionInfo" >
     insert into distribution_info
@@ -84,7 +84,7 @@
         #{distributionName,jdbcType=VARCHAR},
       </if>
       <if test="distributionTel != null" >
-        #{distributionTel,jdbcType=INTEGER},
+        #{distributionTel,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -110,7 +110,7 @@
         distribution_name = #{distributionName,jdbcType=VARCHAR},
       </if>
       <if test="distributionTel != null" >
-        distribution_tel = #{distributionTel,jdbcType=INTEGER},
+        distribution_tel = #{distributionTel,jdbcType=VARCHAR},
       </if>
     </set>
     where distribution_id = #{distributionId,jdbcType=INTEGER}
@@ -123,7 +123,7 @@
       distribution_time = #{distributionTime,jdbcType=DATE},
       address = #{address,jdbcType=VARCHAR},
       distribution_name = #{distributionName,jdbcType=VARCHAR},
-      distribution_tel = #{distributionTel,jdbcType=INTEGER}
+      distribution_tel = #{distributionTel,jdbcType=VARCHAR}
     where distribution_id = #{distributionId,jdbcType=INTEGER}
   </update>
 </mapper>

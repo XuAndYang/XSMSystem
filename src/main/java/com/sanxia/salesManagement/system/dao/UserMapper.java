@@ -35,4 +35,16 @@ public interface UserMapper {
 
 //修改用户信息
 	int updateUserById(User u);
+
+	int queryUserIdByLoginName(String login_name);
+
+	int deleteUserByLoginName(String login_name);
+
+	int queryUserIdByLogin_name(String login_name);
+
+	List<User> selectUserByUserId(int user_id);
+
+	List<User> selectUserByUserName(String user_name);
+
+	int updateUserNameById(User u);
 }

@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class PayoutInfo {
@@ -7,7 +8,7 @@ public class PayoutInfo {
 
     private Date time;
 
-    private Long payoutMoney;
+    private BigDecimal payoutMoney;
 
     private String useWays;
 
@@ -29,11 +30,11 @@ public class PayoutInfo {
         this.time = time;
     }
 
-    public Long getPayoutMoney() {
+    public BigDecimal getPayoutMoney() {
         return payoutMoney;
     }
 
-    public void setPayoutMoney(Long payoutMoney) {
+    public void setPayoutMoney(BigDecimal payoutMoney) {
         this.payoutMoney = payoutMoney;
     }
 

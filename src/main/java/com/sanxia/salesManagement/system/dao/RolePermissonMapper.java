@@ -14,4 +14,8 @@ public interface RolePermissonMapper {
     int updateByPrimaryKeySelective(RolePermisson record);
 
     int updateByPrimaryKey(RolePermisson record);
+///////////////////////////////////
+	int deleteRolePermissionByRole_id(int id);
+
+	int insertRolePermissionByRolePermission(RolePermisson rolePermission);
 }

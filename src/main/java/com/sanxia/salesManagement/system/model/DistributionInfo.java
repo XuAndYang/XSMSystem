@@ -17,7 +17,7 @@ public class DistributionInfo {
 
     private String distributionName;
 
-    private Integer distributionTel;
+    private String distributionTel;
 
     public Integer getDistributionId() {
         return distributionId;
@@ -75,11 +75,11 @@ public class DistributionInfo {
         this.distributionName = distributionName;
     }
 
-    public Integer getDistributionTel() {
+    public String getDistributionTel() {
         return distributionTel;
     }
 
-    public void setDistributionTel(Integer distributionTel) {
+    public void setDistributionTel(String distributionTel) {
         this.distributionTel = distributionTel;
     }
 }

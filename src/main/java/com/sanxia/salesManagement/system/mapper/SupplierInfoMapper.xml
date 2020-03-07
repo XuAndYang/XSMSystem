@@ -5,9 +5,10 @@
     <id column="supplier_id" property="supplierId" jdbcType="INTEGER" />
     <result column="supplier_name" property="supplierName" jdbcType="VARCHAR" />
     <result column="supplier_address" property="supplierAddress" jdbcType="VARCHAR" />
+    <result column="supplier_tel" property="supplierTel" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    supplier_id, supplier_name, supplier_address
+    supplier_id, supplier_name, supplier_address, supplier_tel
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,10 +21,10 @@
     where supplier_id = #{supplierId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.sanxia.salesManagement.system.model.SupplierInfo" >
-    insert into supplier_info (supplier_id, supplier_name, supplier_address
-      )
-    values (#{supplierId,jdbcType=INTEGER}, #{supplierName,jdbcType=VARCHAR}, #{supplierAddress,jdbcType=VARCHAR}
-      )
+    insert into supplier_info (supplier_id, supplier_name, supplier_address, 
+      supplier_tel)
+    values (#{supplierId,jdbcType=INTEGER}, #{supplierName,jdbcType=VARCHAR}, #{supplierAddress,jdbcType=VARCHAR}, 
+      #{supplierTel,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sanxia.salesManagement.system.model.SupplierInfo" >
     insert into supplier_info
@@ -37,6 +38,9 @@
       <if test="supplierAddress != null" >
         supplier_address,
       </if>
+      <if test="supplierTel != null" >
+        supplier_tel,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="supplierId != null" >
@@ -47,6 +51,9 @@
       </if>
       <if test="supplierAddress != null" >
         #{supplierAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierTel != null" >
+        #{supplierTel,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -59,13 +66,17 @@
       <if test="supplierAddress != null" >
         supplier_address = #{supplierAddress,jdbcType=VARCHAR},
       </if>
+      <if test="supplierTel != null" >
+        supplier_tel = #{supplierTel,jdbcType=VARCHAR},
+      </if>
     </set>
     where supplier_id = #{supplierId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sanxia.salesManagement.system.model.SupplierInfo" >
     update supplier_info
     set supplier_name = #{supplierName,jdbcType=VARCHAR},
-      supplier_address = #{supplierAddress,jdbcType=VARCHAR}
+      supplier_address = #{supplierAddress,jdbcType=VARCHAR},
+      supplier_tel = #{supplierTel,jdbcType=VARCHAR}
     where supplier_id = #{supplierId,jdbcType=INTEGER}
   </update>
 </mapper>

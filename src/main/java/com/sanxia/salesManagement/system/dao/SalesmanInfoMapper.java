@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.dao;
 
+import java.util.List;
+
 import com.sanxia.salesManagement.system.model.SalesmanInfo;
 
 public interface SalesmanInfoMapper {
@@ -14,4 +16,17 @@ public interface SalesmanInfoMapper {
     int updateByPrimaryKeySelective(SalesmanInfo record);
 
     int updateByPrimaryKey(SalesmanInfo record);
+    //////////////////
+
+	List<SalesmanInfo> queryAllSalesmanInfo();
+
+	int selectMax_id();
+
+	int addsalesmanInfoBysalesmanInfo(SalesmanInfo s);
+
+	SalesmanInfo querySalesmanInfoBySalesmanId(int salesmanId);
+
+	int updateSalesmanInfoById(SalesmanInfo s);
+
+	int deleteSalesmanInfoById(int salesmanId);
 }

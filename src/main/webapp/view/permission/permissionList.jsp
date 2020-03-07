@@ -43,17 +43,16 @@
                     <div class="layui-card">
                         <div class="layui-card-body ">
                             <form class="layui-form layui-col-space5">
-                                <div class="layui-inline layui-show-xs-block">
-                                    <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
+                                <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入想搜索的内容</button>
+                                 
+                                <div class="layui-inline layui-show-xs-block" style="margin-left:30px">
+                                    <input type="text" name="user_search"  placeholder="请输入用户名或姓名" autocomplete="off" class="layui-input" >
                                 </div>
+                               
                                 <div class="layui-inline layui-show-xs-block">
-                                    <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
-                                </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                
+                                 <button class="layui-btn"  lay-submit="" onclick=""  lay-filter="sreach" >
+                                 <i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>
                         </div>
@@ -94,7 +93,7 @@
                                       <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>permissionController/updateUI.do?permissionId=${permission.permissionId}',600,400)" href="javascript:;">
                                         <i class="layui-icon" style="margin-right: 30px">&#xe642;</i>
                                       </a>
-                                      <a onclick="xadmin.open('待用功能','',600,400)" title="分配角色" href="javascript:;">
+                                      <a onclick="xadmin.open('待用功能','',600,400)" title="待用功能" href="javascript:;">
                                         <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
                                       </a>
                                       <a title="删除"  href="<%=basePath%>permissionController/deletePermission.do?permissionId=${permission.permissionId}"  onclick="return del(1)">

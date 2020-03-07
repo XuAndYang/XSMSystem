@@ -26,6 +26,14 @@ public interface PermissionMapper {
 	List<Permission> queryMenuByUserId(int user_id);
 
 	List<Permission> querypermissionByPId_Son(int permissionId);
+//////////////////
+	Permission queryPermissionById(int id);
+
+	int updatePermissionByPermission(Permission permission);
+
+	int deletePermissionById(int id);
+///////////////////////////
+	List<Permission> query_XZ_CByrole_id(int id);
 
 	
 }

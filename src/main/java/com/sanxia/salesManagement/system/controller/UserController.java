@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sanxia.salesManagement.system.model.User;
+import com.sanxia.salesManagement.system.service.SalesmanInfoService;
+import com.sanxia.salesManagement.system.service.UserRoleService;
 import com.sanxia.salesManagement.system.service.UserService;
 
  
@@ -28,6 +30,10 @@ import com.sanxia.salesManagement.system.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserRoleService userRoleService;
+	@Autowired
+	private SalesmanInfoService salesmanInfoService;
 
 //显示用户列表
 	@RequestMapping(value = "userlist.do")
@@ -131,6 +137,8 @@ public class UserController {
 		int userId=Integer.parseInt(userIdStr);
 		
 		int i=userService.deleteUserByUser_id(userId);
+		
+		int n=userRoleService.deleteUserRoleByUser_id(userId);
          
 		//重新返回主页
 		List<User> userList = userService.queryAllUser();
@@ -139,5 +147,40 @@ public class UserController {
 		return "view/user/userList";
 				
 			}
+	
+	
+//搜索指定的教师信息
+		@RequestMapping(value="searchUser.do")
+		public String searchUser(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+		Model model,User user,@RequestParam(value="user_search",required=false) String user_search ) throws ServletException, IOException{
+//判断传入的是编号还是名字
+		if(user_search!=""){
+		char first=user_search.trim().charAt(0);
+		if(first=='1' || first=='2'|| first=='3'){
+		int user_id=Integer.parseInt(user_search);
+			 
+		List<User> userList=userService.selectUserByUserId(user_id);
+			
+		model.addAttribute("userList", userList);
+		return "view/user/userList";
+		}
+		else{
+		String user_name = "%"+user_search+"%";
+		List<User> userList=userService.selectUserByUserName(user_name);
+			
+		model.addAttribute("userList", userList);
+		return "view/user/userList";
+							}
+		}
+		else{
+		//重新返回主页
+		List<User> userList = userService.queryAllUser();
+		model.addAttribute("userList", userList);
+		   // 2.跳转页面
+		return "view/user/userList";
+			 
+			}
+				  
+	}				
 
 }

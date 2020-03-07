@@ -9,9 +9,12 @@
     <result column="return_reason" property="returnReason" jdbcType="VARCHAR" />
     <result column="return_money" property="returnMoney" jdbcType="DECIMAL" />
     <result column="return_time" property="returnTime" jdbcType="TIMESTAMP" />
+    <result column="teturn_way" property="teturnWay" jdbcType="VARCHAR" />
+    <result column="apply_status" property="applyStatus" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    return_id, sale_id, goods_id, goods_name, return_reason, return_money, return_time
+    return_id, sale_id, goods_id, goods_name, return_reason, return_money, return_time, 
+    teturn_way, apply_status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -26,10 +29,12 @@
   <insert id="insert" parameterType="com.sanxia.salesManagement.system.model.ReturnInfo" >
     insert into return_info (return_id, sale_id, goods_id, 
       goods_name, return_reason, return_money, 
-      return_time)
+      return_time, teturn_way, apply_status
+      )
     values (#{returnId,jdbcType=INTEGER}, #{saleId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
       #{goodsName,jdbcType=VARCHAR}, #{returnReason,jdbcType=VARCHAR}, #{returnMoney,jdbcType=DECIMAL}, 
-      #{returnTime,jdbcType=TIMESTAMP})
+      #{returnTime,jdbcType=TIMESTAMP}, #{teturnWay,jdbcType=VARCHAR}, #{applyStatus,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sanxia.salesManagement.system.model.ReturnInfo" >
     insert into return_info
@@ -55,6 +60,12 @@
       <if test="returnTime != null" >
         return_time,
       </if>
+      <if test="teturnWay != null" >
+        teturn_way,
+      </if>
+      <if test="applyStatus != null" >
+        apply_status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="returnId != null" >
@@ -77,6 +88,12 @@
       </if>
       <if test="returnTime != null" >
         #{returnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teturnWay != null" >
+        #{teturnWay,jdbcType=VARCHAR},
+      </if>
+      <if test="applyStatus != null" >
+        #{applyStatus,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -101,6 +118,12 @@
       <if test="returnTime != null" >
         return_time = #{returnTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="teturnWay != null" >
+        teturn_way = #{teturnWay,jdbcType=VARCHAR},
+      </if>
+      <if test="applyStatus != null" >
+        apply_status = #{applyStatus,jdbcType=VARCHAR},
+      </if>
     </set>
     where return_id = #{returnId,jdbcType=INTEGER}
   </update>
@@ -111,7 +134,9 @@
       goods_name = #{goodsName,jdbcType=VARCHAR},
       return_reason = #{returnReason,jdbcType=VARCHAR},
       return_money = #{returnMoney,jdbcType=DECIMAL},
-      return_time = #{returnTime,jdbcType=TIMESTAMP}
+      return_time = #{returnTime,jdbcType=TIMESTAMP},
+      teturn_way = #{teturnWay,jdbcType=VARCHAR},
+      apply_status = #{applyStatus,jdbcType=VARCHAR}
     where return_id = #{returnId,jdbcType=INTEGER}
   </update>
 </mapper>

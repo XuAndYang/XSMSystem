@@ -44,6 +44,30 @@ public class PermissionServiceImpl implements PermissionService{
 		// TODO Auto-generated method stub
 		return permissionMapper.querypermissionByPId_Son(permissionId);
 	}
+/////////////
+	@Override
+	public Permission queryPermissionById(int id) {
+		// TODO Auto-generated method stub
+		return permissionMapper.queryPermissionById(id) ;
+	}
+
+	@Override
+	public int updatePermissionByPermission(Permission permission) {
+		// TODO Auto-generated method stub
+		return permissionMapper.updatePermissionByPermission(permission);
+	}
+
+	@Override
+	public int deletePermissionById(int id) {
+		// TODO Auto-generated method stub
+		return permissionMapper.deletePermissionById(id);
+	}
+
+	@Override
+	public List<Permission> query_XZ_CByrole_id(int id) {
+		// TODO Auto-generated method stub
+		return permissionMapper.query_XZ_CByrole_id(id);
+	}
 
 	 
 }

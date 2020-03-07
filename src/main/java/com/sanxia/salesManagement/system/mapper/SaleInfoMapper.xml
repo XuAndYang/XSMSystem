@@ -12,10 +12,12 @@
     <result column="discount_price" property="discountPrice" jdbcType="DECIMAL" />
     <result column="consume_money" property="consumeMoney" jdbcType="DECIMAL" />
     <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="trade_status" property="tradeStatus" jdbcType="VARCHAR" />
+    <result column="deli_type" property="deliType" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     sale_id, goods_id, vip_id, vip_name, goods_name, sale_number, unit_price, discount_price, 
-    consume_money, time
+    consume_money, time, trade_status, deli_type
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -31,11 +33,13 @@
     insert into sale_info (sale_id, goods_id, vip_id, 
       vip_name, goods_name, sale_number, 
       unit_price, discount_price, consume_money, 
-      time)
+      time, trade_status, deli_type
+      )
     values (#{saleId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{vipId,jdbcType=INTEGER}, 
       #{vipName,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, #{saleNumber,jdbcType=INTEGER}, 
       #{unitPrice,jdbcType=DECIMAL}, #{discountPrice,jdbcType=DECIMAL}, #{consumeMoney,jdbcType=DECIMAL}, 
-      #{time,jdbcType=TIMESTAMP})
+      #{time,jdbcType=TIMESTAMP}, #{tradeStatus,jdbcType=VARCHAR}, #{deliType,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sanxia.salesManagement.system.model.SaleInfo" >
     insert into sale_info
@@ -70,6 +74,12 @@
       <if test="time != null" >
         time,
       </if>
+      <if test="tradeStatus != null" >
+        trade_status,
+      </if>
+      <if test="deliType != null" >
+        deli_type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="saleId != null" >
@@ -101,6 +111,12 @@
       </if>
       <if test="time != null" >
         #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tradeStatus != null" >
+        #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="deliType != null" >
+        #{deliType,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -134,6 +150,12 @@
       <if test="time != null" >
         time = #{time,jdbcType=TIMESTAMP},
       </if>
+      <if test="tradeStatus != null" >
+        trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="deliType != null" >
+        deli_type = #{deliType,jdbcType=VARCHAR},
+      </if>
     </set>
     where sale_id = #{saleId,jdbcType=INTEGER}
   </update>
@@ -147,7 +169,9 @@
       unit_price = #{unitPrice,jdbcType=DECIMAL},
       discount_price = #{discountPrice,jdbcType=DECIMAL},
       consume_money = #{consumeMoney,jdbcType=DECIMAL},
-      time = #{time,jdbcType=TIMESTAMP}
+      time = #{time,jdbcType=TIMESTAMP},
+      trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      deli_type = #{deliType,jdbcType=VARCHAR}
     where sale_id = #{saleId,jdbcType=INTEGER}
   </update>
 </mapper>

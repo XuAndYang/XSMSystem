@@ -15,6 +15,8 @@ public class ChangeInfo {
 
     private Date changeTime;
 
+    private String applyStatus;
+
     public Integer getChangeId() {
         return changeId;
     }
@@ -61,5 +63,13 @@ public class ChangeInfo {
 
     public void setChangeTime(Date changeTime) {
         this.changeTime = changeTime;
+    }
+
+    public String getApplyStatus() {
+        return applyStatus;
+    }
+
+    public void setApplyStatus(String applyStatus) {
+        this.applyStatus = applyStatus;
     }
 }

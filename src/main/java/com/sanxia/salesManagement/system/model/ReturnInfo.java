@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class ReturnInfo {
@@ -13,9 +14,13 @@ public class ReturnInfo {
 
     private String returnReason;
 
-    private Long returnMoney;
+    private BigDecimal returnMoney;
 
     private Date returnTime;
+
+    private String teturnWay;
+
+    private String applyStatus;
 
     public Integer getReturnId() {
         return returnId;
@@ -57,11 +62,11 @@ public class ReturnInfo {
         this.returnReason = returnReason;
     }
 
-    public Long getReturnMoney() {
+    public BigDecimal getReturnMoney() {
         return returnMoney;
     }
 
-    public void setReturnMoney(Long returnMoney) {
+    public void setReturnMoney(BigDecimal returnMoney) {
         this.returnMoney = returnMoney;
     }
 
@@ -71,5 +76,21 @@ public class ReturnInfo {
 
     public void setReturnTime(Date returnTime) {
         this.returnTime = returnTime;
+    }
+
+    public String getTeturnWay() {
+        return teturnWay;
+    }
+
+    public void setTeturnWay(String teturnWay) {
+        this.teturnWay = teturnWay;
+    }
+
+    public String getApplyStatus() {
+        return applyStatus;
+    }
+
+    public void setApplyStatus(String applyStatus) {
+        this.applyStatus = applyStatus;
     }
 }

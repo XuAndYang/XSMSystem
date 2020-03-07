@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.math.BigDecimal;
+
 public class GoodsInfo {
     private Integer goodsId;
 
@@ -7,7 +9,7 @@ public class GoodsInfo {
 
     private String goodsType;
 
-    private Long goodsPrice;
+    private BigDecimal goodsPrice;
 
     private Integer totalNumber;
 
@@ -37,11 +39,11 @@ public class GoodsInfo {
         this.goodsType = goodsType;
     }
 
-    public Long getGoodsPrice() {
+    public BigDecimal getGoodsPrice() {
         return goodsPrice;
     }
 
-    public void setGoodsPrice(Long goodsPrice) {
+    public void setGoodsPrice(BigDecimal goodsPrice) {
         this.goodsPrice = goodsPrice;
     }
 

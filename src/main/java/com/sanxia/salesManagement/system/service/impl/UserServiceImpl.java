@@ -57,4 +57,35 @@ public class UserServiceImpl implements UserService{
 		return userMapper.updateUserById(u);
 	}
 
+	@Override
+	public int queryUserIdByLoginName(String login_name) {
+		// TODO Auto-generated method stub
+		return userMapper.queryUserIdByLoginName(login_name);
+	}
+
+	@Override
+	public int deleteUserByLoginName(String login_name) {
+		// TODO Auto-generated method stub
+		return userMapper.deleteUserByLoginName(login_name);
+	}
+
+	@Override
+	public List<User> selectUserByUserId(int user_id) {
+		// TODO Auto-generated method stub
+		return userMapper.selectUserByUserId(user_id);
+	}
+
+	@Override
+	public List<User> selectUserByUserName(String user_name) {
+		// TODO Auto-generated method stub
+		return userMapper.selectUserByUserName(user_name);
+	}
+
+	@Override
+	public int updateUserNameById(User u) {
+		// TODO Auto-generated method stub
+		return userMapper.updateUserNameById(u);
+	}
+
+	 
 }

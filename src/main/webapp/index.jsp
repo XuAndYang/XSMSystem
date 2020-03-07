@@ -99,7 +99,7 @@
 						<c:if test="${menu.permissionId == permission.key}">
 							<c:forEach items="${permission.value }" var="permission">
                             <li>
-                             <a onclick="xadmin.add_tab('用户列表','<%=basePath%>${permission.permissionUrl }')">
+                             <a onclick="xadmin.add_tab('${permission.permissionName}','<%=basePath%>${permission.permissionUrl }')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>${permission.permissionName}</cite></a>
                             </li>

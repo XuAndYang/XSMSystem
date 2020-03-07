@@ -138,4 +138,43 @@
       create_time = #{createTime,jdbcType=DATE}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+  
+  
+  <select id="queryUserIdByLoginName" resultType="java.lang.Integer" parameterType="java.lang.String">
+	select 
+    user_id
+    from user
+    where login_name = #{loginName,jdbcType=VARCHAR}
+	</select>
+	
+	
+ <delete id="deleteUserByLoginName" parameterType="java.lang.String" >
+    delete from user
+    where login_name = #{loginName,jdbcType=VARCHAR}
+ </delete>
+<!-- 根据用户名查询搜索用户 -->  
+
+
+ <select id="selectUserByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where login_name = #{loginName,jdbcType=VARCHAR}
+ </select>
+  
+  
+  <!-- 根据姓名模糊查询搜索用户 -->
+	<select id="selectUserByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+	select 
+    <include refid="Base_Column_List" />
+    from user
+    where name like #{name,jdbcType=VARCHAR}
+	</select>
+  
+<update id="updateUserNameById" parameterType="com.sanxia.salesManagement.system.model.User" >
+    update user
+    set name = #{name,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+</update>
+	
 </mapper>

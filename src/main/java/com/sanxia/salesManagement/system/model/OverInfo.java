@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class OverInfo {
@@ -13,7 +14,7 @@ public class OverInfo {
 
     private Date endTime;
 
-    private Long totalDays;
+    private BigDecimal totalDays;
 
     public Integer getId() {
         return id;
@@ -55,11 +56,11 @@ public class OverInfo {
         this.endTime = endTime;
     }
 
-    public Long getTotalDays() {
+    public BigDecimal getTotalDays() {
         return totalDays;
     }
 
-    public void setTotalDays(Long totalDays) {
+    public void setTotalDays(BigDecimal totalDays) {
         this.totalDays = totalDays;
     }
 }

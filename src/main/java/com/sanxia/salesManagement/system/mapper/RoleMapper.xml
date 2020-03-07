@@ -105,4 +105,21 @@
     delete from role
     where role_id = #{roleId,jdbcType=INTEGER}
   </delete>
+  
+  
+  
+  <select id="queryXZRoleByUser_id"  resultMap="BaseResultMap">
+		SELECT
+		role.role_id,role.role_name,role.role_state
+		FROM user_role INNER JOIN role ON user_role.role_id =
+	    role.role_id WHERE user_id=#{userId,jdbcType=INTEGER}
+	</select>
+  
+  
+  <select id="queryRole_idByRole_name" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    role_id
+    from role
+    where role_name = #{roleName,jdbcType=VARCHAR}
+  </select>
 </mapper>

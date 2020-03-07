@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class SaleInfo {
@@ -15,13 +16,17 @@ public class SaleInfo {
 
     private Integer saleNumber;
 
-    private Long unitPrice;
+    private BigDecimal unitPrice;
 
-    private Long discountPrice;
+    private BigDecimal discountPrice;
 
-    private Long consumeMoney;
+    private BigDecimal consumeMoney;
 
     private Date time;
+
+    private String tradeStatus;
+
+    private String deliType;
 
     public Integer getSaleId() {
         return saleId;
@@ -71,27 +76,27 @@ public class SaleInfo {
         this.saleNumber = saleNumber;
     }
 
-    public Long getUnitPrice() {
+    public BigDecimal getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Long unitPrice) {
+    public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
     }
 
-    public Long getDiscountPrice() {
+    public BigDecimal getDiscountPrice() {
         return discountPrice;
     }
 
-    public void setDiscountPrice(Long discountPrice) {
+    public void setDiscountPrice(BigDecimal discountPrice) {
         this.discountPrice = discountPrice;
     }
 
-    public Long getConsumeMoney() {
+    public BigDecimal getConsumeMoney() {
         return consumeMoney;
     }
 
-    public void setConsumeMoney(Long consumeMoney) {
+    public void setConsumeMoney(BigDecimal consumeMoney) {
         this.consumeMoney = consumeMoney;
     }
 
@@ -101,5 +106,21 @@ public class SaleInfo {
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    public String getTradeStatus() {
+        return tradeStatus;
+    }
+
+    public void setTradeStatus(String tradeStatus) {
+        this.tradeStatus = tradeStatus;
+    }
+
+    public String getDeliType() {
+        return deliType;
+    }
+
+    public void setDeliType(String deliType) {
+        this.deliType = deliType;
     }
 }

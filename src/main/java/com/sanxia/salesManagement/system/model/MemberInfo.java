@@ -7,7 +7,7 @@ public class MemberInfo {
 
     private String vipName;
 
-    private Integer vipTel;
+    private String vipTel;
 
     private Date vipBirthday;
 
@@ -31,11 +31,11 @@ public class MemberInfo {
         this.vipName = vipName;
     }
 
-    public Integer getVipTel() {
+    public String getVipTel() {
         return vipTel;
     }
 
-    public void setVipTel(Integer vipTel) {
+    public void setVipTel(String vipTel) {
         this.vipTel = vipTel;
     }
 

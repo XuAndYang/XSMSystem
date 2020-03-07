@@ -16,11 +16,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+ 
 import com.sanxia.salesManagement.system.model.Role;
 import com.sanxia.salesManagement.system.model.User;
+import com.sanxia.salesManagement.system.model.UserRole;
 import com.sanxia.salesManagement.system.service.RoleService;
-
+import com.sanxia.salesManagement.system.service.UserRoleService;
 import com.sanxia.salesManagement.system.service.UserService;
 
  
@@ -31,6 +32,9 @@ public class RoleController {
 	private RoleService roleService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserRoleService userRoleService;
+
 	
 //显示角色列表
 	@RequestMapping(value = "rolelist.do")
@@ -124,4 +128,59 @@ public class RoleController {
 			return "view/role/roleList";
 
 		}
+/////////////
+		@RequestMapping("FPRoleUI.do")
+		public String FPRoleUI(HttpServletRequest req, HttpServletResponse resp, @RequestParam("userId") String userId,
+				Model model) throws ServletException, IOException {
+			// 用户ID
+			String user_idStr=req.getParameter("userId");
+			int user_id=Integer.parseInt(user_idStr);
+			
+			User u = userService.queryUserByUser_id(user_id);
+			req.setAttribute("user", u);
+			
+			List<Role> roleList = roleService.queryAllRole();
+			req.setAttribute("roleList", roleList);
+			
+			Role roleXZ=roleService.queryXZRoleByUser_id(user_id);
+			req.setAttribute("roleXZ", roleXZ);
+
+			// 跳转页面
+			return "view/role/FPRole";
+		}
+
+		@RequestMapping("FPRole.do")
+		public String FPRole(HttpServletRequest req, HttpServletResponse resp, Model model)
+				throws ServletException, IOException {
+			// 用户ID
+			//System.err.println(userId);
+			String userId=req.getParameter("userId");
+			int id = Integer.parseInt(userId);
+			
+			String roleId=req.getParameter("roleId");
+			int id2 = Integer.parseInt(roleId);
+			 
+			int m = userRoleService.deleteUserRoleByUser_id(id);
+			 
+			UserRole userRole = new UserRole();
+			userRole.setUserId(id);
+			userRole.setRoleId(id2);
+			
+			
+			int n = userRoleService.insertUserRoleByUserRole(userRole);
+			
+			// 查询角色
+			User user = userService.queryUserByUser_id(id);
+			List<Role> roleList=roleService.queryAllRole();
+			req.setAttribute("user", user);
+			req.setAttribute("roleList", roleList);
+		 
+			// 选中角色数据
+			Role roleXZ = roleService.queryXZRoleByUser_id(id);
+			model.addAttribute("roleXZ", roleXZ);
+
+			// 跳转页面
+			return "view/role/FPRole";
+		}
+
 }

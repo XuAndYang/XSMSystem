@@ -7,6 +7,8 @@ public class SupplierInfo {
 
     private String supplierAddress;
 
+    private String supplierTel;
+
     public Integer getSupplierId() {
         return supplierId;
     }
@@ -29,5 +31,13 @@ public class SupplierInfo {
 
     public void setSupplierAddress(String supplierAddress) {
         this.supplierAddress = supplierAddress;
+    }
+
+    public String getSupplierTel() {
+        return supplierTel;
+    }
+
+    public void setSupplierTel(String supplierTel) {
+        this.supplierTel = supplierTel;
     }
 }

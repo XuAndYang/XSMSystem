@@ -27,4 +27,8 @@ public interface RoleMapper {
 	int updateRoleById(Role role);
 
 	int deleteRoleByRole_id(int role_id);
+
+	Role queryXZRoleByUser_id(int id);
+
+	int queryRole_idByRole_name(String role_name);
 }

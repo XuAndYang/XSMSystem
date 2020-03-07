@@ -11,7 +11,7 @@ public class SalesmanInfo {
 
     private Integer salesmanAge;
 
-    private Integer salesmanTel;
+    private String salesmanTel;
 
     private Date joinTime;
 
@@ -47,11 +47,11 @@ public class SalesmanInfo {
         this.salesmanAge = salesmanAge;
     }
 
-    public Integer getSalesmanTel() {
+    public String getSalesmanTel() {
         return salesmanTel;
     }
 
-    public void setSalesmanTel(Integer salesmanTel) {
+    public void setSalesmanTel(String salesmanTel) {
         this.salesmanTel = salesmanTel;
     }
 

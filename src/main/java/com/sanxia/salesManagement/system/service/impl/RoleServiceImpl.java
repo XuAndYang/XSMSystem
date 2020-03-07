@@ -45,6 +45,18 @@ public class RoleServiceImpl implements RoleService{
 		return roleMapper.deleteRoleByRole_id(role_id);
 	}
 
+	@Override
+	public Role queryXZRoleByUser_id(int id) {
+		// TODO Auto-generated method stub
+		return roleMapper.queryXZRoleByUser_id(id);
+	}
+
+	@Override
+	public int queryRole_idByRole_name(String role_name) {
+		// TODO Auto-generated method stub
+		return roleMapper.queryRole_idByRole_name(role_name);
+	}
+
 
 
 }

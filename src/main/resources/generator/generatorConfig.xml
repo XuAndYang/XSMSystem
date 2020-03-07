@@ -63,5 +63,7 @@
 			selectByExampleQueryId="false"></table>
 	    <table tableName="distribution_info" domainObjectName="DistributionInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false"></table>
+		<table tableName="trade_finish" domainObjectName="TradeFinish" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false"></table>
 	</context>
 </generatorConfiguration>
