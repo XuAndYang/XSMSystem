@@ -147,30 +147,29 @@
     where login_name = #{loginName,jdbcType=VARCHAR}
 	</select>
 	
-	
- <delete id="deleteUserByLoginName" parameterType="java.lang.String" >
+<!--删除用户信息 --> 	
+<delete id="deleteUserByLoginName" parameterType="java.lang.String" >
     delete from user
     where login_name = #{loginName,jdbcType=VARCHAR}
- </delete>
+</delete>
+ 
 <!-- 根据用户名查询搜索用户 -->  
-
-
- <select id="selectUserByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+<select id="selectUserByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from user
     where login_name = #{loginName,jdbcType=VARCHAR}
- </select>
+</select>
   
-  
-  <!-- 根据姓名模糊查询搜索用户 -->
-	<select id="selectUserByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+<!-- 根据姓名模糊查询搜索用户 -->
+<select id="selectUserByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
 	select 
     <include refid="Base_Column_List" />
     from user
     where name like #{name,jdbcType=VARCHAR}
-	</select>
-  
+</select>
+
+<!--修改用户信息 -->   
 <update id="updateUserNameById" parameterType="com.sanxia.salesManagement.system.model.User" >
     update user
     set name = #{name,jdbcType=VARCHAR}

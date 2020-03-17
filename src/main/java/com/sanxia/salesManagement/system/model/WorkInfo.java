@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.model;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class WorkInfo {
@@ -11,9 +12,9 @@ public class WorkInfo {
 
     private Date time;
 
-    private Date startTime;
+    private Time startTime;
 
-    private Date endTime;
+    private Time endTime;
 
     private String late;
 
@@ -53,19 +54,19 @@ public class WorkInfo {
         this.time = time;
     }
 
-    public Date getStartTime() {
+    public Time getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(Time startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public Time getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Time endTime) {
         this.endTime = endTime;
     }
 

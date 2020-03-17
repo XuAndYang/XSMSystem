@@ -149,7 +149,7 @@ public class UserController {
 			}
 	
 	
-//搜索指定的教师信息
+//搜索指定的用户信息
 		@RequestMapping(value="searchUser.do")
 		public String searchUser(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
 		Model model,User user,@RequestParam(value="user_search",required=false) String user_search ) throws ServletException, IOException{
@@ -177,8 +177,7 @@ public class UserController {
 		List<User> userList = userService.queryAllUser();
 		model.addAttribute("userList", userList);
 		   // 2.跳转页面
-		return "view/user/userList";
-			 
+		return "view/user/userList"; 
 			}
 				  
 	}				

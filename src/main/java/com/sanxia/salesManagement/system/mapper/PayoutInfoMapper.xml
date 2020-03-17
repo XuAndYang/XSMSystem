@@ -90,4 +90,41 @@
       account_number = #{accountNumber,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+   <select id="queryAllPayoutInfo" resultMap="BaseResultMap"   >
+    select 
+    <include refid="Base_Column_List" />
+    from payout_info
+  </select>
+  
+   <insert id="addPayoutInfoByInfo" parameterType="com.sanxia.salesManagement.system.model.PayoutInfo" >
+    insert into payout_info (id, time, payout_money, 
+      use_ways, account_number)
+    values (#{id,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{payoutMoney,jdbcType=DECIMAL}, 
+      #{useWays,jdbcType=VARCHAR}, #{accountNumber,jdbcType=INTEGER})
+  </insert>
+  
+  <select id="queryPayoutInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from payout_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <update id="updatePayoutInfoByInfo" parameterType="com.sanxia.salesManagement.system.model.PayoutInfo" >
+    update payout_info
+    set time = #{time,jdbcType=TIMESTAMP},
+      payout_money = #{payoutMoney,jdbcType=DECIMAL},
+      use_ways = #{useWays,jdbcType=VARCHAR},
+      account_number = #{accountNumber,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <delete id="deletePayoutInfoById" parameterType="java.lang.Integer" >
+    delete from payout_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  
 </mapper>

@@ -90,4 +90,39 @@
       account_number = #{accountNumber,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <!-- /////////////// -->
+   <select id="queryAllPayinInfo" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from payin_info
+  </select>
+  
+  <insert id="addPayinInfoByInfo" parameterType="com.sanxia.salesManagement.system.model.PayinInfo" >
+    insert into payin_info (id, time, payin_money, 
+      origin, account_number)
+    values (#{id,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{payinMoney,jdbcType=DECIMAL}, 
+      #{origin,jdbcType=VARCHAR}, #{accountNumber,jdbcType=INTEGER})
+  </insert>
+  
+   <select id="queryPayinInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from payin_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+   <update id="updatePayinInfoByInfo" parameterType="com.sanxia.salesManagement.system.model.PayinInfo" >
+    update payin_info
+    set time = #{time,jdbcType=TIMESTAMP},
+      payin_money = #{payinMoney,jdbcType=DECIMAL},
+      origin = #{origin,jdbcType=VARCHAR},
+      account_number = #{accountNumber,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <delete id="deletePayinInfoById" parameterType="java.lang.Integer" >
+    delete from payin_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
 </mapper>

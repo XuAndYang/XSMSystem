@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.dao;
 
+import java.util.List;
+
 import com.sanxia.salesManagement.system.model.PayinInfo;
 
 public interface PayinInfoMapper {
@@ -14,4 +16,14 @@ public interface PayinInfoMapper {
     int updateByPrimaryKeySelective(PayinInfo record);
 
     int updateByPrimaryKey(PayinInfo record);
+
+	List<PayinInfo> queryAllPayinInfo();
+
+	int addPayinInfoByInfo(PayinInfo p);
+
+	PayinInfo queryPayinInfoById(int id);
+
+	int updatePayinInfoByInfo(PayinInfo p);
+
+	int deletePayinInfoById(int id);
 }

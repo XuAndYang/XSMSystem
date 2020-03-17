@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.dao;
 
+import java.util.List;
+
 import com.sanxia.salesManagement.system.model.OverInfo;
 
 public interface OverInfoMapper {
@@ -14,4 +16,6 @@ public interface OverInfoMapper {
     int updateByPrimaryKeySelective(OverInfo record);
 
     int updateByPrimaryKey(OverInfo record);
+
+	List<OverInfo> queryAllOverInfo();
 }

@@ -103,4 +103,11 @@
       total_days = #{totalDays,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+   <select id="queryAllOverInfo" resultMap="BaseResultMap"   >
+    select 
+    <include refid="Base_Column_List" />
+    from over_info
+  </select>
 </mapper>

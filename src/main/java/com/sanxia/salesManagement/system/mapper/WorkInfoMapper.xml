@@ -6,8 +6,8 @@
     <result column="salesman_id" property="salesmanId" jdbcType="INTEGER" />
     <result column="salesman_name" property="salesmanName" jdbcType="VARCHAR" />
     <result column="time" property="time" jdbcType="DATE" />
-    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
-    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="start_time" property="startTime" jdbcType="TIME" />
+    <result column="end_time" property="endTime" jdbcType="TIME" />
     <result column="late" property="late" jdbcType="VARCHAR" />
     <result column="leave_early" property="leaveEarly" jdbcType="VARCHAR" />
     <result column="absenteeism" property="absenteeism" jdbcType="VARCHAR" />
@@ -31,7 +31,7 @@
       late, leave_early, absenteeism
       )
     values (#{id,jdbcType=INTEGER}, #{salesmanId,jdbcType=INTEGER}, #{salesmanName,jdbcType=VARCHAR}, 
-      #{time,jdbcType=DATE}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{time,jdbcType=DATE}, #{startTime,jdbcType=TIME}, #{endTime,jdbcType=TIME}, 
       #{late,jdbcType=VARCHAR}, #{leaveEarly,jdbcType=VARCHAR}, #{absenteeism,jdbcType=VARCHAR}
       )
   </insert>
@@ -80,10 +80,10 @@
         #{time,jdbcType=DATE},
       </if>
       <if test="startTime != null" >
-        #{startTime,jdbcType=TIMESTAMP},
+        #{startTime,jdbcType=TIME},
       </if>
       <if test="endTime != null" >
-        #{endTime,jdbcType=TIMESTAMP},
+        #{endTime,jdbcType=TIME},
       </if>
       <if test="late != null" >
         #{late,jdbcType=VARCHAR},
@@ -109,10 +109,10 @@
         time = #{time,jdbcType=DATE},
       </if>
       <if test="startTime != null" >
-        start_time = #{startTime,jdbcType=TIMESTAMP},
+        start_time = #{startTime,jdbcType=TIME},
       </if>
       <if test="endTime != null" >
-        end_time = #{endTime,jdbcType=TIMESTAMP},
+        end_time = #{endTime,jdbcType=TIME},
       </if>
       <if test="late != null" >
         late = #{late,jdbcType=VARCHAR},
@@ -131,11 +131,57 @@
     set salesman_id = #{salesmanId,jdbcType=INTEGER},
       salesman_name = #{salesmanName,jdbcType=VARCHAR},
       time = #{time,jdbcType=DATE},
-      start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP},
+      start_time = #{startTime,jdbcType=TIME},
+      end_time = #{endTime,jdbcType=TIME},
       late = #{late,jdbcType=VARCHAR},
       leave_early = #{leaveEarly,jdbcType=VARCHAR},
       absenteeism = #{absenteeism,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+   <select id="queryAllWorkInfo" resultMap="BaseResultMap"   >
+    select 
+    <include refid="Base_Column_List" />
+    from work_info
+  </select>
+  
+  
+   <insert id="addWorkInfoByWorkInfo" parameterType="com.sanxia.salesManagement.system.model.WorkInfo" >
+    insert into work_info (id, salesman_id, salesman_name, 
+      time, start_time, end_time, 
+      late, leave_early, absenteeism
+      )
+    values (#{id,jdbcType=INTEGER}, #{salesmanId,jdbcType=INTEGER}, #{salesmanName,jdbcType=VARCHAR}, 
+      #{time,jdbcType=DATE}, #{startTime,jdbcType=TIME}, #{endTime,jdbcType=TIME}, 
+      #{late,jdbcType=VARCHAR}, #{leaveEarly,jdbcType=VARCHAR}, #{absenteeism,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <select id="queryWorkInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from work_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
+  <update id="updateWorkInfoByWorkInfo" parameterType="com.sanxia.salesManagement.system.model.WorkInfo" >
+    update work_info
+    set salesman_id = #{salesmanId,jdbcType=INTEGER},
+      salesman_name = #{salesmanName,jdbcType=VARCHAR},
+      time = #{time,jdbcType=DATE},
+      start_time = #{startTime,jdbcType=TIME},
+      end_time = #{endTime,jdbcType=TIME},
+      late = #{late,jdbcType=VARCHAR},
+      leave_early = #{leaveEarly,jdbcType=VARCHAR},
+      absenteeism = #{absenteeism,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <delete id="deleteWorkInfoById" parameterType="java.lang.Integer" >
+    delete from work_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
 </mapper>

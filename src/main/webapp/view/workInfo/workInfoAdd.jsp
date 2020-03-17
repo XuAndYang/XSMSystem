@@ -32,44 +32,44 @@
     <body>
         <div class="layui-fluid">
             <div class="layui-row">
-                <form class="layui-form" action="<%=basePath%>salesmanInfoController/add.do">
+                <form class="layui-form" action="<%=basePath%>workInfoController/add.do">
+                    
+                       
                     <div class="layui-form-item">
-                        <label for="name" class="layui-form-label">
-                            <span class="x-red">*</span>姓名</label>
+                        <label for="login_name1" class="layui-form-label">
+                            <span class="x-red"></span>销售员工号</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="name" name="salesman_name" required="" lay-verify="name" autocomplete="off" class="layui-input"></div>
-                        <div class="layui-form-mid layui-word-aux">
-                            <span class="x-red">*</span>请输入真实姓名</div></div>
-                            
-                   <div class="layui-form-item">
-                      <label class="layui-form-label"><span class="x-red"></span>性别</label>
-                      <div class="layui-input-block">
-                        <input type="radio" name="salesman_sex" lay-skin="primary" value="男" title="男" checked="">
-                        <input type="radio" name="salesman_sex" lay-skin="primary" value="女" title="女" checked="">
-                      </div>
-                  </div>
-                  
+                            <input type="text" id="login_name1" name="salesman_id" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
+                    </div>
                     
                     <div class="layui-form-item">
                         <label for="login_name1" class="layui-form-label">
-                            <span class="x-red"></span>年龄</label>
+                            <span class="x-red"></span>销售员姓名</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="login_name1" name="salesman_age" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
-                    </div>
-                   
-                     <div class="layui-form-item">
-                        <label for="login_name2" class="layui-form-label">
-                            <span class="x-red"></span>电话号码</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="login_name2" name="salesman_tel" required="" lay-verify="login_name2" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="login_name1" name="salesman_name" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
                     </div>
                     
-                     <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">
+                     
+                    <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">
                       <label for="login_name3" class="layui-form-label">
-                            <span class="x-red"></span>入职时间</label>
-                            <input class="layui-input"  autocomplete="off" placeholder="请输入入职时间" name="join_time" id="start" style="width:190px">
+                            <span class="x-red"></span>日期</label>
+                            <input class="layui-input"  autocomplete="off" placeholder="请输入日期" name="time" id="start" style="width:190px">
                      </div>
                     
+                     <div class="layui-form-item">
+                        <label for="login_name2" class="layui-form-label">
+                            <span class="x-red"></span>上班打卡</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="login_name2" name="start_time" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="HH:mm:ss"></div>
+                    </div>
+                    
+                     <div class="layui-form-item">
+                        <label for="login_name2" class="layui-form-label">
+                            <span class="x-red"></span>下班打卡</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="login_name2" name="end_time" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="HH:mm:ss"></div>
+                    </div>
+                      
                     <div class="layui-form-item">
                         <label for="repassword1" class="layui-form-label"></label>
                         <button class="layui-btn" lay-filter="add" lay-submit="" >增加</button></div>
@@ -80,8 +80,11 @@
         layui.use(['laydate','form'], function(){
             var laydate = layui.laydate;
             var  form = layui.form;
-             // 监听全选
+
+
+            // 监听全选
             form.on('checkbox(checkall)', function(data){
+
               if(data.elem.checked){
                 $('tbody input').prop('checked',true);
               }else{
@@ -99,7 +102,9 @@
             laydate.render({
               elem: '#end' //指定元素
             });
-      });
+
+
+          });
         
         layui.use(['form', 'layer','jquery'],
             function() {

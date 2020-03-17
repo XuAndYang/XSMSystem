@@ -126,4 +126,46 @@
       distribution_tel = #{distributionTel,jdbcType=VARCHAR}
     where distribution_id = #{distributionId,jdbcType=INTEGER}
   </update>
+  
+  <!-- 查询所有 -->
+  <select id="queryAllDistributionInfo" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from distribution_info
+  </select>
+  
+  <!-- 插入 -->
+  <insert id="addDistributionInfoByInfo" parameterType="com.sanxia.salesManagement.system.model.DistributionInfo" >
+    insert into distribution_info (distribution_id, goods_id, goods_name, 
+      goods_number, distribution_time, address, 
+      distribution_name, distribution_tel)
+    values (#{distributionId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodsNumber,jdbcType=INTEGER}, #{distributionTime,jdbcType=DATE}, #{address,jdbcType=VARCHAR}, 
+      #{distributionName,jdbcType=VARCHAR}, #{distributionTel,jdbcType=VARCHAR})
+  </insert>
+  
+  
+   <select id="queryDistributionInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from distribution_info
+    where distribution_id = #{distributionId,jdbcType=INTEGER}
+  </select>
+  
+   <update id="updateDistributionInfoByDistribution" parameterType="com.sanxia.salesManagement.system.model.DistributionInfo" >
+    update distribution_info
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_number = #{goodsNumber,jdbcType=INTEGER},
+      distribution_time = #{distributionTime,jdbcType=DATE},
+      address = #{address,jdbcType=VARCHAR},
+      distribution_name = #{distributionName,jdbcType=VARCHAR},
+      distribution_tel = #{distributionTel,jdbcType=VARCHAR}
+    where distribution_id = #{distributionId,jdbcType=INTEGER}
+  </update>
+  
+  <delete id="deleteDistributionInfoById" parameterType="java.lang.Integer" >
+    delete from distribution_info
+    where distribution_id = #{distributionId,jdbcType=INTEGER}
+  </delete>
 </mapper>

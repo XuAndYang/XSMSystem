@@ -36,7 +36,7 @@
                     <div class="layui-form-item">
                         <label for="role_name" class="layui-form-label">
                             <span class="x-red">*</span>父ID</label>
-                        <div class="layui-input-inline">
+                        <div class="layui-input-inline" style="margin-bottom: 20px">
                               
                         <select name="p_id">
 							<option>--------请选择父级节点---------</option>
