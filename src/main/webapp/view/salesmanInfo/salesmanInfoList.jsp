@@ -95,7 +95,7 @@
                                       <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>salesmanInfoController/updateUI.do?salesmanId=${salesmanInfo.salesmanId}',500,650)" href="javascript:;">
                                         <i class="layui-icon" style="margin-right: 30px">&#xe642;</i>
                                       </a>
-                                      <a onclick="xadmin.open('待用功能','<%=basePath%>roleController/FPRoleUI.do?userId=${user.userId }',600,400)" title="待用功能" href="javascript:;">
+                                      <a href="<%=basePath%>salesmanInfoController/selectWorkInfo.do?salesmanId=${salesmanInfo.salesmanId}" title="查看考勤信息" >
                                         <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
                                       </a>
                                       <a title="删除"  href="<%=basePath%>salesmanInfoController/deleteSalesmanInfo.do?salesmanId=${salesmanInfo.salesmanId}"  onclick="return del(1)">

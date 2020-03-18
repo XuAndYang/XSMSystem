@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sanxia.salesManagement.system.model.SalesmanInfo;
 import com.sanxia.salesManagement.system.model.User;
 import com.sanxia.salesManagement.system.model.UserRole;
+import com.sanxia.salesManagement.system.model.WorkInfo;
 import com.sanxia.salesManagement.system.service.RoleService;
 import com.sanxia.salesManagement.system.service.SalesmanInfoService;
 import com.sanxia.salesManagement.system.service.UserRoleService;
 import com.sanxia.salesManagement.system.service.UserService;
+import com.sanxia.salesManagement.system.service.WorkInfoService;
 
  
 
@@ -41,6 +43,9 @@ public class SalesmanInfoController {
 	
 	@Autowired
 	private UserRoleService userRoleService;
+	
+	@Autowired
+	private WorkInfoService workInfoService;
 	
 	//显示用户列表
 		@RequestMapping(value = "salesmanInfolist.do")
@@ -213,5 +218,46 @@ public class SalesmanInfoController {
 			return "view/salesmanInfo/salesmanInfoList";
 					
 				}
+		
+//查看考勤记录
+		@RequestMapping(value="selectWorkInfo.do")
+		public String selectWorkInfo(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+				Model model,SalesmanInfo salesmanInfo,@RequestParam(value="salesmanId",required=false) String salesmanIdStr
+				) throws ServletException, IOException{
+			//System.out.println(userIdStr);
+			
+			int salesmanId=Integer.parseInt(salesmanIdStr);
+			
+			// 3.调用业务
+			List<WorkInfo> workInfoList = workInfoService.selectWorkInfoById(salesmanId);
+			model.addAttribute("workInfoList", workInfoList);
+			
+			session.setAttribute("salesmanId", salesmanId);
+
+			return "view/salesmanInfo/workInfoIDList";
+				}
+
+//查询考勤记录
+	@RequestMapping(value = "timeSearch.do")
+	public String timeSearch(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model,
+			SalesmanInfo salesmanInfo)
+			throws ServletException, IOException, ParseException {
+	 
+        int salesmanId=(int) session.getAttribute("salesmanId");
+      
+		String timeStr=req.getParameter("time_search");
+		Date time = new SimpleDateFormat("yyyy-MM-dd").parse(timeStr);
+		
+		WorkInfo workInfo=new WorkInfo();
+		workInfo.setSalesmanId(salesmanId);
+		workInfo.setTime(time);
+		// 3.调用业务
+		List<WorkInfo> workInfoList = workInfoService.selectWorkInfoByIdAndTime(workInfo);
+		model.addAttribute("workInfoList", workInfoList);
+		 
+
+		return "view/salesmanInfo/workInfoIDList";
+	}
+				
 
 }

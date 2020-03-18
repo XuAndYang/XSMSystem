@@ -16,6 +16,10 @@ public interface WorkInfoService {
 
 	int deleteWorkInfoById(int id);
 
+	List<WorkInfo> selectWorkInfoById(int salesmanId);
+
+	List<WorkInfo> selectWorkInfoByIdAndTime(WorkInfo workInfo);
+
  
 
 }

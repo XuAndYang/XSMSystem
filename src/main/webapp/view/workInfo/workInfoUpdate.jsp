@@ -42,15 +42,7 @@
                             <input type="text" id="login_name1" name="salesman_id" value="${workInfo.salesmanId }"  required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
                     </div>
                     
-                    <div class="layui-form-item">
-                        <label for="login_name1" class="layui-form-label">
-                            <span class="x-red"></span>销售员姓名</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="login_name1" name="salesman_name" value="${workInfo.salesmanName }" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
-                    </div>
-                    
-                     
-                    <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">
+                   <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">
                       <label for="login_name3" class="layui-form-label">
                             <span class="x-red"></span>日期</label>
                             <input class="layui-input"  autocomplete="off" placeholder="请输入日期" name="time" value="<fmt:formatDate value='${workInfo.time}' type='date' pattern='yyyy-MM-dd'/>" id="start" style="width:190px">

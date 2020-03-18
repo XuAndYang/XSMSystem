@@ -109,7 +109,7 @@
                                         <i class="layui-icon">&#xe640;</i>
                                       </a>
                                       </td>
-                                    </td>
+                                   
                                   </tr>
                                  </c:forEach>
                                

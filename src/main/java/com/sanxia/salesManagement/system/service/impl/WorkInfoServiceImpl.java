@@ -44,6 +44,18 @@ public class WorkInfoServiceImpl implements WorkInfoService {
 		return workInfoMapper.deleteWorkInfoById(id);
 	}
 
+	@Override
+	public List<WorkInfo> selectWorkInfoById(int salesmanId) {
+		// TODO Auto-generated method stub
+		return  workInfoMapper.selectWorkInfoById(salesmanId);
+	}
+
+	@Override
+	public List<WorkInfo> selectWorkInfoByIdAndTime(WorkInfo workInfo) {
+		// TODO Auto-generated method stub
+		return workInfoMapper.selectWorkInfoByIdAndTime(workInfo);
+	}
+
 	 
 
 }

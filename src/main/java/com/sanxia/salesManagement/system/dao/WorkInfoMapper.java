@@ -27,5 +27,9 @@ public interface WorkInfoMapper {
 	int updateWorkInfoByWorkInfo(WorkInfo w);
 
 	int deleteWorkInfoById(int id);
+
+	List<WorkInfo> selectWorkInfoById(int salesmanId);
+
+	List<WorkInfo> selectWorkInfoByIdAndTime(WorkInfo workInfo);
  
 }

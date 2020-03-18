@@ -24,6 +24,7 @@ import com.sanxia.salesManagement.system.model.PayinInfo;
 import com.sanxia.salesManagement.system.model.SalesmanInfo;
 import com.sanxia.salesManagement.system.model.User;
 import com.sanxia.salesManagement.system.model.WorkInfo;
+import com.sanxia.salesManagement.system.service.SalesmanInfoService;
 import com.sanxia.salesManagement.system.service.WorkInfoService;
 
 @Controller
@@ -31,6 +32,9 @@ import com.sanxia.salesManagement.system.service.WorkInfoService;
 public class WorkInfoController {
 	@Autowired
 	private WorkInfoService workInfoService;
+	
+	@Autowired
+	private SalesmanInfoService salesmanInfoService;
 	
 	//显示用户列表
 	@RequestMapping(value = "workInfolist.do")
@@ -45,7 +49,7 @@ public class WorkInfoController {
 
 	}
 
-	// 增加用户信息
+	// 增加工作信息
 	@RequestMapping(value = "addUI.do")
 	public String addUI(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model)
 			throws ServletException, IOException {
@@ -61,7 +65,7 @@ public class WorkInfoController {
 		String salesman_idStr = req.getParameter("salesman_id");
 		int salesman_id = Integer.parseInt(salesman_idStr);
 
-		String salesman_name = req.getParameter("salesman_name");
+		String salesman_name = salesmanInfoService.selectNameById(salesman_id);
 
 		String timeStr = req.getParameter("time");
 		Date time = new SimpleDateFormat("yyyy-MM-dd").parse(timeStr);
@@ -173,7 +177,7 @@ public class WorkInfoController {
 		String salesman_idStr = req.getParameter("salesman_id");
 		int salesman_id = Integer.parseInt(salesman_idStr);
 
-		String salesman_name = req.getParameter("salesman_name");
+		String salesman_name = salesmanInfoService.selectNameById(salesman_id);
 
 		String timeStr = req.getParameter("time");
 		Date time = new SimpleDateFormat("yyyy-MM-dd").parse(timeStr);

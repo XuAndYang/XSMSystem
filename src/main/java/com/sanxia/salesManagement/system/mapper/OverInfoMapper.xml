@@ -104,10 +104,42 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
-  
+ <!-- ///////////////// --> 
    <select id="queryAllOverInfo" resultMap="BaseResultMap"   >
     select 
     <include refid="Base_Column_List" />
     from over_info
   </select>
+  
+    <insert id="addOverInfoByOverInfo" parameterType="com.sanxia.salesManagement.system.model.OverInfo" >
+    insert into over_info (id, salesman_id, salesman_name, 
+      start_time, end_time, total_days
+      )
+    values (#{id,jdbcType=INTEGER}, #{salesmanId,jdbcType=INTEGER}, #{salesmanName,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{totalDays,jdbcType=DECIMAL}
+      )
+  </insert>
+  
+  
+   <select id="queryOverInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from over_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+   <update id="updateOverInfoByOverInfo" parameterType="com.sanxia.salesManagement.system.model.OverInfo" >
+    update over_info
+    set salesman_id = #{salesmanId,jdbcType=INTEGER},
+      salesman_name = #{salesmanName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      total_days = #{totalDays,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <delete id="deleteOverInfoById" parameterType="java.lang.Integer" >
+    delete from over_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
 </mapper>

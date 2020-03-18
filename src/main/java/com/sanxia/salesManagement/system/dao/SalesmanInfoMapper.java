@@ -29,4 +29,6 @@ public interface SalesmanInfoMapper {
 	int updateSalesmanInfoById(SalesmanInfo s);
 
 	int deleteSalesmanInfoById(int salesmanId);
+
+	String selectNameById(int salesman_id);
 }

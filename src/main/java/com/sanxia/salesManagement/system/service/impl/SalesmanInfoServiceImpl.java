@@ -50,4 +50,10 @@ public class SalesmanInfoServiceImpl implements SalesmanInfoService{
 		return salesmanInfoMapper.deleteSalesmanInfoById(salesmanId);
 	}
 
+	@Override
+	public String selectNameById(int salesman_id) {
+		// TODO Auto-generated method stub
+		return salesmanInfoMapper.selectNameById(salesman_id);
+	}
+
 }

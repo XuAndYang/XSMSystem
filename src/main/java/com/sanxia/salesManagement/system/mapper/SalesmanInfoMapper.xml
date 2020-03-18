@@ -150,4 +150,12 @@
     where salesman_id = #{salesmanId,jdbcType=INTEGER}
   </delete>
   
+  
+   <select id="selectNameById" resultType="java.lang.String" parameterType="java.lang.Integer" >
+    select 
+    salesman_name
+    from salesman_info
+    where salesman_id = #{salesmanId,jdbcType=INTEGER}
+  </select>
+  
 </mapper>

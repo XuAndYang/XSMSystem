@@ -18,4 +18,6 @@ public interface SalesmanInfoService {
 
 	int deleteSalesmanInfoById(int salesmanId);
 
+	String selectNameById(int salesman_id);
+
 }

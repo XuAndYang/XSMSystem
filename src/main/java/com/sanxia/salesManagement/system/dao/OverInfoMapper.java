@@ -18,4 +18,12 @@ public interface OverInfoMapper {
     int updateByPrimaryKey(OverInfo record);
 
 	List<OverInfo> queryAllOverInfo();
+
+	int addOverInfoByOverInfo(OverInfo over);
+
+	OverInfo queryOverInfoById(int id);
+
+	int updateOverInfoByOverInfo(OverInfo over);
+
+	int deleteOverInfoById(int id);
 }

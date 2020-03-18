@@ -114,4 +114,44 @@
       reason = #{reason,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  <select id="queryAllOffInfo" resultMap="BaseResultMap"   >
+    select 
+    <include refid="Base_Column_List" />
+    from off_info
+  </select>
+  
+   <select id="queryOffInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+     <include refid="Base_Column_List" />
+    from off_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteOffInfoById" parameterType="java.lang.Integer" >
+    delete from off_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="addOffInfoByOffInfo" parameterType="com.sanxia.salesManagement.system.model.OffInfo" >
+    insert into off_info (id, salesman_id, salesman_name, 
+      start_time, end_time, total_days, 
+      reason)
+    values (#{id,jdbcType=INTEGER}, #{salesmanId,jdbcType=INTEGER}, #{salesmanName,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{totalDays,jdbcType=DECIMAL}, 
+      #{reason,jdbcType=VARCHAR})
+  </insert>
+  
+  <update id="updateOffInfoByOffInfo" parameterType="com.sanxia.salesManagement.system.model.OffInfo" >
+    update off_info
+    set salesman_id = #{salesmanId,jdbcType=INTEGER},
+      salesman_name = #{salesmanName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      total_days = #{totalDays,jdbcType=DECIMAL},
+      reason = #{reason,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

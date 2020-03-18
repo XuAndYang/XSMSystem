@@ -18,6 +18,30 @@ public class OverInfoServiceImpl implements OverInfoService {
 		// TODO Auto-generated method stub
 		return overInfoMapper.queryAllOverInfo();
 	}
+
+	@Override
+	public int addOverInfoByOverInfo(OverInfo over) {
+		// TODO Auto-generated method stub
+		return overInfoMapper.addOverInfoByOverInfo(over);
+	}
+
+	@Override
+	public OverInfo queryOverInfoById(int id) {
+		// TODO Auto-generated method stub
+		return overInfoMapper.queryOverInfoById(id);
+	}
+
+	@Override
+	public int updateOverInfoByOverInfo(OverInfo over) {
+		// TODO Auto-generated method stub
+		return overInfoMapper.updateOverInfoByOverInfo(over);
+	}
+
+	@Override
+	public int deleteOverInfoById(int id) {
+		// TODO Auto-generated method stub
+		return overInfoMapper.deleteOverInfoById(id);
+	}
 	 
 
 }
