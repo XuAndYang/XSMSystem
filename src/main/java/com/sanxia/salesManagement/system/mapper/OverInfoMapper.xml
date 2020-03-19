@@ -142,4 +142,12 @@
     delete from over_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  
+  
+   <select id="queryOverByIdAndTime" resultType="java.math.BigDecimal" parameterType="Map" >
+   SELECT SUM(total_days) 
+   FROM over_info
+   WHERE salesman_id = #{salesmanIdTotal} 
+   AND start_time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
+  </select>
 </mapper>

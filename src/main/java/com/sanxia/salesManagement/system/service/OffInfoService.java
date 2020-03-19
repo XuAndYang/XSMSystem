@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.service;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 
 import com.sanxia.salesManagement.system.model.OffInfo;
@@ -15,5 +17,7 @@ public interface OffInfoService {
 	int updateOffInfoByOffInfo(OffInfo off);
 
 	int deleteOffInfoById(int id);
+
+	BigDecimal queryOffByIdAndTime(HashMap<String, Object> map);
 
 }

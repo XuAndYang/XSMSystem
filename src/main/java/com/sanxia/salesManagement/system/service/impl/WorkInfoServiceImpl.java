@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.service.impl;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +56,25 @@ public class WorkInfoServiceImpl implements WorkInfoService {
 	public List<WorkInfo> selectWorkInfoByIdAndTime(WorkInfo workInfo) {
 		// TODO Auto-generated method stub
 		return workInfoMapper.selectWorkInfoByIdAndTime(workInfo);
+	}
+
+	
+	@Override
+	public int queryTotalByIdAndTime(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return workInfoMapper.queryTotalByIdAndTime(map);
+	}
+
+	@Override
+	public int queryLateByIdAndTime(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return workInfoMapper.queryLateByIdAndTime(map);
+	}
+
+	@Override
+	public int queryEarlyByIdAndTime(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return workInfoMapper.queryEarlyByIdAndTime(map);
 	}
 
 	 

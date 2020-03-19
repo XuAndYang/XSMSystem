@@ -38,7 +38,7 @@
                         <div class="layui-input-inline">
                             
                           <select name="p_id">
-							<option>--------请选择父级节点---------</option>
+							<option>请选择父级节点</option>
 							<c:forEach items="${permissionList }" var="permission">
 								<option id="${permission.permissionId }" value="${permission.permissionId }">${permission.permissionName }</option>
 							</c:forEach>

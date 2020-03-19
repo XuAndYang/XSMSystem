@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.service.impl;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +45,11 @@ public class OffInfoServiceImpl implements OffInfoService {
 	public int deleteOffInfoById(int id) {
 		// TODO Auto-generated method stub
 		return offInfoMappper.deleteOffInfoById(id) ;
+	}
+
+	@Override
+	public BigDecimal queryOffByIdAndTime(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return offInfoMappper.queryOffByIdAndTime(map);
 	}
 }

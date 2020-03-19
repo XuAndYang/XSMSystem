@@ -185,4 +185,19 @@
       finish_type = #{finishType,jdbcType=VARCHAR}
     where trade_id = #{tradeId,jdbcType=INTEGER}
   </update>
+  
+  
+  <select id="selectSaleNumByIdAndTime" resultType="java.lang.Integer" parameterType="Map" >
+   SELECT SUM(sale_number) 
+   FROM trade_finish 
+   WHERE goods_id = #{goodsIdTotal} 
+   AND time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
+  </select>
+  
+   <select id="selectSalePriceByIdAndTime" resultType="java.math.BigDecimal" parameterType="Map" >
+   SELECT SUM(consume_money) 
+   FROM trade_finish 
+   WHERE goods_id = #{goodsIdTotal} 
+   AND time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
+  </select>
 </mapper>

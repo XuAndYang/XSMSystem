@@ -150,4 +150,17 @@
       take_time = #{takeTime,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+   
+  <insert id="insertInventoryInfo" parameterType="com.sanxia.salesManagement.system.model.InventoryInfo" >
+    insert into inventory_info (id, goods_id, goods_name, 
+      purchase_price, purchase_total_price, sale_number, 
+      sale_total_price, profit, remaining_number, 
+      take_time)
+    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, 
+      #{purchasePrice,jdbcType=DECIMAL}, #{purchaseTotalPrice,jdbcType=DECIMAL}, #{saleNumber,jdbcType=INTEGER}, 
+      #{saleTotalPrice,jdbcType=DECIMAL}, #{profit,jdbcType=DECIMAL}, #{remainingNumber,jdbcType=INTEGER}, 
+      #{takeTime,jdbcType=DATE})
+  </insert>
 </mapper>

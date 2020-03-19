@@ -43,14 +43,13 @@
                     <div class="layui-card">
                         <div class="layui-card-body ">
                             <form class="layui-form layui-col-space5">
-                                 <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入销售员工号</button>
+                                 <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入商品编号</button>
                                  
                                 <div class="layui-inline layui-show-xs-block" >
-                                    <input type="text" name="salesman_id"  placeholder="请输入销售员工号" autocomplete="off" class="layui-input" >
+                                    <input type="text" name="goods_id"  placeholder="请输入商品编号" autocomplete="off" class="layui-input" >
                                 </div>
-                                
-                                
-                                 <button type="button" class="layui-btn" style="margin-left:50px"><i class="layui-icon"></i>请输入考勤时间</button>
+                                 
+                                 <button type="button" class="layui-btn" style="margin-left:50px"><i class="layui-icon"></i>请输入盘点时间</button>
                                 
                                 <div class="layui-inline layui-show-xs-block" >
                                    
@@ -82,10 +81,11 @@
                                     </select>
                                 </div>
                                
+                               
                                 <div class="layui-inline layui-show-xs-block">
                                 
-                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>statisticsInfoController/statisticsWork.do';"  lay-filter="sreach" >
-                                 <i class="layui-icon">统计</i></button>
+                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>inventoryInfoController/inventorySearch.do';"  lay-filter="sreach" >
+                                 <i class="layui-icon">盘点库存</i></button>
                                 </div>
                             </form>
                         </div>
@@ -96,33 +96,34 @@
                                   <tr>
                                    
                                      
-                                    <th>销售员工号</th>
-                                    <th>销售员姓名</th>
-                                    <th>统计时间</th>
-                                    <th>出勤数</th>
-                                    <th>加班数</th>
-                                    <th>请假数</th>
-                                    <th>出勤率</th>
+                                    <th>商品编号</th>
+                                    <th>商品名称</th>
+                                    <th>商品进价</th>
+                                    <th>进货总成本</th>
+                                    <th>售出数量</th>
+                                    <th>售出总金额</th>
+                                    <th>总盈利</th>
+                                    <th>剩余库存数</th>
+                                    <th>盘点时间</th>
                                     
                                     
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
+                                
                                   <tr>
-                                    <td>${statisticsInfo.salesmanId }</td>
-                                    <td>${statisticsInfo.salesmanName }</td>
-                                   <td><fmt:formatDate value="${statisticsInfo.statisticTime }"
+                                    <td>${inventoryInfo.goodsId }</td>
+                                    <td>${inventoryInfo.goodsName }</td>
+                                    <td>${inventoryInfo.purchasePrice }</td>
+                                    <td>${inventoryInfo.purchaseTotalPrice }</td>                       
+                                    <td>${inventoryInfo.saleNumber }</td>
+                                    <td>${inventoryInfo.saleTotalPrice }</td>
+                                    <td>${inventoryInfo.profit }</td>
+                                    <td>${inventoryInfo.remainingNumber }</td>   
+                                     <td><fmt:formatDate value="${inventoryInfo.takeTime }"
 							          pattern="yyyy-MM" />
-                                    <td>${statisticsInfo.totalWork }</td>
-                                    <td>${statisticsInfo.totalOver }</td>
-                                    <td>${statisticsInfo.totalOff }</td>
-                                    <td>${statisticsInfo.attendance }</td>   
 							      </tr>
                                
-                               
-                                
-                                  
                                 </tbody>
                             </table>
                         </div>

@@ -14,4 +14,8 @@ public interface GoodsInfoMapper {
     int updateByPrimaryKeySelective(GoodsInfo record);
 
     int updateByPrimaryKey(GoodsInfo record);
+
+	String selectGoodsNameById(int goods_id);
+
+	int selectRemainingById(int goods_id);
 }

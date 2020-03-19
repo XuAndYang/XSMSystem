@@ -14,4 +14,6 @@ public interface InventoryInfoMapper {
     int updateByPrimaryKeySelective(InventoryInfo record);
 
     int updateByPrimaryKey(InventoryInfo record);
+
+	int insertInventoryInfo(InventoryInfo i);
 }

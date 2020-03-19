@@ -103,4 +103,19 @@
       remaining_number = #{remainingNumber,jdbcType=INTEGER}
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
+  
+  
+  <select id="selectGoodsNameById" resultType="java.lang.String" parameterType="java.lang.Integer" >
+    select 
+    goods_name
+    from goods_info
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  
+   <select id="selectRemainingById" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select 
+    remaining_number
+    from goods_info
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -107,7 +107,7 @@ public class PermissionController {
 		String permission_type = req.getParameter("type");
 		String permission_id = req.getParameter("permission_id");
 		int id = Integer.parseInt(permission_id);
-		System.out.println(id);
+//		System.out.println(id);
 
 		String p_idstr = req.getParameter("p_id");
 		int p_id = Integer.parseInt(p_idstr);

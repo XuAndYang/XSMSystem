@@ -154,4 +154,11 @@
       reason = #{reason,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="queryOffByIdAndTime" resultType="java.math.BigDecimal" parameterType="Map" >
+   SELECT SUM(total_days) 
+   FROM off_info
+   WHERE salesman_id = #{salesmanIdTotal} 
+   AND start_time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
+  </select>
 </mapper>

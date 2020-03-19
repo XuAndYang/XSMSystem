@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.dao;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 
 import com.sanxia.salesManagement.system.model.OverInfo;
@@ -26,4 +28,6 @@ public interface OverInfoMapper {
 	int updateOverInfoByOverInfo(OverInfo over);
 
 	int deleteOverInfoById(int id);
+
+	BigDecimal queryOverByIdAndTime(HashMap<String, Object> map);
 }

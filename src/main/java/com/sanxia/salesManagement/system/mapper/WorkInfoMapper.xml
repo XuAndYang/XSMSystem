@@ -199,4 +199,31 @@
     and time = #{time,jdbcType=DATE}
   </select>
   
+  
+  <select id="queryTotalByIdAndTime" resultType="java.lang.Integer" parameterType="Map">
+   SELECT 
+   COUNT(*) 
+   FROM work_info 
+   WHERE salesman_id=#{salesmanIdTotal} 
+   AND time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
+   AND absenteeism='否'
+  </select>
+  
+  <select id="queryLateByIdAndTime" resultType="java.lang.Integer" parameterType="Map">
+   SELECT 
+   COUNT(*) 
+   FROM work_info 
+   WHERE salesman_id=#{salesmanIdTotal} 
+   AND time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
+   AND late='是'
+  </select>
+  
+  <select id="queryEarlyByIdAndTime" resultType="java.lang.Integer" parameterType="Map">
+   SELECT 
+   COUNT(*) 
+   FROM work_info 
+   WHERE salesman_id=#{salesmanIdTotal} 
+   AND time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
+   AND absenteeism='否'
+  </select>
 </mapper>

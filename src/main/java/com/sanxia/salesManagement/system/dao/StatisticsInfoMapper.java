@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.dao;
 
+import java.util.List;
+
 import com.sanxia.salesManagement.system.model.StatisticsInfo;
 
 public interface StatisticsInfoMapper {
@@ -14,4 +16,8 @@ public interface StatisticsInfoMapper {
     int updateByPrimaryKeySelective(StatisticsInfo record);
 
     int updateByPrimaryKey(StatisticsInfo record);
+
+	int insertStatisticsInfo(StatisticsInfo s);
+
+	List<StatisticsInfo> queryStatisticsInfo(Integer id);
 }

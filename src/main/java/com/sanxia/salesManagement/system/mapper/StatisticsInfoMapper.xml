@@ -126,4 +126,20 @@
       attendance = #{attendance,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+   <insert id="insertStatisticsInfo" parameterType="com.sanxia.salesManagement.system.model.StatisticsInfo" >
+    insert into statistics_info (id, salesman_id, salesman_name, 
+      statistic_time, total_work, total_over, 
+      total_off, attendance)
+    values (#{id,jdbcType=INTEGER}, #{salesmanId,jdbcType=INTEGER}, #{salesmanName,jdbcType=VARCHAR}, 
+      #{statisticTime,jdbcType=DATE}, #{totalWork,jdbcType=DECIMAL}, #{totalOver,jdbcType=DECIMAL}, 
+      #{totalOff,jdbcType=DECIMAL}, #{attendance,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="queryStatisticsInfo" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from statistics_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

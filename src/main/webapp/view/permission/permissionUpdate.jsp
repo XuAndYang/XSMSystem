@@ -39,7 +39,7 @@
                         <div class="layui-input-inline" style="margin-bottom: 20px">
                               
                         <select name="p_id">
-							<option>--------请选择父级节点---------</option>
+							<option>-------请选择父级节点-------</option>
 							<c:forEach items="${permissionList }" var="per">
 								<c:if test="${per.permissionId == p.pId }" var="anth">
 									<option id="${per.permissionId }" value="${per.permissionId }"
