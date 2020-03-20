@@ -226,4 +226,11 @@
    AND time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
    AND absenteeism='否'
   </select>
+  
+  <select id="selectWorkInfoByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from work_info
+    where salesman_name like #{salesmanName,jdbcType=VARCHAR}
+  </select>
 </mapper>

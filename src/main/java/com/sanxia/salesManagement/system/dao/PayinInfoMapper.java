@@ -26,4 +26,6 @@ public interface PayinInfoMapper {
 	int updatePayinInfoByInfo(PayinInfo p);
 
 	int deletePayinInfoById(int id);
+
+	List<PayinInfo> selectPayinInfoById(int id);
 }

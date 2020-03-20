@@ -77,6 +77,12 @@ public class WorkInfoServiceImpl implements WorkInfoService {
 		return workInfoMapper.queryEarlyByIdAndTime(map);
 	}
 
+	@Override
+	public List<WorkInfo> selectWorkInfoByName(String salesman_name) {
+		// TODO Auto-generated method stub
+		return workInfoMapper.selectWorkInfoByName(salesman_name);
+	}
+
 	 
 
 }

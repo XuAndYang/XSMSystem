@@ -19,9 +19,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sanxia.salesManagement.system.model.DiscountInfo;
 import com.sanxia.salesManagement.system.model.OffInfo;
 import com.sanxia.salesManagement.system.model.OverInfo;
 import com.sanxia.salesManagement.system.model.SalesmanInfo;
+import com.sanxia.salesManagement.system.model.User;
 import com.sanxia.salesManagement.system.model.WorkInfo;
 import com.sanxia.salesManagement.system.service.OffInfoService;
 import com.sanxia.salesManagement.system.service.SalesmanInfoService;
@@ -191,5 +193,43 @@ public class OffInfoController {
 			return "view/offInfo/offInfoList";
 
 		}
+		
+		//搜索指定的请假信息
+		@RequestMapping(value="searchOffInfo.do")
+		public String search(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+		Model model,User user,@RequestParam(value="offInfo_search",required=false) String offInfo_search ) throws ServletException, IOException{
+//判断传入的是编号还是名字
+		if(offInfo_search!=""){
+		char first=offInfo_search.trim().charAt(0);
+		if(first=='1' || first=='2'|| first=='3'){
+		int salesman_id=Integer.parseInt(offInfo_search);
+			 
+		List<OffInfo> offInfolist=offInfoService.selectOffBySalesmansId(salesman_id);
+			
+		model.addAttribute("offInfolist", offInfolist);
+
+		return "view/offInfo/offInfoList";
+		}
+		else{
+		String salesman_name = "%"+offInfo_search+"%";
+		List<OffInfo> offInfolist=offInfoService.selectOffBySalesmansName(salesman_name);
+			
+		model.addAttribute("offInfolist", offInfolist);
+
+		return "view/offInfo/offInfoList";
+		
+			}
+		}
+		else{
+			
+			//重新返回主页
+			List<OffInfo> offInfolist = offInfoService.queryAllOffInfo();
+			model.addAttribute("offInfolist", offInfolist);
+
+			return "view/offInfo/offInfoList";
+
+			}
+				  
+	}			
 
 }

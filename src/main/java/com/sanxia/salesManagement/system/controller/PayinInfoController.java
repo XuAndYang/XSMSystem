@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sanxia.salesManagement.system.model.DiscountInfo;
+import com.sanxia.salesManagement.system.model.DistributionInfo;
 import com.sanxia.salesManagement.system.model.PayinInfo;
 import com.sanxia.salesManagement.system.model.User;
 import com.sanxia.salesManagement.system.service.DiscountInfoService;
@@ -151,5 +152,30 @@ public class PayinInfoController {
 
 			return "view/payinInfo/payinInfoList";
 				}
-		
+
+	//搜索指定的收入信息
+				@RequestMapping(value="searchPayin.do")
+				public String search(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+				Model model,User user,@RequestParam(value="payin_search",required=false) String payin_search ) throws ServletException, IOException{
+		//判断传入的是编号还是名字
+				if(payin_search!=""){
+				int id=Integer.parseInt(payin_search);
+					 
+				List<PayinInfo> payinInfoList = payinInfoService.selectPayinInfoById(id);
+				model.addAttribute("payinInfoList", payinInfoList);
+
+				return "view/payinInfo/payinInfoList";
+				
+				}
+
+				else{
+					
+					List<PayinInfo> payinInfoList = payinInfoService.queryAllPayinInfo();
+					model.addAttribute("payinInfoList", payinInfoList);
+
+					return "view/payinInfo/payinInfoList";
+					}
+				
+				  
+			}				
 }

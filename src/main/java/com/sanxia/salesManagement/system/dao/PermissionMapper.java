@@ -35,5 +35,7 @@ public interface PermissionMapper {
 ///////////////////////////
 	List<Permission> query_XZ_CByrole_id(int id);
 
+	List<Permission> selectPermissionByName(String name);
+
 	
 }

@@ -20,4 +20,8 @@ public interface SalesmanInfoService {
 
 	String selectNameById(int salesman_id);
 
+	List<SalesmanInfo> querySalesmanInfoById(int salesman_id);
+
+	List<SalesmanInfo> querySalesmanInfoByName(String salesman_name);
+
 }

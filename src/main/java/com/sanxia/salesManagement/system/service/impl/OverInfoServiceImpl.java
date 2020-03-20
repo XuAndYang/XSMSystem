@@ -50,6 +50,18 @@ public class OverInfoServiceImpl implements OverInfoService {
 		// TODO Auto-generated method stub
 		return overInfoMapper.queryOverByIdAndTime(map);
 	}
+
+	@Override
+	public List<OverInfo> selectOverBySalesmansId(int salesman_id) {
+		// TODO Auto-generated method stub
+		return overInfoMapper.selectOverBySalesmansId(salesman_id);
+	}
+
+	@Override
+	public List<OverInfo> selectOBySalesmansName(String salesman_name) {
+		// TODO Auto-generated method stub
+		return overInfoMapper.selectOBySalesmansName(salesman_name);
+	}
 	 
 
 }

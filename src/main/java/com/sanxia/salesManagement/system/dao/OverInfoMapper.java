@@ -30,4 +30,8 @@ public interface OverInfoMapper {
 	int deleteOverInfoById(int id);
 
 	BigDecimal queryOverByIdAndTime(HashMap<String, Object> map);
+
+	List<OverInfo> selectOverBySalesmansId(int salesman_id);
+
+	List<OverInfo> selectOBySalesmansName(String salesman_name);
 }

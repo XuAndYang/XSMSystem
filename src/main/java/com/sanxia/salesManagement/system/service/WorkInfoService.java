@@ -29,6 +29,8 @@ public interface WorkInfoService {
 
 	int queryEarlyByIdAndTime(HashMap<String, Object> map);
 
+	List<WorkInfo> selectWorkInfoByName(String salesman_name);
+
 
 
  

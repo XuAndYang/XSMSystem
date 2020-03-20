@@ -16,10 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.sanxia.salesManagement.system.model.PayinInfo;
 import com.sanxia.salesManagement.system.model.Permission;
 import com.sanxia.salesManagement.system.model.Role;
 import com.sanxia.salesManagement.system.model.RolePermisson;
+import com.sanxia.salesManagement.system.model.User;
 import com.sanxia.salesManagement.system.service.PermissionService;
 import com.sanxia.salesManagement.system.service.RolePermissionService;
 import com.sanxia.salesManagement.system.service.RoleService;
@@ -195,5 +196,31 @@ public class PermissionController {
 		// 跳转页面
 		return "view/permission/FPPermission";
 	}
+	
+	//搜索指定的权限信息
+	@RequestMapping(value="searchPermission.do")
+	public String search(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+	Model model,User user,@RequestParam(value="permission_search",required=false) String permission_search ) throws ServletException, IOException{
+
+	if(permission_search!=""){
+	String name = "%"+permission_search+"%";;
+		 
+	List<Permission> permissionList = permissionService.selectPermissionByName(name);
+	model.addAttribute("permissionList", permissionList);
+
+	return "view/permission/permissionList";
+	
+	}
+
+	else{
+		
+		List<Permission> permissionList = permissionService.queryAllPermission();
+		model.addAttribute("permissionList", permissionList);
+
+		return "view/permission/permissionList";
+		}
+	
+	  
+}				
 
 }

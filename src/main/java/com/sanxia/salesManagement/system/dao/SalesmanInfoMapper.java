@@ -31,4 +31,8 @@ public interface SalesmanInfoMapper {
 	int deleteSalesmanInfoById(int salesmanId);
 
 	String selectNameById(int salesman_id);
+
+	List<SalesmanInfo> querySalesmanInfoById(int salesman_id);
+
+	List<SalesmanInfo> querySalesmanInfoByName(String salesman_name);
 }

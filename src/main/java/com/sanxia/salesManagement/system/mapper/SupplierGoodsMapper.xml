@@ -130,7 +130,7 @@
   
   
   <select id="selectPriceByIdAndTime" resultType="java.math.BigDecimal" parameterType="Map" >
-   SELECT AVG(supply_price) 
+   SELECT round( AVG(supply_price),2 ) 
    FROM supplier_goods 
    WHERE goods_id = #{goodsIdTotal} 
    AND supply_time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
@@ -138,7 +138,7 @@
   
   
   <select id="selectNumberByIdAndTime" resultType="java.lang.Integer" parameterType="Map" >
-   SELECT SUM(number) 
+   SELECT IFNULL(SUM(number),0) 
    FROM supplier_goods 
    WHERE goods_id = #{goodsIdTotal} 
    AND supply_time BETWEEN #{startTimeTotal} AND #{endTimeTotal}

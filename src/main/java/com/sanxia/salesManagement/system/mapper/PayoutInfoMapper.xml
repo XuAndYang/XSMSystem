@@ -127,4 +127,12 @@
   </delete>
   
   
+  <select id="selectPayoutInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from payout_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
 </mapper>

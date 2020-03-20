@@ -20,4 +20,8 @@ public interface OffInfoService {
 
 	BigDecimal queryOffByIdAndTime(HashMap<String, Object> map);
 
+	List<OffInfo> selectOffBySalesmansId(int salesman_id);
+
+	List<OffInfo> selectOffBySalesmansName(String salesman_name);
+
 }

@@ -26,4 +26,6 @@ public interface PayoutInfoMapper {
 	int updatePayoutInfoByInfo(PayoutInfo p);
 
 	int deletePayoutInfoById(int id);
+
+	List<PayoutInfo> selectPayoutInfoById(int id);
 }

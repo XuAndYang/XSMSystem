@@ -16,4 +16,8 @@ public interface DiscountInfoService {
 
 	int deleteDiscountInfoById(int id);
 
+	List<DiscountInfo> selectDiscountByGoodsId(int goods_id);
+
+	List<DiscountInfo> selectDiscountByGoodsName(String goods_name);
+
 }

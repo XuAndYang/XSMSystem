@@ -16,4 +16,6 @@ public interface PayoutInfoService {
 
 	int deletePayoutInfoById(int id);
 
+	List<PayoutInfo> selectPayoutInfoById(int id);
+
 }

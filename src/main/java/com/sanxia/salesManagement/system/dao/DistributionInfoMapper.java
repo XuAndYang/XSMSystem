@@ -26,4 +26,6 @@ public interface DistributionInfoMapper {
 	int updateDistributionInfoByDistribution(DistributionInfo d);
 
 	int deleteDistributionInfoById(int distributionId);
+
+	List<DistributionInfo> selectDistributionById(int id);
 }

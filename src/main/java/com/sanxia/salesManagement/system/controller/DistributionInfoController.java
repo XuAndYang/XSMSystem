@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sanxia.salesManagement.system.model.DiscountInfo;
 import com.sanxia.salesManagement.system.model.DistributionInfo;
 import com.sanxia.salesManagement.system.model.User;
 import com.sanxia.salesManagement.system.service.DistributionInfoService;
@@ -159,5 +160,33 @@ public class DistributionInfoController {
 			return "view/distributionInfo/distributionInfoList";
 					
 				}
+		
+		
+		//搜索指定的配送信息
+		@RequestMapping(value="searchDistribution.do")
+		public String searchDistribution(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+		Model model,User user,@RequestParam(value="distribution_search",required=false) String distribution_search ) throws ServletException, IOException{
+//判断传入的是编号还是名字
+		if(distribution_search!=""){
+		int id=Integer.parseInt(distribution_search);
+			 
+		List<DistributionInfo> distributionInfoList=distributionInfoService.selectDistributionById(id);
+			
+		model.addAttribute("distributionInfoList", distributionInfoList);
+
+		return "view/distributionInfo/distributionInfoList";
+		
+		}
+
+		else{
+			
+			//重新返回主页
+			List<DistributionInfo> distributionInfoList = distributionInfoService.queryAllDistributionInfo();
+			model.addAttribute("distributionInfoList", distributionInfoList);
+			return "view/distributionInfo/distributionInfoList";
+			}
+		
+		  
+	}				
 		
 }

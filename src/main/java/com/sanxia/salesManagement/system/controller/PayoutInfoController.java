@@ -152,4 +152,34 @@ public class PayoutInfoController {
 			return "view/payoutInfo/payoutInfoList";
 				}
 		
+//搜索指定的支出信息
+		@RequestMapping(value="searchPayout.do")
+		public String search(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+		Model model,User user,@RequestParam(value="payout_search",required=false) String payout_search ) throws ServletException, IOException{
+//判断传入的是编号还是名字
+		if(payout_search!=""){
+		int id=Integer.parseInt(payout_search);
+			 
+
+		//重新返回主页
+		List<PayoutInfo> payoutInfoList = payoutInfoService.selectPayoutInfoById(id);
+		model.addAttribute("payoutInfoList", payoutInfoList);
+
+		return "view/payoutInfo/payoutInfoList";
+		
+		}
+
+		else{
+			
+
+			//重新返回主页
+			List<PayoutInfo> payoutInfoList = payoutInfoService.queryAllPayoutInfo();
+			model.addAttribute("payoutInfoList", payoutInfoList);
+
+			return "view/payoutInfo/payoutInfoList";
+			}
+		
+		  
+	}				
+		
 }

@@ -56,4 +56,16 @@ public class SalesmanInfoServiceImpl implements SalesmanInfoService{
 		return salesmanInfoMapper.selectNameById(salesman_id);
 	}
 
+	@Override
+	public List<SalesmanInfo> querySalesmanInfoById(int salesman_id) {
+		// TODO Auto-generated method stub
+		return salesmanInfoMapper.querySalesmanInfoById(salesman_id);
+	}
+
+	@Override
+	public List<SalesmanInfo> querySalesmanInfoByName(String salesman_name) {
+		// TODO Auto-generated method stub
+		return salesmanInfoMapper.querySalesmanInfoByName(salesman_name);
+	}
+
 }

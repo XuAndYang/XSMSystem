@@ -44,4 +44,10 @@ public class PayoutInfoServiceImpl implements PayoutInfoService{
 		return payoutInfoMapper.deletePayoutInfoById(id);
 	}
 
+	@Override
+	public List<PayoutInfo> selectPayoutInfoById(int id) {
+		// TODO Auto-generated method stub
+		return payoutInfoMapper.selectPayoutInfoById(id);
+	}
+
 }

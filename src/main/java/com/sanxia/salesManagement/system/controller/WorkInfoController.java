@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sanxia.salesManagement.system.model.OverInfo;
 import com.sanxia.salesManagement.system.model.PayinInfo;
 import com.sanxia.salesManagement.system.model.SalesmanInfo;
 import com.sanxia.salesManagement.system.model.User;
@@ -250,5 +251,42 @@ public class WorkInfoController {
 		return "view/workInfo/workInfoList";
 
 	}
+	
+//搜索指定的考勤信息
+	@RequestMapping(value="searchWorkInfo.do")
+	public String search(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+	Model model,User user,@RequestParam(value="workInfo_search",required=false) String workInfo_search ) throws ServletException, IOException{
+//判断传入的是编号还是名字
+	if(workInfo_search!=""){
+	char first=workInfo_search.trim().charAt(0);
+	if(first=='1' || first=='2'|| first=='3'){
+	int salesman_id=Integer.parseInt(workInfo_search);
+		 
+	List<WorkInfo> workInfoList = workInfoService.selectWorkInfoById(salesman_id);
+	model.addAttribute("workInfoList", workInfoList);
+
+	return "view/workInfo/workInfoList";
+	}
+	else{
+	String salesman_name = "%"+workInfo_search+"%";
+	List<WorkInfo> workInfoList = workInfoService.selectWorkInfoByName(salesman_name);
+	model.addAttribute("workInfoList", workInfoList);
+
+	return "view/workInfo/workInfoList";
+	
+		}
+	}
+	else{
+		
+		//重新返回主页
+		List<WorkInfo> workInfoList = workInfoService.queryAllWorkInfo();
+		model.addAttribute("workInfoList", workInfoList);
+
+		return "view/workInfo/workInfoList";
+
+
+		}
+			  
+}			
 
 }

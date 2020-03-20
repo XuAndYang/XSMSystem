@@ -46,4 +46,10 @@ public class DistributionInfoServiceImpl implements DistributionInfoService{
 		return distributionInfoMapper.deleteDistributionInfoById(distributionId);
 	}
 
+	@Override
+	public List<DistributionInfo> selectDistributionById(int id) {
+		// TODO Auto-generated method stub
+		return distributionInfoMapper.selectDistributionById(id);
+	}
+
 }

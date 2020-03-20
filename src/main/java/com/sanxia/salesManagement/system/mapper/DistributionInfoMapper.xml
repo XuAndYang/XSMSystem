@@ -168,4 +168,11 @@
     delete from distribution_info
     where distribution_id = #{distributionId,jdbcType=INTEGER}
   </delete>
+  
+  <select id="selectDistributionById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from distribution_info
+    where distribution_id = #{distributionId,jdbcType=INTEGER}
+  </select>
 </mapper>

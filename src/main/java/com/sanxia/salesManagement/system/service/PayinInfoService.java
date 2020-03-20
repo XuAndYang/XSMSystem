@@ -16,5 +16,7 @@ public interface PayinInfoService {
 
 	int deletePayinInfoById(int id);
 
+	List<PayinInfo> selectPayinInfoById(int id);
+
 
 }

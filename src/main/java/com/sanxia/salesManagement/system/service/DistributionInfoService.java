@@ -16,4 +16,6 @@ public interface DistributionInfoService {
 
 	int deleteDistributionInfoById(int distributionId);
 
+	List<DistributionInfo> selectDistributionById(int id);
+
 }

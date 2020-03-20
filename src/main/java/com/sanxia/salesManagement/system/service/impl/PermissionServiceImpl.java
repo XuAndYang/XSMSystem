@@ -69,5 +69,11 @@ public class PermissionServiceImpl implements PermissionService{
 		return permissionMapper.query_XZ_CByrole_id(id);
 	}
 
+	@Override
+	public List<Permission> selectPermissionByName(String name) {
+		// TODO Auto-generated method stub
+		return permissionMapper.selectPermissionByName(name);
+	}
+
 	 
 }

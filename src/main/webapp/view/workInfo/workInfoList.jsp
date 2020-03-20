@@ -43,15 +43,15 @@
                     <div class="layui-card">
                         <div class="layui-card-body ">
                             <form class="layui-form layui-col-space5">
-                                 <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入想搜索的内容</button>
+                                 <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入想搜索的信息</button>
                                  
                                 <div class="layui-inline layui-show-xs-block" style="margin-left:30px">
-                                    <input type="text" name="user_search"  placeholder="请输入用户名或姓名" autocomplete="off" class="layui-input" >
+                                    <input type="text" name="workInfo_search"  placeholder="请输入员工工号或姓名" autocomplete="off" class="layui-input" >
                                 </div>
                                
                                 <div class="layui-inline layui-show-xs-block">
                                 
-                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>userController/searchUser.do';"  lay-filter="sreach" >
+                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>workInfoController/searchWorkInfo.do';"  lay-filter="sreach" >
                                  <i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>

@@ -182,5 +182,40 @@ public class RoleController {
 			// 跳转页面
 			return "view/role/FPRole";
 		}
+		
+		
+		//搜索指定的角色 信息
+				@RequestMapping(value="searchRole.do")
+				public String searchUser(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+				Model model,User user,@RequestParam(value="role_search",required=false) String role_search ) throws ServletException, IOException{
+		//判断传入的是编号还是名字
+				if(role_search!=""){
+				char first=role_search.trim().charAt(0);
+				if(first=='1' || first=='2'|| first=='3'){
+				int role_id=Integer.parseInt(role_search);
+					 
+				List<Role> roleList=roleService.selectRoleByRoleId(role_id);
+					
+				model.addAttribute("roleList", roleList);
+				return "view/role/roleList";
+				}
+				else{
+				String role_name = "%"+role_search+"%";
+				List<Role> roleList=roleService.selectRoleByName(role_name);
+					
+				model.addAttribute("roleList", roleList);
+				return "view/role/roleList";
+					}
+				}
+				else{
+				//重新返回主页
+					List<Role> roleList = roleService.queryAllRole();
+					model.addAttribute("roleList", roleList);
+
+					return "view/role/roleList";
+					}
+						  
+			}				
+
 
 }

@@ -125,4 +125,11 @@
     delete from payin_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  
+  <select id="selectPayinInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from payin_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

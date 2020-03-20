@@ -258,6 +258,44 @@ public class SalesmanInfoController {
 
 		return "view/salesmanInfo/workInfoIDList";
 	}
+	
+	
+//搜索指定的员工信息
+		@RequestMapping(value="searchSalesmanInfo.do")
+		public String search(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+		Model model,User user,@RequestParam(value="salesmanInfo_search",required=false) String salesmanInfo_search ) throws ServletException, IOException{
+	//判断传入的是编号还是名字
+		if(salesmanInfo_search!=""){
+		char first=salesmanInfo_search.trim().charAt(0);
+		if(first=='1' || first=='2'|| first=='3'){
+		int salesman_id=Integer.parseInt(salesmanInfo_search);
+			 
+		List<SalesmanInfo> salesmanInfoList = salesmanInfoService.querySalesmanInfoById(salesman_id);
+		model.addAttribute("salesmanInfoList", salesmanInfoList);
+
+		return "view/salesmanInfo/salesmanInfoList";
+		}
+		else{
+		String salesman_name = "%"+salesmanInfo_search+"%";
+		List<SalesmanInfo> salesmanInfoList = salesmanInfoService.querySalesmanInfoByName(salesman_name);
+		model.addAttribute("salesmanInfoList", salesmanInfoList);
+
+		return "view/salesmanInfo/salesmanInfoList";
+		
+			}
+		}
+		else{
+			
+			//重新返回主页
+			List<SalesmanInfo> salesmanInfoList = salesmanInfoService.queryAllSalesmanInfo();
+			model.addAttribute("salesmanInfoList", salesmanInfoList);
+
+			return "view/salesmanInfo/salesmanInfoList";
+
+
+			}
+				  
+	}			
 				
 
 }

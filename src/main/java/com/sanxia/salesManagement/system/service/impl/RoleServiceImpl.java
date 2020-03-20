@@ -57,6 +57,18 @@ public class RoleServiceImpl implements RoleService{
 		return roleMapper.queryRole_idByRole_name(role_name);
 	}
 
+	@Override
+	public List<Role> selectRoleByRoleId(int role_id) {
+		// TODO Auto-generated method stub
+		return roleMapper.selectRoleByRoleId(role_id);
+	}
+
+	@Override
+	public List<Role> selectRoleByName(String role_name) {
+		// TODO Auto-generated method stub
+		return  roleMapper.selectRoleByName(role_name);
+	}
+
 
 
 }

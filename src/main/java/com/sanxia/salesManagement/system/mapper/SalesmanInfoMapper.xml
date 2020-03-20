@@ -158,4 +158,18 @@
     where salesman_id = #{salesmanId,jdbcType=INTEGER}
   </select>
   
+   <select id="querySalesmanInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from salesman_info
+    where salesman_id = #{salesmanId,jdbcType=INTEGER}
+  </select>
+  
+   <select id="querySalesmanInfoByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from salesman_info
+    where salesman_name like #{salesmanName,jdbcType=VARCHAR}
+  </select>
+  
 </mapper>

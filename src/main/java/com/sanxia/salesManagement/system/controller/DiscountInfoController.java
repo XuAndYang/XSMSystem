@@ -162,5 +162,41 @@ public class DiscountInfoController {
 						
 					}
 			
+	//搜索指定的打折信息
+			@RequestMapping(value="searchDiscount.do")
+			public String searchDiscount(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+			Model model,User user,@RequestParam(value="discount_search",required=false) String discount_search ) throws ServletException, IOException{
+	//判断传入的是编号还是名字
+			if(discount_search!=""){
+			char first=discount_search.trim().charAt(0);
+			if(first=='1' || first=='2'|| first=='3'){
+			int goods_id=Integer.parseInt(discount_search);
+				 
+			List<DiscountInfo> discountInfoList=discountInfoService.selectDiscountByGoodsId(goods_id);
+				
+			model.addAttribute("discountInfoList", discountInfoList);
+			return "view/discountInfo/discountInfoList";
+			}
+			else{
+			String goods_name = "%"+discount_search+"%";
+			List<DiscountInfo> discountInfoList=discountInfoService.selectDiscountByGoodsName(goods_name);
+				
+			model.addAttribute("discountInfoList", discountInfoList);
+			return "view/discountInfo/discountInfoList";
+			
+				}
+			}
+			else{
+				
+				//重新返回主页
+				List<DiscountInfo> discountInfoList = discountInfoService.queryAllDiscountInfo();
+				model.addAttribute("discountInfoList", discountInfoList);
+
+				return "view/discountInfo/discountInfoList";
+				}
+					  
+		}				
+
+			
 
 }

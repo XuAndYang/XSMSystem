@@ -46,12 +46,12 @@
                                  <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入想搜索的内容</button>
                                  
                                 <div class="layui-inline layui-show-xs-block" style="margin-left:30px">
-                                    <input type="text" name="user_search"  placeholder="请输入用户名或姓名" autocomplete="off" class="layui-input" >
+                                    <input type="text" name="distribution_search"  placeholder="请输入配送单号" autocomplete="off" class="layui-input" >
                                 </div>
                                
                                 <div class="layui-inline layui-show-xs-block">
                                 
-                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>userController/searchUser.do';"  lay-filter="sreach" >
+                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>distributionInfoController/searchDistribution.do';"  lay-filter="sreach" >
                                  <i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>

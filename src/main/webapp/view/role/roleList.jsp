@@ -46,12 +46,12 @@
                                <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入想搜索的内容</button>
                                  
                                 <div class="layui-inline layui-show-xs-block" style="margin-left:30px">
-                                    <input type="text" name="user_search"  placeholder="请输入用户名或姓名" autocomplete="off" class="layui-input" >
+                                    <input type="text" name="role_search"  placeholder="请输入角色ID或角色名" autocomplete="off" class="layui-input" >
                                 </div>
                                
                                 <div class="layui-inline layui-show-xs-block">
                                 
-                                 <button class="layui-btn"  lay-submit="" onclick=""  lay-filter="sreach" >
+                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>roleController/searchRole.do';"  lay-filter="sreach" >
                                  <i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>

@@ -44,4 +44,16 @@ public class DiscountInfoServiceImpl implements DiscountInfoService{
 		return discountInfoMapper.deleteDiscountInfoById(id);
 	}
 
+	@Override
+	public List<DiscountInfo> selectDiscountByGoodsId(int goods_id) {
+		// TODO Auto-generated method stub
+		return discountInfoMapper.selectDiscountByGoodsId(goods_id);
+	}
+
+	@Override
+	public List<DiscountInfo> selectDiscountByGoodsName(String goods_name) {
+		// TODO Auto-generated method stub
+		return discountInfoMapper.selectDiscountByGoodsName(goods_name);
+	}
+
 }

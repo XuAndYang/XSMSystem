@@ -26,6 +26,10 @@ public interface RoleService {
 	Role queryXZRoleByUser_id(int id);
 
 	int queryRole_idByRole_name(String role_name);
+
+	List<Role> selectRoleByRoleId(int role_id);
+
+	List<Role> selectRoleByName(String role_name);
 	
 	
 

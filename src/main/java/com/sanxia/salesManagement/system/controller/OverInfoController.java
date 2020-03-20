@@ -19,8 +19,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sanxia.salesManagement.system.model.OffInfo;
 import com.sanxia.salesManagement.system.model.OverInfo;
 import com.sanxia.salesManagement.system.model.SalesmanInfo;
+import com.sanxia.salesManagement.system.model.User;
 import com.sanxia.salesManagement.system.model.WorkInfo;
 import com.sanxia.salesManagement.system.service.OverInfoService;
 import com.sanxia.salesManagement.system.service.SalesmanInfoService;
@@ -186,5 +188,44 @@ public class OverInfoController {
 			return "view/overInfo/overInfoList";
 
 		}
+		
+		//搜索指定的加班信息
+				@RequestMapping(value="searchOverInfo.do")
+				public String search(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+				Model model,User user,@RequestParam(value="overInfo_search",required=false) String overInfo_search ) throws ServletException, IOException{
+		//判断传入的是编号还是名字
+				if(overInfo_search!=""){
+				char first=overInfo_search.trim().charAt(0);
+				if(first=='1' || first=='2'|| first=='3'){
+				int salesman_id=Integer.parseInt(overInfo_search);
+					 
+				List<OverInfo> overInfolist=overInfoService.selectOverBySalesmansId(salesman_id);
+					
+				model.addAttribute("overInfolist", overInfolist);
+
+				return "view/overInfo/overInfoList";
+				}
+				else{
+				String salesman_name = "%"+overInfo_search+"%";
+				List<OverInfo> overInfolist=overInfoService.selectOBySalesmansName(salesman_name);
+					
+				model.addAttribute("overInfolist", overInfolist);
+
+				return "view/overInfo/overInfoList";
+				
+					}
+				}
+				else{
+					
+					//重新返回主页
+					List<OverInfo> overInfolist = overInfoService.queryAllOverInfo();
+					model.addAttribute("overInfolist", overInfolist);
+
+					return "view/overInfo/overInfoList";
+
+
+					}
+						  
+			}			
 
 }

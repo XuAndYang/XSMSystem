@@ -44,4 +44,10 @@ public class PayinInfoServiceImpl implements PayinInfoService{
 		return payinInfoMapper.deletePayinInfoById(id);
 	}
 
+	@Override
+	public List<PayinInfo> selectPayinInfoById(int id) {
+		// TODO Auto-generated method stub
+		return payinInfoMapper.selectPayinInfoById(id);
+	}
+
 }

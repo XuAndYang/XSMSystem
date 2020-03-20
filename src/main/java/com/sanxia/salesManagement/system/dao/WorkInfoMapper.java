@@ -40,5 +40,7 @@ public interface WorkInfoMapper {
 	int queryLateByIdAndTime(HashMap<String, Object> map);
 
 	int queryEarlyByIdAndTime(HashMap<String, Object> map);
+
+	List<WorkInfo> selectWorkInfoByName(String salesman_name);
  
 }

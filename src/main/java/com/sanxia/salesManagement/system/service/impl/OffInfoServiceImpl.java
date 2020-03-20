@@ -52,4 +52,16 @@ public class OffInfoServiceImpl implements OffInfoService {
 		// TODO Auto-generated method stub
 		return offInfoMappper.queryOffByIdAndTime(map);
 	}
+
+	@Override
+	public List<OffInfo> selectOffBySalesmansId(int salesman_id) {
+		// TODO Auto-generated method stub
+		return offInfoMappper.selectOffBySalesmansId(salesman_id);
+	}
+
+	@Override
+	public List<OffInfo> selectOffBySalesmansName(String salesman_name) {
+		// TODO Auto-generated method stub
+		return offInfoMappper.selectOffBySalesmansName(salesman_name) ;
+	}
 }

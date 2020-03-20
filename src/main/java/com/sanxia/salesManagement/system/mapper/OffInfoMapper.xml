@@ -161,4 +161,19 @@
    WHERE salesman_id = #{salesmanIdTotal} 
    AND start_time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
   </select>
+  
+  
+   <select id="selectOffBySalesmansId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from off_info
+    where salesman_id = #{salesmanId,jdbcType=INTEGER}
+  </select>
+  
+   <select id="selectOffBySalesmansName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from off_info
+    where salesman_name like #{salesmanName,jdbcType=VARCHAR}
+  </select>
 </mapper>
