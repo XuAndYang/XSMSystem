@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -39,7 +41,6 @@ public class LoginController {
 
 		if (u != null) {
 			// 2、跳转页面
-			// resp.sendRedirect("view/main.jsp");
 			HttpSession session = req.getSession();
 			session.setAttribute("USER", u);
 			// 用户id
@@ -48,10 +49,6 @@ public class LoginController {
 
 			List<Permission> menuList = permissionService.queryMenuByUserId(user_id);
 			// 创建集合，保存对应子菜单
-			for (Permission permission : menuList) {
-				System.out.println(permission);
-			}
-
 			HashMap<Integer, List<Permission>> permissionList = new HashMap<>();
 			// 遍历
 			for (Permission menu : menuList) {
@@ -64,11 +61,11 @@ public class LoginController {
 				req.setAttribute("menuList", menuList);
 				req.setAttribute("permissionList", permissionList);
 			}
-
+			
 			return "index";
 		} else {
 			// 2、跳转页面
-
+            model.addAttribute("message", "用户名或密码错误！");
 			return "login";
 		}
 	}

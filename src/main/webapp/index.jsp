@@ -81,13 +81,13 @@
 						<a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a>
 					</dd>
 					<dd>
-						<a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a>
+						<a href="./login.jsp">切换帐号</a>
 					</dd>
 					<dd>
 						<a href="./login.jsp">退出</a>
 					</dd>
 				</dl></li>
-			<li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
+			<li class="layui-nav-item to-index"><a href="./welcome.html">关于更多</a></li>
 		</ul>
 	</div>
 	<!-- 顶部结束 -->

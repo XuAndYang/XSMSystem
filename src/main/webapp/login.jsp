@@ -29,8 +29,10 @@
     
     <div class="login layui-anim layui-anim-up">
         <div class="message">商品销售信息管理系统登录</div>
+       
         <div id="darkbannerwrap"></div>
         
+         
         <form  action="<%=basePath%>login.do" method="post"  >
             <input name="login_name" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
@@ -39,9 +41,21 @@
             <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
         </form>
+         <div id="divbox" style="text-align: center;"> <font color="red">${message}</font> </div>
+        
     </div>
 
     
     
 </body>
+
+<script type="text/javascript">
+function codefans(){
+    var box=document.getElementById("divbox");
+    box.style.display="none";   
+    
+}
+setTimeout("codefans()",3000);
+	
+</script>
 </html>
