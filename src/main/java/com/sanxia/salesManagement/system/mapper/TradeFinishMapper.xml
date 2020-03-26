@@ -233,4 +233,11 @@
     from trade_finish
     where sale_id = #{saleId,jdbcType=INTEGER}
   </select>
+  
+  <update id="updateFinishType" parameterType="com.sanxia.salesManagement.system.model.TradeFinish" >
+    update trade_finish
+    set 
+    finish_type = #{finishType,jdbcType=VARCHAR}
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </update>
 </mapper>

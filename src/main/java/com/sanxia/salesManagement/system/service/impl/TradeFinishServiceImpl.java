@@ -53,6 +53,12 @@ public class TradeFinishServiceImpl implements TradeFinishService {
 		// TODO Auto-generated method stub
 		return tradeFinishMapper.selectTradeBySaleId(sale_id);
 	}
+
+	@Override
+	public int updateFinishType(TradeFinish tf) {
+		// TODO Auto-generated method stub
+		return tradeFinishMapper.updateFinishType(tf);
+	}
 	
 
 }

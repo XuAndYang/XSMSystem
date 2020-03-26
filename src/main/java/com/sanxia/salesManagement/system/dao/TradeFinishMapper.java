@@ -31,4 +31,6 @@ public interface TradeFinishMapper {
 	int deleteTradeFinishBySaleId(int sale_id);
 
 	TradeFinish selectTradeBySaleId(int sale_id);
+
+	int updateFinishType(TradeFinish tf);
 }

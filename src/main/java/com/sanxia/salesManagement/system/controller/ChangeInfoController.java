@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sanxia.salesManagement.system.model.ChangeInfo;
 import com.sanxia.salesManagement.system.model.CodeInfo;
+import com.sanxia.salesManagement.system.model.SaleInfo;
 import com.sanxia.salesManagement.system.model.TradeFinish;
 import com.sanxia.salesManagement.system.service.ChangeInfoService;
 import com.sanxia.salesManagement.system.service.GoodsInfoService;
@@ -61,10 +62,10 @@ public class ChangeInfoController {
 				int sale_id=Integer.parseInt(sale_id_str);
 				TradeFinish tf=tradeFinishService.selectTradeBySaleId(sale_id);
 				if(tf!=null) {
-					String new_goods_id_str =req.getParameter("new_goods_id");
-					int new_goods_id=Integer.parseInt(new_goods_id_str);	
+					
+					int new_goods_id=tf.getGoodsId();	
 					//查询商品名字
-					String new_name=goodsInfoService.selectGoodsNameById(new_goods_id);
+					String new_name=tf.getGoodsName();
 					String change_reason =req.getParameter("change_reason");
 					Date time=new Date();
 					//判断更换时间是否逾期(七天)
@@ -75,7 +76,7 @@ public class ChangeInfoController {
 					ca.add(Calendar.DATE, 7);
 					Date end_time = ca.getTime();
 					String apply_status;
-					if(time.before(end_time)) {
+					if(time.after(end_time)) {
 						 apply_status="已逾期";
 					}else {
 						 apply_status="处理中";
@@ -105,5 +106,48 @@ public class ChangeInfoController {
 				return "view/changeInfo/changeInfoList";
 				
 			}
+
+	@RequestMapping(value = "updateStatus.do")
+	public String updateStatus(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model)
+			throws ParseException {
+		String changeIdStr = req.getParameter("changeId");
+		int changeId = Integer.parseInt(changeIdStr);
+		//判断转态是否逾期
+		ChangeInfo ci=changeInfoService.selectChangeInfoById(changeId);
+		String status=ci.getApplyStatus();
+		 
+		if(status.equals("处理中")) {
+			 System.out.println(1);
+			ChangeInfo c = new ChangeInfo();
+			c.setChangeId(changeId);
+			c.setApplyStatus("已处理");
+			int i = changeInfoService.updateStatusByChange(c);
+			 
+			if(i==1){
+				//修改交易数据
+				TradeFinish tf =new TradeFinish();
+				tf.setFinishType("已换货");
+				tf.setSaleId(ci.getSaleId());
+				int m=tradeFinishService.updateFinishType(tf);
+			}else {
+				
+				List<ChangeInfo> changeInfoList = changeInfoService.queryAllChangeInfo(); // 查询所有的商品信息数据
+				model.addAttribute("changeInfoList", changeInfoList); // 数据返回前端
+
+				return "view/changeInfo/changeInfoList";
+			}
+		} else {
+			
+			List<ChangeInfo> changeInfoList = changeInfoService.queryAllChangeInfo(); // 查询所有的商品信息数据
+			model.addAttribute("changeInfoList", changeInfoList); // 数据返回前端
+
+			return "view/changeInfo/changeInfoList";
+		}
+		
+		 List<ChangeInfo> changeInfoList = changeInfoService.queryAllChangeInfo();  //查询所有的商品信息数据
+		model.addAttribute("changeInfoList", changeInfoList );     //数据返回前端
+
+		return "view/changeInfo/changeInfoList";
+	}
 
 }

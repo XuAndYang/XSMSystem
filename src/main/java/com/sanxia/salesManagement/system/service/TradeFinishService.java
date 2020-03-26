@@ -21,4 +21,6 @@ public interface TradeFinishService {
 
 	TradeFinish selectTradeBySaleId(int sale_id);
 
+	int updateFinishType(TradeFinish tf);
+
 }

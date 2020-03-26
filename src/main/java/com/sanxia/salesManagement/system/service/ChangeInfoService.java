@@ -10,4 +10,8 @@ public interface ChangeInfoService {
 
 	int addChangeInfoByInfo(ChangeInfo c);
 
+	ChangeInfo selectChangeInfoById(int changeId);
+
+	int updateStatusByChange(ChangeInfo c);
+
 }

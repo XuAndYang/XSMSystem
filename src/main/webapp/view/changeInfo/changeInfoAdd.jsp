@@ -31,19 +31,12 @@
     <body>
         <div class="layui-fluid">
             <div class="layui-row">
-                <form class="layui-form" action="<%=basePath%>codeInfoController/add.do">
+                <form class="layui-form" action="<%=basePath%>changeInfoController/add.do">
                     <div class="layui-form-item">
                         <label for="name" class="layui-form-label">
                             <span class="x-red">*</span>订单号</label>
                         <div class="layui-input-inline">
                             <input type="text" id="name" name="sale_id" required=""  autocomplete="off" class="layui-input" /></div>
-                       </div>
-                       
-                       <div class="layui-form-item">
-                        <label for="name" class="layui-form-label">
-                            <span class="x-red">*</span>新商品ID</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="name" name="new_goods_id" required=""  autocomplete="off" class="layui-input" /></div>
                        </div>
                        
                        <div class="layui-form-item">

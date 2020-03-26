@@ -55,7 +55,7 @@
                         </div>
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('添加','<%=basePath%>changeInfoController/addUI.do',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('添加','<%=basePath%>changeInfoController/addUI.do',500,300)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
@@ -66,8 +66,8 @@
                                     </th>
                                     <th>换货ID</th>
                                     <th>订单号</th>
-                                    <th>新商品ID</th>
-                                    <th>新商品名</th>
+                                    <th>商品ID</th>
+                                    <th>商品名</th>
                                     <th>换货原因</th>
                                     <th>更换时间</th>
                                     <th>申请状态</th>
@@ -88,20 +88,14 @@
                                     <td>${changeInfo.newGoodsName }</td>
                                     <td>${changeInfo.changeReason }</td>
                                     <td><fmt:formatDate value="${changeInfo.changeTime }"
-							          pattern="yyyy-MM-dd" />
+							          pattern="yyyy-MM-dd HH:ss:mm" />
                          		    <td>${changeInfo.applyStatus }</td>
                                     <td class="td-manage">
                                       
-                                      <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>codeInfoController/updateUI.do?id=${codeInfo.id}',600,400)" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe642;</i>
+                                      <a title="确认换货"  href="<%=basePath%>changeInfoController/updateStatus.do?changeId=${changeInfo.changeId}">
+                                        <i class="layui-icon" >&#xe631;</i>
                                       </a>
-                                      <a onclick="xadmin.open('待用功能','',600,400)" title="待用功能" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
-                                      </a>
-                                      <a title="删除"  href="<%=basePath%>codeInfoController/deleteCodeInfo.do?id=${codeInfo.id}"  onclick="return del(1)">
-                                        <i class="layui-icon">&#xe640;</i>
-                                       
-                                      </a>
+                                     
                                     </td>
                                   </tr>
                                  </c:forEach>

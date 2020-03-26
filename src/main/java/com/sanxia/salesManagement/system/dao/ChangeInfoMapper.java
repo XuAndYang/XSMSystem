@@ -20,4 +20,8 @@ public interface ChangeInfoMapper {
 	List<ChangeInfo> queryAllChangeInfo();
 
 	int addChangeInfoByInfo(ChangeInfo c);
+
+	ChangeInfo selectChangeInfoById(int changeId);
+
+	int updateStatusByChange(ChangeInfo c);
 }

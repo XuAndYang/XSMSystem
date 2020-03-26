@@ -84,13 +84,13 @@
                                
                                 <div class="layui-inline layui-show-xs-block">
                                 
-                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>statisticsInfoController/statisticsWork.do';"  lay-filter="sreach" >
+                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>statisticsInfoController/statisticsWork.do';"  lay-filter="sreach" id="btn">
                                  <i class="layui-icon">统计</i></button>
                                 </div>
                             </form>
                         </div>
                        
-                        <div class="layui-card-body layui-table-body layui-table-main">
+                        <div class="layui-card-body layui-table-body layui-table-main" id="show" >
                             <table class="layui-table layui-form">
                                 <thead>
                                   <tr>
@@ -145,9 +145,9 @@
     </body>
     <script>
       layui.use(['laydate','form'], function(){
-        var laydate = layui.laydate;
+       var laydate = layui.laydate;
         var  form = layui.form;
-
+        
 
         // 监听全选
         form.on('checkbox(checkall)', function(data){
