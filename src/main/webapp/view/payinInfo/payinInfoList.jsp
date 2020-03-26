@@ -57,7 +57,7 @@
                             </form>
                         </div>
                         <div class="layui-card-header">
-                            <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+                            <button class="layui-btn layui-btn-danger"  onclick="javascript:this.form.action='<%=basePath%>payinInfoController/batchDelete.do';"><i class="layui-icon"></i>批量删除</button>
                             <button class="layui-btn" onclick="xadmin.open('添加用户','<%=basePath%>payinInfoController/addUI.do',500,650)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
@@ -80,7 +80,7 @@
                                 <c:forEach items="${payinInfoList }" var="payinInfo">
                                   <tr>
                                     <td>
-                                      <input type="checkbox" name="id" value="1"   lay-skin="primary"> 
+                                      <input type="checkbox" name="Id" value="${payinInfo.id }"   lay-skin="primary"> 
                                     </td>
                                     <td>${payinInfo.id }</td>
                                     <td>${payinInfo.accountNumber }</td>
@@ -210,5 +210,50 @@
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
       }
+      
+     
+    		
+      
+      /*批量删除*/
+      function delSelectPayin(id){
+  		
+  		if(id==undefined)
+  		{
+  		  var len = 0;
+  		  var cks=$("input[name='Id']");
+  		  console.log(cks);
+  		  for(var i=0;i<cks.length;i++)
+  		  {
+  		    if(cks[i].checked)
+  		    {
+  		      ++len;
+  		    }
+  		  }
+  		  console.log(len);
+  		  if(len==0)
+  		  {
+  		    layer.alert("请选择要删除的信息！");
+  		    return;
+  		  }
+  		  var ids=[];
+  		  for(var i=0;i<cks.length;i++)
+  		  {
+  		    if(cks[i].checked)
+  		    {
+  		      var id=$(cks[i]).val();
+  		      ids.push(id);
+  		    }
+  		    
+  		  }
+  		  var delId=ids.join(",");
+  		  layer.confirm("你确定删除选中的信息吗?", function() 
+  		  {
+  				window.location.href = "${basePath}/payinInfoController/batchDelete.do?payinId="
+  						+ delId;
+  			});
+  		}
+  	}
+  	 
+  
     </script>
 </html>

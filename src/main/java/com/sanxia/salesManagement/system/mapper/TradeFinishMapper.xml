@@ -200,4 +200,37 @@
    WHERE goods_id = #{goodsIdTotal} 
    AND time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
   </select>
+  
+  <!-- ########################################################################### -->
+  <!-- 查询所有交易完成订单信息 -->
+    <select id="queryAllTradeFinish" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade_finish
+  </select>
+  
+   <insert id="addTradeFinishBySaleInfo" parameterType="com.sanxia.salesManagement.system.model.TradeFinish" >
+    insert into trade_finish (trade_id, sale_id, goods_id, 
+      goods_name, vip_id, vip_name, 
+      unit_price, discount_price, sale_number, 
+      consume_money, time, deli_type, 
+      finish_type)
+    values (#{tradeId,jdbcType=INTEGER}, #{saleId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{goodsName,jdbcType=VARCHAR}, #{vipId,jdbcType=INTEGER}, #{vipName,jdbcType=VARCHAR}, 
+      #{unitPrice,jdbcType=DECIMAL}, #{discountPrice,jdbcType=DECIMAL}, #{saleNumber,jdbcType=INTEGER}, 
+      #{consumeMoney,jdbcType=DECIMAL}, #{time,jdbcType=TIMESTAMP}, #{deliType,jdbcType=VARCHAR}, 
+      #{finishType,jdbcType=VARCHAR})
+  </insert>
+  
+   <delete id="deleteTradeFinishBySaleId" parameterType="java.lang.Integer" >
+    delete from trade_finish
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </delete>
+  
+   <select id="selectTradeBySaleId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade_finish
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </select>
 </mapper>

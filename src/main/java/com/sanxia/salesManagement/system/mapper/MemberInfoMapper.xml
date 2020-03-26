@@ -103,4 +103,28 @@
       vip_address = #{vipAddress,jdbcType=VARCHAR}
     where vip_id = #{vipId,jdbcType=INTEGER}
   </update>
+  
+  <!-- ########################################################### -->
+   <!--查询会员所有信息  -->
+     <select id="queryAllMemberInfo" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from member_info
+  </select>
+  
+   <select id="queryMemberNameByMemberId" resultType="java.lang.String" parameterType="java.lang.Integer" >
+    select 
+    vip_name
+    from member_info
+    where vip_id = #{vipId,jdbcType=INTEGER}
+  </select>
+  
+   <insert id="addMemberByMember" parameterType="com.sanxia.salesManagement.system.model.MemberInfo" >
+    insert into member_info (vip_id, vip_name, vip_tel, 
+      vip_birthday, join_time, vip_address
+      )
+    values (#{vipId,jdbcType=INTEGER}, #{vipName,jdbcType=VARCHAR}, #{vipTel,jdbcType=VARCHAR}, 
+      #{vipBirthday,jdbcType=DATE}, #{joinTime,jdbcType=DATE}, #{vipAddress,jdbcType=VARCHAR}
+      )
+  </insert>
 </mapper>

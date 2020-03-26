@@ -90,4 +90,58 @@
       goods_code = #{goodsCode,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  <!-- #########################################################-->
+  <!-- 查询所有条形码信息 -->
+    <select id="queryAllCodeInfo" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from code_info
+  </select>
+  
+   <!-- 增加条形码信息 -->
+    <insert id="addCodeInfoByCodeInfo" parameterType="com.sanxia.salesManagement.system.model.CodeInfo" >
+    insert into code_info (id, goods_id, goods_name, 
+      goods_price, goods_code)
+    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodsPrice,jdbcType=DECIMAL}, #{goodsCode,jdbcType=VARCHAR})
+  </insert>
+  <!-- 删除条形码信息 -->
+    <delete id="deleteCodeInfoByid" parameterType="java.lang.Integer" >
+    delete from code_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <!-- 根据商品ID搜索 -->
+    <select id="selectCodeInfoByGoodsId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from code_info
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+    <!-- 根据商品名搜索 -->
+  <select id="selectCodeInfoByGoodsName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from code_info
+    where goods_name like #{goods_name,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="queryCodeById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from code_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
+  <update id="updateCodeInfoByCodeInfo" parameterType="com.sanxia.salesManagement.system.model.CodeInfo" >
+    update code_info
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      goods_code = #{goodsCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
 </mapper>

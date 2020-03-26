@@ -143,4 +143,73 @@
    WHERE goods_id = #{goodsIdTotal} 
    AND supply_time BETWEEN #{startTimeTotal} AND #{endTimeTotal}
   </select>
+  
+  <!-- ##################################### -->
+  <!-- 查询近期供应所有商品 -->
+    <select id="queryAllSupplierGoodsInfo" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_goods
+  </select>
+  
+   <!--增加供应商品相关所有信息  -->
+     <insert id="addSupplierGoodsBySupplierGoods" parameterType="com.sanxia.salesManagement.system.model.SupplierGoods" >
+    insert into supplier_goods (id, supplier_id, goods_id, 
+      goods_name, goods_type, supply_time, 
+      supply_price, number)
+    values (#{id,jdbcType=INTEGER}, #{supplierId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{goodsName,jdbcType=VARCHAR}, #{goodsType,jdbcType=VARCHAR}, #{supplyTime,jdbcType=DATE}, 
+      #{supplyPrice,jdbcType=DECIMAL}, #{number,jdbcType=INTEGER})
+  </insert>
+  
+  <!-- 删除供应单 -->
+    <delete id="deleteSupplierInfoById" parameterType="java.lang.Integer" >
+    delete from supplier_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 根据id查询指定供应单 -->
+    <select id="querySupplierGoodsInfoBy_id" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 修改供应单信息 -->
+    <update id="UpdateSupplierGoodsIndoBy_id" parameterType="com.sanxia.salesManagement.system.model.SupplierGoods" >
+    update supplier_goods
+    set supplier_id = #{supplierId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_type = #{goodsType,jdbcType=VARCHAR},
+      supply_time = #{supplyTime,jdbcType=DATE},
+      supply_price = #{supplyPrice,jdbcType=DECIMAL},
+      number = #{number,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <!-- 根据供应商ID搜索相关供应单信息 -->
+    <select id="selectSupplierGoodsBySupplierId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_goods
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  	</select>
+  	
+  	 <!-- 根据商品名模糊搜索相关供应单信息 -->
+  	<select id="selectSupplierGoodsByGoodsName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_goods
+    where goods_name like #{goodsName,jdbcType=VARCHAR}
+  	</select>
+  	
+  	
+  <select id="selectSupplierIdById" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select 
+    supplier_id
+    from supplier_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

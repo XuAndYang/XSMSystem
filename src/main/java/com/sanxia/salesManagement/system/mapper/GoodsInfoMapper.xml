@@ -118,4 +118,66 @@
     from goods_info
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </select>
+  
+  
+ <!-- ########################################################### -->
+   <!--查询商品所有信息  -->
+   <select id="queryAllGoodsInfo" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods_info
+  </select>
+  <!--增加商品所有信息  -->
+    <insert id="addGoodsByGoods" parameterType="com.sanxia.salesManagement.system.model.GoodsInfo" >
+    insert into goods_info (goods_id, goods_name, goods_type, 
+      goods_price, total_number, remaining_number
+      )
+    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsType,jdbcType=VARCHAR}, 
+      #{goodsPrice,jdbcType=DECIMAL}, #{totalNumber,jdbcType=INTEGER}, #{remainingNumber,jdbcType=INTEGER}
+      )
+  </insert>
+   <!--删除商品所有信息  --> 
+  <delete id="deleteGoodsByGoods_id" parameterType="java.lang.Integer" >
+    delete from goods_info
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+   <!--搜索id/name指定商品所有信息  --> 
+    <select id="selectGoodsByGoodsId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods_info
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  
+   <select id="selectGoodsByGoodsName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods_info
+    where goods_name like #{goodsName,jdbcType=VARCHAR}
+ </select>
+ 
+  <!--根据ID查询商品所有信息  --> 
+  <select id="queryGoodsByGoods_id" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods_info
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+    <!--修改商品信息  --> 
+  <update id="updateGoodsInfoById" parameterType="com.sanxia.salesManagement.system.model.GoodsInfo" >
+    update goods_info
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_type = #{goodsType,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      total_number = #{totalNumber,jdbcType=INTEGER},
+      remaining_number = #{remainingNumber,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  
+   <select id="selectPriceByGoodsId" resultType="java.math.BigDecimal" parameterType="java.lang.Integer" >
+    select 
+    goods_price
+    from goods_info
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
 </mapper>

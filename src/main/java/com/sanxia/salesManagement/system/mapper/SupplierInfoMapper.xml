@@ -79,4 +79,11 @@
       supplier_tel = #{supplierTel,jdbcType=VARCHAR}
     where supplier_id = #{supplierId,jdbcType=INTEGER}
   </update>
+  
+  <select id="querySupplierInfoBy_id" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_info
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </select>
 </mapper>

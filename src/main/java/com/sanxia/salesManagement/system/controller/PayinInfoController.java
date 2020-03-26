@@ -177,5 +177,26 @@ public class PayinInfoController {
 					}
 				
 				  
-			}				
+			}		
+				
+//批量删除
+			
+				@RequestMapping(value="batchDelete.do")
+				public String batchDelete(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
+						Model model,User user,@RequestParam(value="payinId",required=false) String[] payinId
+						) throws ServletException, IOException{
+				 
+		 
+					 if(payinId!=null){
+						 for (String string : payinId) {
+							 int n=payinInfoService.deletePayinInfoById(Integer.parseInt(string)); 
+						}
+					 }
+				 
+					//重新返回主页
+					List<PayinInfo> payinInfoList = payinInfoService.queryAllPayinInfo();
+					model.addAttribute("payinInfoList", payinInfoList);
+
+					return "view/payinInfo/payinInfoList";
+						}
 }

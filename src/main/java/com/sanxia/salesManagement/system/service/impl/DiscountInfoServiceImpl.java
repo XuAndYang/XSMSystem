@@ -56,4 +56,10 @@ public class DiscountInfoServiceImpl implements DiscountInfoService{
 		return discountInfoMapper.selectDiscountByGoodsName(goods_name);
 	}
 
+	@Override
+	public DiscountInfo selectDiscountInfoByGoodsId(int goods_id) {
+		// TODO Auto-generated method stub
+		return discountInfoMapper.selectDiscountInfoByGoodsId(goods_id);
+	}
+
 }

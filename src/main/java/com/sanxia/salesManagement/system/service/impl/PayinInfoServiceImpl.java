@@ -50,4 +50,6 @@ public class PayinInfoServiceImpl implements PayinInfoService{
 		return payinInfoMapper.selectPayinInfoById(id);
 	}
 
+	
+
 }

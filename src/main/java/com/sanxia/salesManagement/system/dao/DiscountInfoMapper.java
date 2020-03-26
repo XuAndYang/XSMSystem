@@ -30,4 +30,6 @@ public interface DiscountInfoMapper {
 	List<DiscountInfo> selectDiscountByGoodsId(int goods_id);
 
 	List<DiscountInfo> selectDiscountByGoodsName(String goods_name);
+
+	DiscountInfo selectDiscountInfoByGoodsId(int goods_id);
 }

@@ -174,4 +174,59 @@
       deli_type = #{deliType,jdbcType=VARCHAR}
     where sale_id = #{saleId,jdbcType=INTEGER}
   </update>
+  
+   <!-- ########################################################### -->
+   <!--查询所有订单信息  -->
+     <select id="queryAllSaleInfo" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sale_info
+  </select>
+    <!--删除所有订单信息  -->
+    <delete id="deleteSaleInfoBySaleId" parameterType="java.lang.Integer" >
+    delete from sale_info
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </delete>
+  <!-- 增加销售信息 -->
+    <insert id="addSaleInfoBySaleInfo" parameterType="com.sanxia.salesManagement.system.model.SaleInfo" >
+    insert into sale_info (sale_id, goods_id, vip_id, 
+      vip_name, goods_name, sale_number, 
+      unit_price, discount_price, consume_money, 
+      time, trade_status, deli_type
+      )
+    values (#{saleId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{vipId,jdbcType=INTEGER}, 
+      #{vipName,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, #{saleNumber,jdbcType=INTEGER}, 
+      #{unitPrice,jdbcType=DECIMAL}, #{discountPrice,jdbcType=DECIMAL}, #{consumeMoney,jdbcType=DECIMAL}, 
+      #{time,jdbcType=TIMESTAMP}, #{tradeStatus,jdbcType=VARCHAR}, #{deliType,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+   <select id="querySaleBySale_id" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sale_info
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </select>
+  
+   <update id="updateSaleInfoBySaleInfo" parameterType="com.sanxia.salesManagement.system.model.SaleInfo" >
+    update sale_info
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      vip_id = #{vipId,jdbcType=INTEGER},
+      vip_name = #{vipName,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      sale_number = #{saleNumber,jdbcType=INTEGER},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      discount_price = #{discountPrice,jdbcType=DECIMAL},
+      consume_money = #{consumeMoney,jdbcType=DECIMAL},
+      time = #{time,jdbcType=TIMESTAMP},
+      deli_type = #{deliType,jdbcType=VARCHAR}
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </update>
+  
+   <update id="updateSaleStatusBySaleInfo" parameterType="com.sanxia.salesManagement.system.model.SaleInfo" >
+    update sale_info
+    set 
+    trade_status = #{tradeStatus,jdbcType=VARCHAR} 
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </update>
 </mapper>

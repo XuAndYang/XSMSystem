@@ -114,4 +114,19 @@
       apply_status = #{applyStatus,jdbcType=VARCHAR}
     where change_id = #{changeId,jdbcType=INTEGER}
   </update>
+  
+  <select id="queryAllChangeInfo" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from change_info
+  </select>
+  
+  <insert id="addChangeInfoByInfo" parameterType="com.sanxia.salesManagement.system.model.ChangeInfo" >
+    insert into change_info (change_id, sale_id, new_goods_id, 
+      new_goods_name, change_reason, change_time, 
+      apply_status)
+    values (#{changeId,jdbcType=INTEGER}, #{saleId,jdbcType=INTEGER}, #{newGoodsId,jdbcType=INTEGER}, 
+      #{newGoodsName,jdbcType=VARCHAR}, #{changeReason,jdbcType=VARCHAR}, #{changeTime,jdbcType=TIMESTAMP}, 
+      #{applyStatus,jdbcType=VARCHAR})
+  </insert>
 </mapper>

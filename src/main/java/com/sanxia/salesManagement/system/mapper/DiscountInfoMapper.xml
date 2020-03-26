@@ -157,4 +157,12 @@
     from discount_info
     where  goods_name like #{goodsName,jdbcType=VARCHAR}
   </select>
+  
+  
+   <select id="selectDiscountInfoByGoodsId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from discount_info
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
 </mapper>

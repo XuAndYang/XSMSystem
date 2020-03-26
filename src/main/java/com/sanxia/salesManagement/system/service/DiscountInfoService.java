@@ -20,4 +20,6 @@ public interface DiscountInfoService {
 
 	List<DiscountInfo> selectDiscountByGoodsName(String goods_name);
 
+	DiscountInfo selectDiscountInfoByGoodsId(int goods_id);
+
 }

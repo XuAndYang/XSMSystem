@@ -14,4 +14,6 @@ public interface SupplierInfoMapper {
     int updateByPrimaryKeySelective(SupplierInfo record);
 
     int updateByPrimaryKey(SupplierInfo record);
+
+	SupplierInfo querySupplierInfoBy_id(int supplier_id);
 }
