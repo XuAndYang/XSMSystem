@@ -61,11 +61,11 @@ public class LoginController {
 				req.setAttribute("menuList", menuList);
 				req.setAttribute("permissionList", permissionList);
 			}
-			
+
 			return "index";
 		} else {
 			// 2、跳转页面
-            model.addAttribute("message", "用户名或密码错误！");
+			model.addAttribute("message", "用户名或密码错误！");
 			return "login";
 		}
 	}

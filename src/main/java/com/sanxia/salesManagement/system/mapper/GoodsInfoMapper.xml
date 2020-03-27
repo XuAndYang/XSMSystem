@@ -169,9 +169,8 @@
     set goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_type = #{goodsType,jdbcType=VARCHAR},
       goods_price = #{goodsPrice,jdbcType=DECIMAL},
-      total_number = #{totalNumber,jdbcType=INTEGER},
-      remaining_number = #{remainingNumber,jdbcType=INTEGER}
-    where goods_id = #{goodsId,jdbcType=INTEGER}
+      total_number = #{totalNumber,jdbcType=INTEGER}
+	  where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
   
    <select id="selectPriceByGoodsId" resultType="java.math.BigDecimal" parameterType="java.lang.Integer" >
@@ -180,4 +179,27 @@
     from goods_info
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </select>
+  
+   <update id="updateRemainByGoods" parameterType="com.sanxia.salesManagement.system.model.GoodsInfo" >
+    update goods_info
+    set 
+    remaining_number = #{remainingNumber,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+
+ <select id="selectGoodsTypeById" resultType="java.lang.String" parameterType="java.lang.Integer" >
+    select 
+    goods_type
+    from goods_info
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  
+  
+   <update id="updateNumByGoods" parameterType="com.sanxia.salesManagement.system.model.GoodsInfo" >
+    update goods_info
+    set 
+    total_number = #{totalNumber,jdbcType=INTEGER},
+    remaining_number = #{remainingNumber,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
 </mapper>

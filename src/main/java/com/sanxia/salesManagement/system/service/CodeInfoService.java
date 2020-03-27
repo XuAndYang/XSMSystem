@@ -24,6 +24,6 @@ public interface CodeInfoService {
 
 	int updateCodeInfoByCodeInfo(CodeInfo c);
 
-	List<CodeInfo> selectCodeInfoByGoodsId(int goods_id);
+	List<CodeInfo> selectCodeInfoByGoodsId(String codeInfo_search);
 
 }

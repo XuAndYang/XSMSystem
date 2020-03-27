@@ -42,13 +42,7 @@
                             <input type="text" id="name" name="goods_id" value="${discountInfo.goodsId }" required="" lay-verify="name" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                       
-                    <div class="layui-form-item">
-                        <label for="login_name1" class="layui-form-label">
-                            <span class="x-red"></span>商品名称</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="login_name1" name="goods_name" value="${discountInfo.goodsName }" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
-                    </div>
+                    
                    
                      <div class="layui-form-item">
                         <label for="login_name2" class="layui-form-label">

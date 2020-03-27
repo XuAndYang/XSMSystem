@@ -31,44 +31,38 @@
     <body>
         <div class="layui-fluid">
             <div class="layui-row">
-                <form class="layui-form" action="<%=basePath%>goodsInfoController/add.do">
+                <form class="layui-form" action="<%=basePath%>returnInfoController/add.do">
                     <div class="layui-form-item">
                         <label for="name" class="layui-form-label">
-                            <span class="x-red">*</span>商品名</label>
+                            <span class="x-red">*</span>订单号</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="name" name="goods_name" required=""  autocomplete="off" class="layui-input">
-                            </div>
+                            <input type="text" id="name" name="sale_id" required=""  autocomplete="off" class="layui-input" /></div>
                        </div>
-                            
-                    <div class="layui-form-item">
+                    
+				<div class="layui-form-item">
                         <label for="login_name" class="layui-form-label">
-                            <span class="x-red">*</span>商品类型</label>
+                            <span class="x-red">*</span>退款方式</label>
                         <div class="layui-input-inline">
-                           <select name="goods_type">
-							<option>请选择商品类型</option>
-							<option value='家具类'>家具类</option>
-							<option value='文具类'>文具类</option>
-							<option value='食品类'>食品类</option>
-							<option value='图书类'>图书类</option>
-							<option value='电器类'>电器类</option>
-							<option value='服装类'>服装类</option>
-						  </select>
-                        </div>
-                    </div>
-                    
-                    <div class="layui-form-item">
-                        <label for="password" class="layui-form-label">
-                            <span class="x-red">*</span>单价</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="password" name="goods_price" required=""  autocomplete="off" class="layui-input" ></div>
-                        </div>
-                    <div class="layui-form-item">
-                        <label for="repassword" class="layui-form-label">
-                            <span class="x-red">*</span>总数</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="repassword" name="total_number" required=""  autocomplete="off" class="layui-input"></div>
-                    </div>
-                    
+                       <select name="teturn_way">
+							<option>请选择退款方式</option>
+							<option value='支付宝'>支付宝</option>
+							<option value='微信'>微信</option>
+							<option value='现金'>现金</option>
+					</select>
+					</div>
+                </div>
+                       
+                        
+					<div class="layui-form-item layui-form-text">
+						<label for="desc" class="layui-form-label">
+					 		<span class="x-red">*</span>退货原因 </label>
+						<div class="layui-input-block">
+							<textarea placeholder="请输入内容" id="desc" name="return_reason"
+							class="layui-textarea"></textarea>
+						</div>
+					</div>
+                       
+                   
                     <div class="layui-form-item">
                         <label for="repassword" class="layui-form-label"></label>
                         <button class="layui-btn" lay-filter="add" lay-submit="" >增加</button></div>

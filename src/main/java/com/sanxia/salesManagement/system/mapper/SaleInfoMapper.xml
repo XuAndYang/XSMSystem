@@ -229,4 +229,27 @@
     trade_status = #{tradeStatus,jdbcType=VARCHAR} 
     where sale_id = #{saleId,jdbcType=INTEGER}
   </update>
+  
+  <!-- 查询 -->
+   
+  <select id="queryAllSaleInfoBySaleId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sale_info
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="queryAllSaleInfoByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sale_info
+    where  goods_name like #{goodsName,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="selectStatusBySaleId" resultType="java.lang.String" parameterType="java.lang.Integer" >
+    select 
+    trade_status
+    from sale_info
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </select>
 </mapper>

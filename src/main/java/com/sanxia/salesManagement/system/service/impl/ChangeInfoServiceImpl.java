@@ -38,4 +38,16 @@ public class ChangeInfoServiceImpl implements ChangeInfoService {
 		return changeInfoMapper.updateStatusByChange( c);
 	}
 
+	@Override
+	public List<ChangeInfo> queryAllChangeInfoByChangeId(int change_id) {
+		// TODO Auto-generated method stub
+		return changeInfoMapper.queryAllChangeInfoByChangeId(change_id);
+	}
+
+	@Override
+	public List<ChangeInfo> queryAllChangeInfoByName(String goods_name) {
+		// TODO Auto-generated method stub
+		return changeInfoMapper.queryAllChangeInfoByName(goods_name);
+	}
+
 }

@@ -59,6 +59,18 @@ public class TradeFinishServiceImpl implements TradeFinishService {
 		// TODO Auto-generated method stub
 		return tradeFinishMapper.updateFinishType(tf);
 	}
+
+	@Override
+	public List<TradeFinish> queryAllTradeFinishBySaleId(int sale_id) {
+		// TODO Auto-generated method stub
+		return tradeFinishMapper.queryAllTradeFinishBySaleId(sale_id);
+	}
+
+	@Override
+	public List<TradeFinish> queryAllTradeFinishByName(String goods_name) {
+		// TODO Auto-generated method stub
+		return tradeFinishMapper.queryAllTradeFinishByName(goods_name);
+	}
 	
 
 }

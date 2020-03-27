@@ -240,4 +240,18 @@
     finish_type = #{finishType,jdbcType=VARCHAR}
     where sale_id = #{saleId,jdbcType=INTEGER}
   </update>
+  
+  <select id="queryAllTradeFinishBySaleId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade_finish
+    where sale_id = #{saleId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="queryAllTradeFinishByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade_finish
+    where goods_name like #{goodsName,jdbcType=VARCHAR}
+  </select>
 </mapper>

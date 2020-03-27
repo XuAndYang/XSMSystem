@@ -37,4 +37,10 @@ public interface GoodsInfoMapper {
 	int selectRemainingById(int goods_id);
 
 	BigDecimal selectPriceByGoodsId(int goods_id);
+
+	int updateRemainByGoods(GoodsInfo g);
+
+	String selectGoodsTypeById(int goodsid);
+
+	int updateNumByGoods(GoodsInfo goods);
 }

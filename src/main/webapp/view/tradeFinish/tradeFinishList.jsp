@@ -43,28 +43,11 @@
                     <div class="layui-card">
                         <div class="layui-card-body ">
                             <form class="layui-form layui-col-space5">
-   <div class="layui-input-inline layui-show-xs-block">
-                                    <input class="layui-input" placeholder="开始日" name="start" id="start"></div>
+     							<button type="button" class="layui-btn"><i class="layui-icon"></i>请输入想搜索的内容</button>
                                 <div class="layui-input-inline layui-show-xs-block">
-                                    <input class="layui-input" placeholder="截止日" name="end" id="end"></div>
+                                    <input type="text" name="goods_search" placeholder="请输入订单号或商品名" autocomplete="off" class="layui-input"></div>
                                 <div class="layui-input-inline layui-show-xs-block">
-                                    <select name="contrller">
-                                        <option>配送方式</option>
-                                        <option>自提</option>
-                                        <option>顺丰</option>
-                                        <option>邮政</option></select>
-                                </div>
-                                <div class="layui-input-inline layui-show-xs-block">
-                                    <select name="contrller">
-                                        <option value="">订单状态</option>
-                                        <option value="0">待确认</option>
-                                        <option value="1">已确认</option>
-                                    </select>
-                                </div>
-                                <div class="layui-input-inline layui-show-xs-block">
-                                    <input type="text" name="username" placeholder="请输入订单号" autocomplete="off" class="layui-input"></div>
-                                <div class="layui-input-inline layui-show-xs-block">
-                                    <button class="layui-btn" lay-submit="" lay-filter="sreach">
+                                    <button class="layui-btn" lay-submit="" lay-filter="sreach" onclick="javascript:this.form.action='<%=basePath%>tradeFinishController/searchInfo.do'">
                                         <i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>

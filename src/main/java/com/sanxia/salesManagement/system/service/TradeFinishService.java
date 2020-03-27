@@ -23,4 +23,8 @@ public interface TradeFinishService {
 
 	int updateFinishType(TradeFinish tf);
 
+	List<TradeFinish> queryAllTradeFinishBySaleId(int sale_id);
+
+	List<TradeFinish> queryAllTradeFinishByName(String goods_name);
+
 }

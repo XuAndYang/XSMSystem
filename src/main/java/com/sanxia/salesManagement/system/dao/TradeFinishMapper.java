@@ -33,4 +33,8 @@ public interface TradeFinishMapper {
 	TradeFinish selectTradeBySaleId(int sale_id);
 
 	int updateFinishType(TradeFinish tf);
+
+	List<TradeFinish> queryAllTradeFinishBySaleId(int sale_id);
+
+	List<TradeFinish> queryAllTradeFinishByName(String goods_name);
 }

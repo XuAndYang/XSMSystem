@@ -14,4 +14,10 @@ public interface ChangeInfoService {
 
 	int updateStatusByChange(ChangeInfo c);
 
+ 
+
+	List<ChangeInfo> queryAllChangeInfoByName(String goods_name);
+
+	List<ChangeInfo> queryAllChangeInfoByChangeId(int change_id);
+
 }

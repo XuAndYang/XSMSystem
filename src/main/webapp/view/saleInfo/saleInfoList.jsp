@@ -43,25 +43,11 @@
                     <div class="layui-card">
                         <div class="layui-card-body ">
                             <form class="layui-form layui-col-space5">
-                          
-                                <div class="layui-input-inline layui-show-xs-block">
-                                    <select name="deli_search">
-                                        <option>配送方式</option>
-                                        <option>自提</option>
-                                        <option>顺丰</option>
-                                        <option>邮政</option></select>
-                                </div>
-                                <div class="layui-input-inline layui-show-xs-block">
-                                    <select name="status_search">
-                                        <option value="">订单状态</option>
-                                        <option value="0">待确认</option>
-                                        <option value="1">已确认</option>
-                                    </select>
-                                </div>
+                            <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入想搜索的内容</button>
                                 <div class="layui-input-inline layui-show-xs-block">
                                     <input type="text" name="goods_search" placeholder="请输入订单号或商品名" autocomplete="off" class="layui-input"></div>
                                 <div class="layui-input-inline layui-show-xs-block">
-                                    <button class="layui-btn" lay-submit="" lay-filter="sreach">
+                                    <button class="layui-btn" lay-submit="" lay-filter="sreach"  onclick="javascript:this.form.action='<%=basePath%>saleInfoController/searchInfo.do'">
                                         <i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>
@@ -109,13 +95,11 @@
                                     <td>${saleInfo.deliType}</td>
 									<td>${saleInfo.tradeStatus}</td>
                                     <td class="td-manage" >        
-                                      <a title="编辑" onclick="xadmin.open('编辑','<%=basePath%>saleInfoController/updateUI.do?saleId=${saleInfo.saleId}',600,400)" href="javascript:;">
-                                                <i class="layui-icon"  style="margin-right:30px">&#xe63c;</i></a>
                                       <a title="确认订单"  href="<%=basePath%>saleInfoController/updateStatus.do?saleId=${saleInfo.saleId}">
                                         <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
-                                      </a>
-                                      <a title="删除"  href="<%=basePath%>saleInfoController/deleteSaleInfo.do?saleId=${saleInfo.saleId}"  onclick="return del(1)">
-                                        <i class="layui-icon">&#xe640;</i>                                      
+                                      </a>                                     
+                                      <a title="编辑" onclick="xadmin.open('编辑','<%=basePath%>saleInfoController/updateUI.do?saleId=${saleInfo.saleId}',600,400)" href="javascript:;">
+                                                <i class="layui-icon"  style="margin-right:30px">&#xe63c;</i>
                                       </a>
                                     </td>
                                   </tr>

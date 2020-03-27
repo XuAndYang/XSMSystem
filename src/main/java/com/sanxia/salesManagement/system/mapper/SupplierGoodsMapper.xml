@@ -212,4 +212,6 @@
     from supplier_goods
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+ 
 </mapper>

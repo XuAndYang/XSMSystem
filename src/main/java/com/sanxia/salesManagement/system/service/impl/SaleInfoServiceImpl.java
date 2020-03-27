@@ -50,5 +50,30 @@ public class SaleInfoServiceImpl implements SaleInfoService{
 		// TODO Auto-generated method stub
 		return saleInfoMapper.updateSaleStatusBySaleInfo(s);
 	}
+	@Override
+	public List<SaleInfo> queryAllSaleInfoByDeli(String deli_search) {
+		// TODO Auto-generated method stub
+		return saleInfoMapper.queryAllSaleInfoByDeli(deli_search);
+	}
+	@Override
+	public List<SaleInfo> queryAllSaleInfoByStatus(String status_search) {
+		// TODO Auto-generated method stub
+		return saleInfoMapper.queryAllSaleInfoByStatus(status_search);
+	}
+	@Override
+	public List<SaleInfo> queryAllSaleInfoBySaleId(int sale_id) {
+		// TODO Auto-generated method stub
+		return saleInfoMapper.queryAllSaleInfoBySaleId(sale_id);
+	}
+	@Override
+	public List<SaleInfo> queryAllSaleInfoByName(String goods_name) {
+		// TODO Auto-generated method stub
+		return saleInfoMapper.queryAllSaleInfoByName(goods_name);
+	}
+	@Override
+	public String selectStatusBySaleId(int saleId) {
+		// TODO Auto-generated method stub
+		return saleInfoMapper.selectStatusBySaleId(saleId);
+	}
 
 }

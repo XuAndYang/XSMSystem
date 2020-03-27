@@ -72,4 +72,22 @@ public class GoodsInfoServiceImpl implements GoodsInfoService {
 			// TODO Auto-generated method stub
 			return goodsInfoMapper.selectPriceByGoodsId(goods_id);
 		}
+
+		@Override
+		public int updateRemainByGoods(GoodsInfo g) {
+			// TODO Auto-generated method stub
+			return goodsInfoMapper.updateRemainByGoods(g);
+		}
+
+		@Override
+		public String selectGoodsTypeById(int goodsid) {
+			// TODO Auto-generated method stub
+			return  goodsInfoMapper.selectGoodsTypeById(goodsid);
+		}
+
+		@Override
+		public int updateNumByGoods(GoodsInfo goods) {
+			// TODO Auto-generated method stub
+			return goodsInfoMapper.updateNumByGoods(goods);
+		}
 }

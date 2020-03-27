@@ -44,9 +44,18 @@
                 <div class="layui-col-md12">
                     <div class="layui-card">
                         <div class="layui-card-body ">
-                            
+                             <form class="layui-form layui-col-space5">
+                                <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入想搜索的内容</button>
+                                
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input type="text" name="Info_search"  placeholder="请输入会员ID或姓名" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <button class="layui-btn"  lay-submit="" lay-filter="sreach" onclick="javascript:this.form.action='<%=basePath%>memberInfoController/searchInfo.do'"><i class="layui-icon">&#xe615;</i></button>
+                                </div>
+                            </form>
                         </div>
-                        
+                         
                          <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
                             <button class="layui-btn" onclick="xadmin.open('添加会员','<%=basePath%>memberInfoController/addUI.do',600,650)"><i class="layui-icon"></i>添加</button>
@@ -56,7 +65,7 @@
                                 <thead>
                                     <tr>
                                         <th lay-data="{type:'checkbox'}">ID</th>
-                                        <th lay-data="{field:'id', width:80, sort: true}">ID</th>
+                                        <th lay-data="{field:'id', width:80, sort: true}">会员ID</th>
                                         <th lay-data="{field:'username', width:120, sort: true, edit: 'text'}">姓名</th>
                                         <th lay-data="{field:'email', edit: 'text', Width: 80}">电话号码</th>
                                         <th lay-data="{field:'sex', width:80,templet: '#switchTpl'}">性别</th>

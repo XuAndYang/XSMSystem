@@ -44,25 +44,10 @@
                         <label for="login_name1" class="layui-form-label">
                             <span class="x-red"></span>商品ID</label>
                         <div class="layui-input-inline">
-                            <input type="text"  value="${supplierGoods.goodsId}" id="login_name1" name="goods_id" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
+                            <input type="text"  readonly value="${supplierGoods.goodsId}" id="login_name1" name="goods_id" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
                     </div>
                    
                     
-                    <div class="layui-form-item">
-                        <label for="p_id" class="layui-form-label">
-                            <span class="x-red">*</span>商品类型</label>
-                        <div class="layui-input-inline">               
-                          <select name="goods_type">
-							<option >${supplierGoods.goodsType}</option>
-							<option value='家具类'>家具类</option>
-							<option value='文具类'>文具类</option>
-							<option value='食品类'>食品类</option>
-							<option value='图书类'>图书类</option>
-							<option value='电器类'>电器类</option>
-							<option value='服装类'>服装类</option>
-						  </select>
-                       </div>
-                    </div>
                      <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">
                       <label for="login_name3" class="layui-form-label">
                             <span class="x-red"></span>供货时间</label>
@@ -73,14 +58,14 @@
                         <label for="login_name2" class="layui-form-label">
                             <span class="x-red"></span>商品价格</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="login_name2" value="${supplierGoods.supplyPrice}" name="supply_price" required="" lay-verify="login_name2" autocomplete="off" class="layui-input"></div>
+                            <input type="text" readonly id="login_name2" value="${supplierGoods.supplyPrice}" name="supply_price" required="" lay-verify="login_name2" autocomplete="off" class="layui-input"></div>
                     </div>
                     
                     <div class="layui-form-item">
                         <label for="login_name2" class="layui-form-label">
                             <span class="x-red"></span>商品数量</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="login_name2" value="${supplierGoods.number}" name="number" required="" lay-verify="login_name2" autocomplete="off" class="layui-input"></div>
+                            <input type="text" readonly id="login_name2" value="${supplierGoods.number}" name="number" required="" lay-verify="login_name2" autocomplete="off" class="layui-input"></div>
                     </div>
                     
                     <div class="layui-form-item">

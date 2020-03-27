@@ -112,12 +112,12 @@
     delete from code_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <!-- 根据商品ID搜索 -->
-    <select id="selectCodeInfoByGoodsId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <!-- 根据商品条形码搜索 -->
+    <select id="selectCodeInfoByGoodsId" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from code_info
-    where goods_id = #{goodsId,jdbcType=INTEGER}
+    where goods_code = #{goodsCode,jdbcType=VARCHAR}
   </select>
     <!-- 根据商品名搜索 -->
   <select id="selectCodeInfoByGoodsName" resultMap="BaseResultMap" parameterType="java.lang.String" >

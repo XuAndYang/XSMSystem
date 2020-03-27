@@ -139,4 +139,51 @@
       apply_status = #{applyStatus,jdbcType=VARCHAR}
     where return_id = #{returnId,jdbcType=INTEGER}
   </update>
+  
+  
+  <select id="queryAllReturnInfo" resultMap="BaseResultMap"   >
+    select 
+    <include refid="Base_Column_List" />
+    from return_info
+    
+  </select>
+  
+   <insert id="addReturnInfoByInfo" parameterType="com.sanxia.salesManagement.system.model.ReturnInfo" >
+    insert into return_info (return_id, sale_id, goods_id, 
+      goods_name, return_reason, return_money, 
+      return_time, teturn_way, apply_status
+      )
+    values (#{returnId,jdbcType=INTEGER}, #{saleId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{goodsName,jdbcType=VARCHAR}, #{returnReason,jdbcType=VARCHAR}, #{returnMoney,jdbcType=DECIMAL}, 
+      #{returnTime,jdbcType=TIMESTAMP}, #{teturnWay,jdbcType=VARCHAR}, #{applyStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <select id="selectReturnInfoById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from return_info
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </select>
+  
+  <update id="updateStatusByReturn" parameterType="com.sanxia.salesManagement.system.model.ReturnInfo" >
+    update return_info
+    set  
+    apply_status = #{applyStatus,jdbcType=VARCHAR}
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryAllReturnInfoByReturnId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from return_info
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="queryAllReturnInfoByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from return_info
+    where goods_name like #{goodsName,jdbcType=VARCHAR}
+  </select>
 </mapper>

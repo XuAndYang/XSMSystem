@@ -35,9 +35,9 @@ public class CodeInfoServiceImpl implements CodeInfoService {
 	}
 
 	@Override
-	public List<CodeInfo> selectCodeInfoByGoodsId(int goods_id) {
+	public List<CodeInfo> selectCodeInfoByGoodsId(String code) {
 		// TODO Auto-generated method stub
-		return codeinfoMapper.selectCodeInfoByGoodsId(goods_id);
+		return codeinfoMapper.selectCodeInfoByGoodsId(code);
 	}
 
 	@Override

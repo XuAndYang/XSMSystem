@@ -24,4 +24,10 @@ public interface ChangeInfoMapper {
 	ChangeInfo selectChangeInfoById(int changeId);
 
 	int updateStatusByChange(ChangeInfo c);
+
+	 
+
+	List<ChangeInfo> queryAllChangeInfoByName(String goods_name);
+
+	List<ChangeInfo> queryAllChangeInfoByChangeId(int change_id);
 }

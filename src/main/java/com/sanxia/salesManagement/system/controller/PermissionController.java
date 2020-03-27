@@ -132,7 +132,7 @@ public class PermissionController {
 	@RequestMapping(value = "deletePermission.do")
 	public String delete(HttpServletRequest req, HttpServletResponse resp, Model model,
 			@RequestParam("permissionId") String permissionId) throws ServletException, IOException {
-		
+
 		int id = Integer.parseInt(permissionId);
 		int i = permissionService.deletePermissionById(id);
 		List<Permission> permissionList = permissionService.queryAllPermission();
@@ -142,7 +142,7 @@ public class PermissionController {
 
 	}
 
-	//分配权限
+	// 分配权限
 	@RequestMapping(value = "FPPermissionUI.do")
 	public String FPPermissionUI(HttpServletRequest req, HttpServletResponse resp,
 			@RequestParam("roleId") String roleId, Model model) throws ServletException, IOException {
@@ -196,31 +196,32 @@ public class PermissionController {
 		// 跳转页面
 		return "view/permission/FPPermission";
 	}
-	
-	//搜索指定的权限信息
-	@RequestMapping(value="searchPermission.do")
-	public String search(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
-	Model model,User user,@RequestParam(value="permission_search",required=false) String permission_search ) throws ServletException, IOException{
 
-	if(permission_search!=""){
-	String name = "%"+permission_search+"%";;
-		 
-	List<Permission> permissionList = permissionService.selectPermissionByName(name);
-	model.addAttribute("permissionList", permissionList);
+	// 搜索指定的权限信息
+	@RequestMapping(value = "searchPermission.do")
+	public String search(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model, User user,
+			@RequestParam(value = "permission_search", required = false) String permission_search)
+			throws ServletException, IOException {
 
-	return "view/permission/permissionList";
-	
-	}
+		if (permission_search != "") {
+			String name = "%" + permission_search + "%";
+			;
 
-	else{
-		
-		List<Permission> permissionList = permissionService.queryAllPermission();
-		model.addAttribute("permissionList", permissionList);
+			List<Permission> permissionList = permissionService.selectPermissionByName(name);
+			model.addAttribute("permissionList", permissionList);
 
-		return "view/permission/permissionList";
+			return "view/permission/permissionList";
+
 		}
-	
-	  
-}				
+
+		else {
+
+			List<Permission> permissionList = permissionService.queryAllPermission();
+			model.addAttribute("permissionList", permissionList);
+
+			return "view/permission/permissionList";
+		}
+
+	}
 
 }

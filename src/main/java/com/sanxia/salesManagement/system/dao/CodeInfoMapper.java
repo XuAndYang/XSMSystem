@@ -30,5 +30,5 @@ public interface CodeInfoMapper {
 
 	  int updateCodeInfoByCodeInfo(CodeInfo c);
 
-	  List<CodeInfo> selectCodeInfoByGoodsId(int goods_id);
+	  List<CodeInfo> selectCodeInfoByGoodsId(String code);
 }
