@@ -20,4 +20,6 @@ public interface StatisticsInfoMapper {
 	int insertStatisticsInfo(StatisticsInfo s);
 
 	List<StatisticsInfo> queryStatisticsInfo(Integer id);
+
+	List<StatisticsInfo> queryAllStatisticsInfo();
 }

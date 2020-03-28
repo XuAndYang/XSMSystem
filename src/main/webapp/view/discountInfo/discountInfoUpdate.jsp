@@ -55,14 +55,14 @@
                         <label for="login_name2" class="layui-form-label">
                             <span class="x-red"></span>开始时间</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="login_name2" name="start_time"   value="<fmt:formatDate value='${discountInfo.startTime}' type='date' pattern='yyyy-MM-dd HH:mm:ss'/>"  required="" lay-verify="login_name2" autocomplete="off" class="layui-input" ></div>
+                            <input type="text" id="time1" name="start_time"   value="<fmt:formatDate value='${discountInfo.startTime}' type='date' pattern='yyyy-MM-dd HH:mm:ss'/>"  required="" lay-verify="login_name2" autocomplete="off" class="layui-input" ></div>
                     </div>
                      
                      <div class="layui-form-item">
                         <label for="login_name2" class="layui-form-label">
                             <span class="x-red"></span>结束时间</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="login_name2" name="end_time" value="<fmt:formatDate value='${discountInfo.endTime}' type='date' pattern='yyyy-MM-dd HH:mm:ss'/>"  required="" lay-verify="login_name2" autocomplete="off" class="layui-input" ></div>
+                            <input type="text" id="time2" name="end_time" value="<fmt:formatDate value='${discountInfo.endTime}' type='date' pattern='yyyy-MM-dd HH:mm:ss'/>"  required="" lay-verify="login_name2" autocomplete="off" class="layui-input" ></div>
                     </div>
                     
                     
@@ -98,8 +98,16 @@
             laydate.render({
               elem: '#end' //指定元素
             });
+            laydate.render({
+          	  elem: '#time1'
+          	  ,type: 'datetime'
+          	});
+          laydate.render({
+        	  elem: '#time2'
+        	  ,type: 'datetime'
+        	});
 
-
+            
           });
         
         layui.use(['form', 'layer','jquery'],

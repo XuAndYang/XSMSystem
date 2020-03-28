@@ -163,40 +163,25 @@ public class SupplierGoodsController {
 		String supplierid_str = req.getParameter("supplier_id");
 		int supplierid = Integer.parseInt(supplierid_str);
 
-		String goodsid_str = req.getParameter("goods_id");
-		int goodsid = Integer.parseInt(goodsid_str);
-
-		String name = goodsInfoService.selectGoodsNameById(goodsid);
-		if (name != null) {
+		
 			String price_str = req.getParameter("supply_price");
 			BigDecimal price = new BigDecimal(price_str);
 
 			String number_str = req.getParameter("number");
 			int number = Integer.parseInt(number_str);
-			String type = goodsInfoService.selectGoodsTypeById(goodsid);
+			
 			String time = req.getParameter("supply_time");
 			Date supply_time = new SimpleDateFormat("yyyy-MM-dd").parse(time);
 
 			SupplierGoods s = new SupplierGoods();
 			s.setSupplierId(supplierid);
-			s.setGoodsId(goodsid);
-			s.setGoodsType(type);
-			s.setGoodsName(name);
 			s.setSupplyTime(supply_time);
 			s.setSupplyPrice(price);
 			s.setNumber(number);
 			s.setId(id);
 
 			int n = supplierGoodsService.UpdateSupplierGoodsIndoBy_id(s);
-
-		} else {
-			List<SupplierGoods> supplierGoodsInfoList = supplierGoodsService.queryAllSupplierGoodsInfo();
-			model.addAttribute("supplierGoodsInfoList", supplierGoodsInfoList);
-			// 2.跳转页面
-			return "view/supplierGoods/supplierGoodsInfoList";
-
-		}
-
+ 
 		// 重新返回主页
 		List<SupplierGoods> supplierGoodsInfoList = supplierGoodsService.queryAllSupplierGoodsInfo();
 		model.addAttribute("supplierGoodsInfoList", supplierGoodsInfoList);

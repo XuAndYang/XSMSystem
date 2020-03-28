@@ -57,14 +57,14 @@
                             <button class="layui-btn" onclick="xadmin.open('添加订单信息','<%=basePath%>saleInfoController/addUI.do',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
-                            <table class="layui-table layui-form">
+                            <table class="layui-table layui-form" >
                                 <thead>
                                   <tr>
                                     <th>
                                       <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                                     </th>
                                     <th>订单号</th>
-                                    <th>用户名</th>
+                                    <th>会员名</th>
                                     <th>商品名</th>
                                     <th>销售数量</th>
                                     <th>单价</th>

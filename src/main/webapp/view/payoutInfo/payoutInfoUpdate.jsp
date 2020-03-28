@@ -48,7 +48,7 @@
                         <label for="login_name2" class="layui-form-label">
                             <span class="x-red"></span>支出时间</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="login_name2" name="time" value="<fmt:formatDate value='${payoutInfo.time}' type='date' pattern='yyyy-MM-dd HH:mm:ss'/>" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" ></div>
+                            <input type="text" id="time1" name="time" value="<fmt:formatDate value='${payoutInfo.time}' type='date' pattern='yyyy-MM-dd HH:mm:ss'/>" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" ></div>
                     </div>
                      
                      <div class="layui-form-item">
@@ -100,6 +100,11 @@
               elem: '#end' //指定元素
             });
 
+            laydate.render({
+          	  elem: '#time1'
+          	  ,type: 'datetime'
+          	});
+       
 
           });
         

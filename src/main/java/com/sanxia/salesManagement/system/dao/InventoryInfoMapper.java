@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.dao;
 
+import java.util.List;
+
 import com.sanxia.salesManagement.system.model.InventoryInfo;
 
 public interface InventoryInfoMapper {
@@ -16,4 +18,6 @@ public interface InventoryInfoMapper {
     int updateByPrimaryKey(InventoryInfo record);
 
 	int insertInventoryInfo(InventoryInfo i);
+
+	List<InventoryInfo> queryAllInventoryInfo();
 }

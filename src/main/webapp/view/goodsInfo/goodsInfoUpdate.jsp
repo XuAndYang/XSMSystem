@@ -66,14 +66,9 @@
                         <div class="layui-input-inline">
                             <input type="text" id="name2" name="goods_price" required=""  value="${goodsInfo.goodsPrice}" lay-verify="name" autocomplete="off" class="layui-input"></div>
                     </div>
-                    <div class="layui-form-item">
-                        <label for="name3" class="layui-form-label">
-                            <span class="x-red">*</span>入存数量</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="name3" name="total_number" required=""  value="${goodsInfo.totalNumber}" lay-verify="name" autocomplete="off" class="layui-input"></div>
-                    </div>
+                     
                     
-                    <div class="layui-form-item">
+                    <div class="layui-form-item" style=" margin-left: 50px">
                        
                         <button class="layui-btn" lay-filter="add" lay-submit="" >确认修改</button></div>
                 </form>

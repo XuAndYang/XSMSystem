@@ -168,9 +168,8 @@
     update goods_info
     set goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_type = #{goodsType,jdbcType=VARCHAR},
-      goods_price = #{goodsPrice,jdbcType=DECIMAL},
-      total_number = #{totalNumber,jdbcType=INTEGER}
-	  where goods_id = #{goodsId,jdbcType=INTEGER}
+      goods_price = #{goodsPrice,jdbcType=DECIMAL}
+      where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
   
    <select id="selectPriceByGoodsId" resultType="java.math.BigDecimal" parameterType="java.lang.Integer" >

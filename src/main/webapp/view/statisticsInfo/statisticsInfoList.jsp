@@ -53,37 +53,11 @@
                                  <button type="button" class="layui-btn" style="margin-left:50px"><i class="layui-icon"></i>请输入考勤时间</button>
                                 
                                 <div class="layui-inline layui-show-xs-block" >
-                                   
-                                    <select name="time_year">
-                                    <option selected="selected">请选择年份</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    </select>
-                                    
+                                       <div class="layui-input-inline">
+                            <input type="text" id="time1" name="year_month" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="请输入时间"></div>    
                                 </div>
-                                
-                                  <div class="layui-inline layui-show-xs-block" >
-                                    <select name="time_month">
-                                    <option selected="selected">请选择月份</option>
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                    <option value="4">04</option>
-                                    <option value="6">06</option>
-                                    <option value="7">07</option>
-                                    <option value="8">08</option>
-                                    <option value="9">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    </select>
-                                </div>
-                               
-                                <div class="layui-inline layui-show-xs-block">
-                                
+     
+                                <div class="layui-inline layui-show-xs-block" style="margin-left:50px">
                                  <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>statisticsInfoController/statisticsWork.do';"  lay-filter="sreach" id="btn">
                                  <i class="layui-icon">统计</i></button>
                                 </div>
@@ -91,25 +65,30 @@
                         </div>
                        
                         <div class="layui-card-body layui-table-body layui-table-main" id="show" >
-                            <table class="layui-table layui-form">
+                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test'}" lay-filter="test">
                                 <thead>
                                   <tr>
                                    
-                                     
-                                    <th>销售员工号</th>
-                                    <th>销售员姓名</th>
-                                    <th>统计时间</th>
-                                    <th>出勤数</th>
-                                    <th>加班数</th>
-                                    <th>请假数</th>
-                                    <th>出勤率</th>
+                                    <th lay-data="{type:'checkbox'}"></th>
+                                    <th lay-data="{field:'id2',sort:true}">ID</th>
+                                    <th lay-data="{field:'salemanId',sort:true}">销售员工号</th>
+                                    <th lay-data="{field:'username',sort:true}">销售员姓名</th>
+                                    <th lay-data="{field:'time',sort:true}">统计时间</th>
+                                    <th lay-data="{field:'totalWork',sort:true}">出勤数</th>
+                                    <th lay-data="{field:'totalOver',sort:true}">加班数</th>
+                                    <th lay-data="{field:'totalOff',sort:true}">请假数</th>
+                                    <th lay-data="{field:'attendance',sort:true}">出勤率</th>
                                     
                                     
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
+                                <c:forEach items="${statisticsInfoList }" var="statisticsInfo">
                                   <tr>
+                                  	<td>
+                                      <input type="checkbox" name="id" value="1"   lay-skin="primary"> 
+                                    </td>
+                                    <td>${statisticsInfo.id}</td>
                                     <td>${statisticsInfo.salesmanId }</td>
                                     <td>${statisticsInfo.salesmanName }</td>
                                    <td><fmt:formatDate value="${statisticsInfo.statisticTime }"
@@ -120,29 +99,25 @@
                                     <td>${statisticsInfo.attendance }</td>   
 							      </tr>
                                
-                               
+                                </c:forEach>
                                 
                                   
                                 </tbody>
                             </table>
                         </div>
-                        <div class="layui-card-body ">
-                            <div class="page">
-                                <div>
-                                  <a class="prev" href="">&lt;&lt;</a>
-                                  <a class="num" href="">1</a>
-                                  <span class="current">2</span>
-                                  <a class="num" href="">3</a>
-                                  <a class="num" href="">489</a>
-                                  <a class="next" href="">&gt;&gt;</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div> 
     </body>
+    <script type="text/html" id="toolbarDemo">
+        <div class = "layui-btn-container" > 
+            <button class = "layui-btn layui-btn-sm" onclick="xadmin.open('修改会员信息','<%=basePath%>memberInfoController/updateUI.do?vipId=${member.vipId}',500,650)" href="javascript:;" > 修改选中行数据 </button>
+            <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button > 
+            <button class = "layui-btn layui-btn-sm" lay-event = "isAll" > 验证是否全选</button>
+        </div > 
+    </script>
     <script>
       layui.use(['laydate','form'], function(){
        var laydate = layui.laydate;
@@ -170,7 +145,10 @@
           elem: '#end' //指定元素
         });
 
-
+        laydate.render({
+        	  elem: '#time1'
+        	  ,type: 'month'
+        	});
       });
 
        /*用户-停用*/
@@ -228,4 +206,38 @@
         });
       }
     </script>
+    <script>layui.use('table',
+        function() {
+            var table = layui.table;
+
+            //监听单元格编辑
+            table.on('edit(test)',
+            function(obj) {
+                var value = obj.value //得到修改后的值
+                ,
+                data = obj.data //得到所在行所有键值
+                ,
+                field = obj.field; //得到字段
+                layer.msg('[ID: ' + data.id + '] ' + field + ' 字段更改为：' + value);
+            });
+
+            //头工具栏事件
+            table.on('toolbar(test)',
+            function(obj) {
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+                };
+            });
+        });</script>
 </html>

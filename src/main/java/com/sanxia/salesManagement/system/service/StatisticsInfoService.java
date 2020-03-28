@@ -10,4 +10,6 @@ public interface StatisticsInfoService {
 
 	List<StatisticsInfo> queryStatisticsInfo(Integer id);
 
+	List<StatisticsInfo> queryAllStatisticsInfo();
+
 }

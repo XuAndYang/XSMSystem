@@ -51,38 +51,11 @@
                                  
                                  <button type="button" class="layui-btn" style="margin-left:50px"><i class="layui-icon"></i>请输入盘点时间</button>
                                 
-                                <div class="layui-inline layui-show-xs-block" >
-                                   
-                                    <select name="time_year">
-                                    <option selected="selected">请选择年份</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    </select>
-                                    
-                                </div>
-                                
-                                  <div class="layui-inline layui-show-xs-block" >
-                                    <select name="time_month">
-                                    <option selected="selected">请选择月份</option>
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                    <option value="4">04</option>
-                                    <option value="6">06</option>
-                                    <option value="7">07</option>
-                                    <option value="8">08</option>
-                                    <option value="9">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    </select>
-                                </div>
+                              <div class="layui-input-inline">
+                            <input type="text" id="time1" name="year_month" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="请输入时间"></div>   
                                
                                
-                                <div class="layui-inline layui-show-xs-block">
+                                <div class="layui-inline layui-show-xs-block" style="margin-left:50px">
                                 
                                  <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>inventoryInfoController/inventorySearch.do';"  lay-filter="sreach" >
                                  <i class="layui-icon">盘点库存</i></button>
@@ -91,27 +64,32 @@
                         </div>
                        
                         <div class="layui-card-body layui-table-body layui-table-main">
-                            <table class="layui-table layui-form">
+                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test'}" lay-filter="test">
                                 <thead>
                                   <tr>
                                    
-                                     
-                                    <th>商品编号</th>
-                                    <th>商品名称</th>
-                                    <th>商品进价</th>
-                                    <th>进货总成本</th>
-                                    <th>售出数量</th>
-                                    <th>售出总金额</th>
-                                    <th>总盈利</th>
-                                    <th>剩余库存数</th>
-                                    <th>盘点时间</th>
+                                     <th lay-data="{type:'checkbox'}"></th>
+                                    <th lay-data="{field:'id2',sort:true}">ID</th>
+                                    <th lay-data="{field:'id',sort:true}">商品编号</th>
+                                    <th lay-data="{field:'goodsName',sort:true}">商品名称</th>
+                                    <th lay-data="{field:'purchasePrice',sort:true}">商品进价</th>
+                                    <th lay-data="{field:'purchaseTotalPrice',sort:true}">进货总成本</th>
+                                    <th lay-data="{field:'saleNumber',sort:true}">售出数量</th>
+                                    <th lay-data="{field:'saleTotalPrice',sort:true}">售出总金额</th>
+                                    <th lay-data="{field:'profit',sort:true}">总盈利</th>
+                                    <th lay-data="{field:'remainingNumber',sort:true}">剩余库存数</th>
+                                    <th lay-data="{field:'takeTime',sort:true}">盘点时间</th>
                                     
                                     
                                     </tr>
                                 </thead>
                                 <tbody>
-                                
+                                 <c:forEach items="${inventoryInfoList }" var="inventoryInfo">
                                   <tr>
+                                  <td>
+                                      <input type="checkbox" name="id" value="1"   lay-skin="primary"> 
+                                    </td>
+                                   <td>${inventoryInfo.id }</td>
                                     <td>${inventoryInfo.goodsId }</td>
                                     <td>${inventoryInfo.goodsName }</td>
                                     <td>${inventoryInfo.purchasePrice }</td>
@@ -123,27 +101,23 @@
                                      <td><fmt:formatDate value="${inventoryInfo.takeTime }"
 							          pattern="yyyy-MM" />
 							      </tr>
-                               
+                               </c:forEach>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="layui-card-body ">
-                            <div class="page">
-                                <div>
-                                  <a class="prev" href="">&lt;&lt;</a>
-                                  <a class="num" href="">1</a>
-                                  <span class="current">2</span>
-                                  <a class="num" href="">3</a>
-                                  <a class="num" href="">489</a>
-                                  <a class="next" href="">&gt;&gt;</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div> 
     </body>
+    <script type="text/html" id="toolbarDemo">
+        <div class = "layui-btn-container" > 
+            <button class = "layui-btn layui-btn-sm" onclick="xadmin.open('修改会员信息','<%=basePath%>memberInfoController/updateUI.do?vipId=${member.vipId}',500,650)" href="javascript:;" > 修改选中行数据 </button>
+            <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button > 
+            <button class = "layui-btn layui-btn-sm" lay-event = "isAll" > 验证是否全选</button>
+        </div > 
+    </script>
     <script>
       layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
@@ -170,7 +144,10 @@
         laydate.render({
           elem: '#end' //指定元素
         });
-
+        laydate.render({
+            elem: '#time1', //指定元素
+            type:'month'
+          });
 
       });
 
@@ -229,4 +206,38 @@
         });
       }
     </script>
+      <script>layui.use('table',
+        function() {
+            var table = layui.table;
+
+            //监听单元格编辑
+            table.on('edit(test)',
+            function(obj) {
+                var value = obj.value //得到修改后的值
+                ,
+                data = obj.data //得到所在行所有键值
+                ,
+                field = obj.field; //得到字段
+                layer.msg('[ID: ' + data.id + '] ' + field + ' 字段更改为：' + value);
+            });
+
+            //头工具栏事件
+            table.on('toolbar(test)',
+            function(obj) {
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+                };
+            });
+        });</script>
 </html>

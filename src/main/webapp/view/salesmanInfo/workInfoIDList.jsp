@@ -64,22 +64,22 @@
                             <button class="layui-btn" onclick="xadmin.open('添加用户','<%=basePath%>workInfoController/addUI.do',500,650)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
-                            <table class="layui-table layui-form">
+                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test'}" lay-filter="test">
                                 <thead>
                                   <tr>
-                                    <th>
+                                    <th lay-data="{type:'checkbox'}">
                                       <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                                     </th>
-                                    <th>ID</th>
-                                    <th>销售员工号</th>
-                                    <th>销售员姓名</th>
-                                    <th>日期</th>
-                                    <th>上班打卡</th>
-                                    <th>下班打卡</th>
-                                    <th>迟到</th>
-                                    <th>早退</th>
-                                    <th>缺席</th>
-                                    <th>操作</th>
+                                    <th lay-data="{field:'id2',sort:true}">ID</th>
+                                    <th lay-data="{field:'salemanId',sort:true}">销售员工号</th>
+                                    <th lay-data="{field:'username',sort:true}">销售员姓名</th>
+                                    <th lay-data="{field:'time',sort:true}">日期</th>
+                                    <th lay-data="{field:'startTime',sort:true}">上班打卡</th>
+                                    <th lay-data="{field:'endTime',sort:true}">下班打卡</th>
+                                    <th lay-data="{field:'late',sort:true}">迟到</th>
+                                    <th lay-data="{field:'leaveEarly ',sort:true}">早退</th>
+                                    <th lay-data="{field:'absenteeism',sort:true}">缺席</th>
+                                    
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,18 +101,6 @@
                                     <td>${workInfo.leaveEarly }</td>
                                     <td>${workInfo.absenteeism }</td>
 							    
-                                      <td class="td-manage">
-                                      <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>workInfoController/updateUI.do?id=${workInfo.id}',500,650)" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right:20px">&#xe642;</i>
-                                      </a>
-                                      <a onclick="xadmin.open('分配角色','<%=basePath%>roleController/FPRoleUI.do?userId=${user.userId }',600,400)" title="待用功能" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right:20px">&#xe631;</i>
-                                      </a>
-                                      <a title="删除"  href="<%=basePath%>workInfoController/deleteWorkInfo.do?id=${workInfo.id}"  onclick="return del(1)">
-                                        <i class="layui-icon">&#xe640;</i>
-                                      </a>
-                                      </td>
-                                    
                                   </tr>
                                  </c:forEach>
                                
@@ -121,23 +109,19 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="layui-card-body ">
-                            <div class="page">
-                                <div>
-                                  <a class="prev" href="">&lt;&lt;</a>
-                                  <a class="num" href="">1</a>
-                                  <span class="current">2</span>
-                                  <a class="num" href="">3</a>
-                                  <a class="num" href="">489</a>
-                                  <a class="next" href="">&gt;&gt;</a>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
         </div> 
     </body>
+    <script type="text/html" id="toolbarDemo">
+        <div class = "layui-btn-container" > 
+            <button class = "layui-btn layui-btn-sm" onclick="xadmin.open('修改会员信息','<%=basePath%>memberInfoController/updateUI.do?vipId=${member.vipId}',500,650)" href="javascript:;" > 修改选中行数据 </button>
+            <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button > 
+            <button class = "layui-btn layui-btn-sm" lay-event = "isAll" > 验证是否全选</button>
+        </div > 
+    </script>
     <script>
       layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
@@ -223,4 +207,38 @@
         });
       }
     </script>
+    <script>layui.use('table',
+        function() {
+            var table = layui.table;
+
+            //监听单元格编辑
+            table.on('edit(test)',
+            function(obj) {
+                var value = obj.value //得到修改后的值
+                ,
+                data = obj.data //得到所在行所有键值
+                ,
+                field = obj.field; //得到字段
+                layer.msg('[ID: ' + data.id + '] ' + field + ' 字段更改为：' + value);
+            });
+
+            //头工具栏事件
+            table.on('toolbar(test)',
+            function(obj) {
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+                };
+            });
+        });</script>
 </html>

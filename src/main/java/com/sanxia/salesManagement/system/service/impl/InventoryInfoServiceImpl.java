@@ -1,5 +1,7 @@
 package com.sanxia.salesManagement.system.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,13 @@ public class InventoryInfoServiceImpl implements InventoryInfoService {
 	public int insertInventoryInfo(InventoryInfo i) {
 		// TODO Auto-generated method stub
 		return inventoryInfoMapper.insertInventoryInfo(i);
+	}
+
+
+	@Override
+	public List<InventoryInfo> queryAllInventoryInfo() {
+		// TODO Auto-generated method stub
+		return inventoryInfoMapper.queryAllInventoryInfo();
 	}
 
 }

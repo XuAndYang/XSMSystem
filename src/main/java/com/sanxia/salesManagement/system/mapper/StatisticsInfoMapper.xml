@@ -142,4 +142,10 @@
     from statistics_info
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+   <select id="queryAllStatisticsInfo" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from statistics_info
+    </select>
 </mapper>

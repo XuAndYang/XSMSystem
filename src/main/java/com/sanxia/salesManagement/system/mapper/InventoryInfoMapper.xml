@@ -163,4 +163,11 @@
       #{saleTotalPrice,jdbcType=DECIMAL}, #{profit,jdbcType=DECIMAL}, #{remainingNumber,jdbcType=INTEGER}, 
       #{takeTime,jdbcType=DATE})
   </insert>
+  
+  <select id="queryAllInventoryInfo" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from inventory_info
+    
+  </select>
 </mapper>

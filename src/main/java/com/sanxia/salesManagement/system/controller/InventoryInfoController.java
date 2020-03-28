@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sanxia.salesManagement.system.model.InventoryInfo;
+import com.sanxia.salesManagement.system.model.StatisticsInfo;
 import com.sanxia.salesManagement.system.service.GoodsInfoService;
 import com.sanxia.salesManagement.system.service.InventoryInfoService;
 import com.sanxia.salesManagement.system.service.SupplierGoodsService;
@@ -39,7 +41,8 @@ public class InventoryInfoController {
 	@RequestMapping(value = "inventoryInfolist.do")
 	public String list(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model)
 			throws ServletException, IOException {
-
+		List<InventoryInfo> inventoryInfoList = inventoryInfoService.queryAllInventoryInfo(); // 查询所有的商品信息数据
+		model.addAttribute("inventoryInfoList", inventoryInfoList); // 数据返回前端
 		return "view/inventoryInfo/inventoryInfoList";
 
 	}
@@ -49,14 +52,10 @@ public class InventoryInfoController {
 	public String inventorySearch(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model)
 			throws ServletException, IOException, ParseException {
 		String goods_idStr = req.getParameter("goods_id");
-
-		// 获取年份
-		String time_yearStr = req.getParameter("time_year");
-
 		// 获取月份
-		String time_monthStr = req.getParameter("time_month");
+		String year_monthStr = req.getParameter("year_month");
 
-		if (goods_idStr != "" && time_yearStr != "" && time_monthStr != "") {
+		if (goods_idStr != "" && year_monthStr != "") {
 
 			int goods_id = Integer.parseInt(goods_idStr);
 			// 得到商品的名字
@@ -64,15 +63,15 @@ public class InventoryInfoController {
 			if (goods_name != null) {
 
 				// 得到开始时间
-				String start_timeStr = time_yearStr + "-" + time_monthStr + "-" + "01";
+				String start_timeStr = year_monthStr + "-" + "01";
 				Date start_time = new SimpleDateFormat("yyyy-MM-dd").parse(start_timeStr);
 
 				// 得到结束时间
-				String end_timeStr = time_yearStr + "-" + time_monthStr + "-" + "31";
+				String end_timeStr = year_monthStr + "-" + "31";
 				Date end_time = new SimpleDateFormat("yyyy-MM-dd").parse(end_timeStr);
 
 				// 得到盘点时间
-				String takeTime = time_yearStr + "-" + time_monthStr;
+				String takeTime = year_monthStr;
 				Date take_time = new SimpleDateFormat("yyyy-MM").parse(takeTime);
 
 				// 查询供应单价和数量
@@ -115,17 +114,25 @@ public class InventoryInfoController {
 
 				int n = inventoryInfoService.insertInventoryInfo(i);
 
-				model.addAttribute("inventoryInfo", i);
+				List<InventoryInfo> inventoryInfoList = inventoryInfoService.queryAllInventoryInfo(); // 查询所有的商品信息数据
+				model.addAttribute("inventoryInfoList", inventoryInfoList); // 数据返回前端
 				return "view/inventoryInfo/inventoryInfoList";
+
 
 			} else {
 
+				List<InventoryInfo> inventoryInfoList = inventoryInfoService.queryAllInventoryInfo(); // 查询所有的商品信息数据
+				model.addAttribute("inventoryInfoList", inventoryInfoList); // 数据返回前端
 				return "view/inventoryInfo/inventoryInfoList";
+
 			}
 
 		} else {
 
+			List<InventoryInfo> inventoryInfoList = inventoryInfoService.queryAllInventoryInfo(); // 查询所有的商品信息数据
+			model.addAttribute("inventoryInfoList", inventoryInfoList); // 数据返回前端
 			return "view/inventoryInfo/inventoryInfoList";
+
 		}
 
 	}

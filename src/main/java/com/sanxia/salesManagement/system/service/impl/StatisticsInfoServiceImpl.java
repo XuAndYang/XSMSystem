@@ -26,4 +26,10 @@ public class StatisticsInfoServiceImpl implements StatisticsInfoService {
 		return statisticsInfoMapper.queryStatisticsInfo(id);
 	}
 
+	@Override
+	public List<StatisticsInfo> queryAllStatisticsInfo() {
+		// TODO Auto-generated method stub
+		return statisticsInfoMapper.queryAllStatisticsInfo();
+	}
+
 }

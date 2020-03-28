@@ -40,12 +40,7 @@
                         <div class="layui-input-inline">
                             <input type="text" value="${supplierGoods.supplierId}" id="name" name="supplier_id" required="" lay-verify="name" autocomplete="off" class="layui-input"></div>
                      </div>                 
-                    <div class="layui-form-item">
-                        <label for="login_name1" class="layui-form-label">
-                            <span class="x-red"></span>商品ID</label>
-                        <div class="layui-input-inline">
-                            <input type="text"  readonly value="${supplierGoods.goodsId}" id="login_name1" name="goods_id" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
-                    </div>
+                    
                    
                     
                      <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">

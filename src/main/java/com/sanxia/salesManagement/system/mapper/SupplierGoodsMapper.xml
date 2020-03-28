@@ -180,9 +180,6 @@
     <update id="UpdateSupplierGoodsIndoBy_id" parameterType="com.sanxia.salesManagement.system.model.SupplierGoods" >
     update supplier_goods
     set supplier_id = #{supplierId,jdbcType=INTEGER},
-      goods_id = #{goodsId,jdbcType=INTEGER},
-      goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_type = #{goodsType,jdbcType=VARCHAR},
       supply_time = #{supplyTime,jdbcType=DATE},
       supply_price = #{supplyPrice,jdbcType=DECIMAL},
       number = #{number,jdbcType=INTEGER}

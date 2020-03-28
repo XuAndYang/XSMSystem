@@ -48,20 +48,16 @@
                             <input class="layui-input"  autocomplete="off" placeholder="请输入日期" name="time" value="<fmt:formatDate value='${workInfo.time}' type='date' pattern='yyyy-MM-dd'/>" id="start" style="width:190px">
                      </div>
                     
-                     <div class="layui-form-item">
-                        <label for="login_name2" class="layui-form-label">
+                      <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">
+                      <label for="login_name3" class="layui-form-label">
                             <span class="x-red"></span>上班打卡</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="login_name2" name="start_time" value="<fmt:formatDate value='${workInfo.startTime}' type='date' pattern='HH:mm:ss'/>" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" ></div>
-                    </div>
-                    
-                     <div class="layui-form-item">
-                        <label for="login_name2" class="layui-form-label">
+                            <input class="layui-input"  autocomplete="off" placeholder="请输入日期" name="start_time" id="time1" style="width:190px" value="<fmt:formatDate value='${workInfo.startTime}' type='date' pattern='HH:mm:ss'/>">
+                     </div>
+                     <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">
+                      <label for="login_name3" class="layui-form-label">
                             <span class="x-red"></span>下班打卡</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="login_name2" name="end_time" value="<fmt:formatDate value='${workInfo.endTime}' type='date' pattern='HH:mm:ss'/>" required="" lay-verify="login_name2" autocomplete="off" class="layui-input"  ></div>
-                    </div>
-                      
+                            <input class="layui-input"  autocomplete="off" placeholder="请输入日期" name="end_time" id="time2" style="width:190px" value="<fmt:formatDate value='${workInfo.endTime}' type='date' pattern='HH:mm:ss'/>">
+                     </div>
                     <div class="layui-form-item">
                         <label for="repassword1" class="layui-form-label"></label>
                         <button class="layui-btn" lay-filter="add" lay-submit="" >修改</button></div>
@@ -94,7 +90,14 @@
             laydate.render({
               elem: '#end' //指定元素
             });
-
+            laydate.render({
+          	  elem: '#time1'
+          	  ,type: 'time'
+          	});
+          laydate.render({
+        	  elem: '#time2'
+        	  ,type: 'time'
+        	});
 
           });
         

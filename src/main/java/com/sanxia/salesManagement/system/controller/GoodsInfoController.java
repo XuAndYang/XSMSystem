@@ -58,8 +58,8 @@ public class GoodsInfoController {
 		String type = req.getParameter("goods_type");
 		String price_str = req.getParameter("goods_price");
 		BigDecimal price = new BigDecimal(price_str);
-		String number_str = req.getParameter("total_number");
-		int number = Integer.parseInt(number_str);
+		 
+		int number = 0;
 //添加时，余量等于总量		
 		int remaining = number;
 //		Date create_time = new SimpleDateFormat("yyyy-MM-dd").parse(time);
@@ -159,14 +159,13 @@ public class GoodsInfoController {
 		String type = req.getParameter("goods_type");
 		String price_str = req.getParameter("goods_price");
 		BigDecimal price = new BigDecimal(price_str);
-		String number_str = req.getParameter("total_number");
-		int number = Integer.parseInt(number_str);
+		
 
 		GoodsInfo g = new GoodsInfo();
 		g.setGoodsName(name);
 		g.setGoodsType(type);
 		g.setGoodsPrice(price);
-		g.setTotalNumber(number);
+		
 
 		g.setGoodsId(id);
 

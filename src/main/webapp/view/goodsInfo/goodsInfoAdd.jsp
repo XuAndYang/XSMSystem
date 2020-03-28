@@ -62,12 +62,7 @@
                         <div class="layui-input-inline">
                             <input type="text" id="password" name="goods_price" required=""  autocomplete="off" class="layui-input" ></div>
                         </div>
-                    <div class="layui-form-item">
-                        <label for="repassword" class="layui-form-label">
-                            <span class="x-red">*</span>总数</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="repassword" name="total_number" required=""  autocomplete="off" class="layui-input"></div>
-                    </div>
+                    
                     
                     <div class="layui-form-item">
                         <label for="repassword" class="layui-form-label"></label>

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sanxia.salesManagement.system.model.ChangeInfo;
 import com.sanxia.salesManagement.system.model.StatisticsInfo;
 import com.sanxia.salesManagement.system.service.OffInfoService;
 import com.sanxia.salesManagement.system.service.OverInfoService;
@@ -44,6 +45,9 @@ public class StatisticsInfoController {
 	@RequestMapping(value = "statisticsInfolist.do")
 	public String list(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model)
 			throws ServletException, IOException {
+		
+		List<StatisticsInfo> statisticsInfoList = statisticsInfoService.queryAllStatisticsInfo(); // 查询所有的商品信息数据
+		model.addAttribute("statisticsInfoList", statisticsInfoList); // 数据返回前端
 
 		return "view/statisticsInfo/statisticsInfoList";
 
@@ -55,14 +59,10 @@ public class StatisticsInfoController {
 			throws ServletException, IOException, ParseException {
 		// 获取员工id
 		String salesman_idStr = req.getParameter("salesman_id");
-
-		// 获取年份
-		String time_yearStr = req.getParameter("time_year");
-
-		// 获取月份
-		String time_monthStr = req.getParameter("time_month");
+		// 获取时间
+		String year_monthStr = req.getParameter("year_month");
 		// 查询条件不能为空
-		if (salesman_idStr != "" && time_yearStr != "" && time_monthStr != "") {
+		if (salesman_idStr != "" && year_monthStr != "") {
 
 			int salesman_id = Integer.parseInt(salesman_idStr);
 			// 销售员姓名
@@ -70,15 +70,15 @@ public class StatisticsInfoController {
 
 			if (salesman_name != null) {
 				// 得到开始时间
-				String start_timeStr = time_yearStr + "-" + time_monthStr + "-" + "01";
+				String start_timeStr = year_monthStr + "-" + "01";
 				Date start_time = new SimpleDateFormat("yyyy-MM-dd").parse(start_timeStr);
 
 				// 得到结束时间
-				String end_timeStr = time_yearStr + "-" + time_monthStr + "-" + "31";
+				String end_timeStr = year_monthStr + "-" + "31";
 				Date end_time = new SimpleDateFormat("yyyy-MM-dd").parse(end_timeStr);
 
 				// 得到考勤时间
-				String statisticTime = time_yearStr + "-" + time_monthStr;
+				String statisticTime = year_monthStr;
 				Date statistic_time = new SimpleDateFormat("yyyy-MM").parse(statisticTime);
 
 				// 查询在这个时间范围内指定工号的出勤天数
@@ -126,14 +126,22 @@ public class StatisticsInfoController {
 				s.setTotalWork(total_work);
 
 				int i = statisticsInfoService.insertStatisticsInfo(s);
-				model.addAttribute("statisticsInfo", s);
+				List<StatisticsInfo> statisticsInfoList = statisticsInfoService.queryAllStatisticsInfo(); // 查询所有的商品信息数据
+				model.addAttribute("statisticsInfoList", statisticsInfoList); // 数据返回前端
+
 				return "view/statisticsInfo/statisticsInfoList";
 
 			} else {
+				List<StatisticsInfo> statisticsInfoList = statisticsInfoService.queryAllStatisticsInfo(); // 查询所有的商品信息数据
+				model.addAttribute("statisticsInfoList", statisticsInfoList); // 数据返回前端
+
 				return "view/statisticsInfo/statisticsInfoList";
 			}
 
 		} else {
+			List<StatisticsInfo> statisticsInfoList = statisticsInfoService.queryAllStatisticsInfo(); // 查询所有的商品信息数据
+			model.addAttribute("statisticsInfoList", statisticsInfoList); // 数据返回前端
+
 			return "view/statisticsInfo/statisticsInfoList";
 		}
 	}

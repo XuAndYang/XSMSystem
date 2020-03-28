@@ -58,7 +58,7 @@
                         </div>
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('添加用户','<%=basePath%>offInfoController/addUI.do',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('添加用户','<%=basePath%>offInfoController/addUI.do',600,650)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
@@ -94,7 +94,7 @@
                                    <td>${offInfo.totalDays }</td>
                                     <td>${offInfo.reason}</td>
                                       <td>
-                                      <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>offInfoController/updateUI.do?id=${offInfo.id}',600,400)" href="javascript:;">
+                                      <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>offInfoController/updateUI.do?id=${offInfo.id}',600,650)" href="javascript:;">
                                         <i class="layui-icon" style="margin-right:20px">&#xe642;</i>
                                       </a>
                                       <a onclick="xadmin.open('分配角色','<%=basePath%>roleController/FPRoleUI.do?userId=${user.userId }',600,400)" title="待用功能" href="javascript:;">

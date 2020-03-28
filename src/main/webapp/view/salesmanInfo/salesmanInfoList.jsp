@@ -61,19 +61,19 @@
                             <button class="layui-btn" onclick="xadmin.open('添加用户','<%=basePath%>salesmanInfoController/addUI.do',500,650)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
-                            <table class="layui-table layui-form">
+                            <table class="layui-table layui-form" >
                                 <thead>
                                   <tr>
-                                    <th>
+                                    <th >
                                       <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                                     </th>
-                                    <th>ID</th>
-                                    <th>姓名</th>
-                                    <th>性别</th>
-                                    <th>年龄</th>
-                                    <th>电话号码</th>
-                                    <th>入职时间</th>
-                                    <th>操作</th>
+                                    <th >ID</th>
+                                    <th >姓名</th>
+                                    <th >性别</th>
+                                    <th >年龄</th>
+                                    <th >电话号码</th>
+                                    <th >入职时间</th>
+                                    <th >操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -111,7 +111,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="layui-card-body ">
+                       <div class="layui-card-body ">
                             <div class="page">
                                 <div>
                                   <a class="prev" href="">&lt;&lt;</a>
@@ -128,6 +128,11 @@
             </div>
         </div> 
     </body>
+   
+    <script type="text/html" id="switchTpl">
+        <!-- 这里的checked的状态只是演示 -->
+        <input type = "checkbox" name = "sex" value = "{{d.id}}" lay-skin = "switch"lay-text = "女|男" lay-filter = "sexDemo" {{ d.id == 10003 ? 'checked': ''}} >
+    </script>
     <script>
       layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
@@ -221,4 +226,5 @@
         });
       }
     </script>
+     
 </html>
