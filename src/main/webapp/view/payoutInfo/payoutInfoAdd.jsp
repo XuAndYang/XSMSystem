@@ -58,13 +58,15 @@
                             </div>
                         </div>
                         
-                        <div class="layui-form-item">
-                        <label for="name" class="layui-form-label">
-                            <span class="x-red">*</span>用途</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="name" name="use_ways" required="" lay-verify="name" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
+                        
+                         <div class="layui-form-item layui-form-text">
+						<label for="desc" class="layui-form-label">
+					 		<span class="x-red">*</span>用途 </label>
+						<div class="layui-input-block">
+							<textarea placeholder="请输入内容" id="desc" name="use_ways"
+							class="layui-textarea"></textarea>
+						</div>
+				      </div>
                     
                     
                     <div class="layui-form-item">

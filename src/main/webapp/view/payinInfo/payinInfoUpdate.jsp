@@ -59,13 +59,14 @@
                             </div>
                         </div>
                         
-                        <div class="layui-form-item">
-                        <label for="name" class="layui-form-label">
-                            <span class="x-red">*</span>收入来源</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="name" name="origin" value="${payinInfo.origin }" required="" lay-verify="name" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
+                        
+                         <div class="layui-form-item layui-form-text">
+						<label for="desc" class="layui-form-label">
+					 		<span class="x-red">*</span>收入来源 </label>
+						<div class="layui-input-block">
+							<textarea   id="desc" name="origin" class="layui-textarea">${payinInfo.origin }</textarea>
+						</div>
+				      </div>
                     
                     <div class="layui-form-item">
                         <label for="repassword1" class="layui-form-label"></label>
