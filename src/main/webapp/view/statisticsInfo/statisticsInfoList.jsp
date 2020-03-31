@@ -42,41 +42,60 @@
                 <div class="layui-col-md12">
                     <div class="layui-card">
                         <div class="layui-card-body ">
-                            <form class="layui-form layui-col-space5">
-                                 <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入销售员工号</button>
+                            <form class="layui-form layui-col-space5" >
+                                 <button type="button" class="layui-btn layui-btn-warm"><i class="layui-icon"></i>统计员工考勤记录</button>
                                  
-                                <div class="layui-inline layui-show-xs-block" >
+                                <div class="layui-inline layui-show-xs-block" style="margin-left:40px">
                                     <input type="text" name="salesman_id"  placeholder="请输入销售员工号" autocomplete="off" class="layui-input" >
                                 </div>
                                 
                                 
-                                 <button type="button" class="layui-btn" style="margin-left:50px"><i class="layui-icon"></i>请输入考勤时间</button>
-                                
                                 <div class="layui-inline layui-show-xs-block" >
                                        <div class="layui-input-inline">
-                            <input type="text" id="time1" name="year_month" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="请输入时间"></div>    
+                            <input type="text" id="time1" name="year_month" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="请输入月份"></div>    
                                 </div>
      
-                                <div class="layui-inline layui-show-xs-block" style="margin-left:50px">
-                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>statisticsInfoController/statisticsWork.do';"  lay-filter="sreach" id="btn">
+                                <div class="layui-inline layui-show-xs-block" >
+                                 <button class="layui-btn layui-btn-warm"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>statisticsInfoController/statisticsWork.do';"  lay-filter="sreach" id="btn">
                                  <i class="layui-icon">统计</i></button>
                                 </div>
                             </form>
+                            
+                             <form class="layui-form layui-col-space5" style="margin-top: 20px">
+                                 <button type="button" class="layui-btn "><i class="layui-icon"></i>请输入搜索的条件</button>
+                                 
+                                <div class="layui-inline layui-show-xs-block" style="margin-left:40px">
+                                    <input type="text" name="salesman_id2"  placeholder="请输入销售员工号" autocomplete="off" class="layui-input" >
+                                </div>
+                                 
+                                
+                                <div class="layui-inline layui-show-xs-block" >
+                                       <div class="layui-input-inline">
+                            <input type="text" id="time2" name="year_time" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="请输入年月范围"></div>    
+                                </div>
+     
+                                <div class="layui-inline layui-show-xs-block">
+                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>statisticsInfoController/searchInfo.do';"  lay-filter="sreach" id="btn">
+                                 <i class="layui-icon">搜索</i></button>
+                                </div>
+                            </form>
+                            
+                             
                         </div>
                        
                         <div class="layui-card-body layui-table-body layui-table-main" id="show" >
-                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test'}" lay-filter="test">
+                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test',totalRow: true}" lay-filter="test">
                                 <thead>
                                   <tr>
                                    
                                     <th lay-data="{type:'checkbox'}"></th>
-                                    <th lay-data="{field:'id2',sort:true}">ID</th>
+                                    <th lay-data="{field:'id2',sort:true,totalRowText: '合计'}">ID</th>
                                     <th lay-data="{field:'salemanId',sort:true}">销售员工号</th>
                                     <th lay-data="{field:'username',sort:true}">销售员姓名</th>
                                     <th lay-data="{field:'time',sort:true}">统计时间</th>
-                                    <th lay-data="{field:'totalWork',sort:true}">出勤数</th>
-                                    <th lay-data="{field:'totalOver',sort:true}">加班数</th>
-                                    <th lay-data="{field:'totalOff',sort:true}">请假数</th>
+                                    <th lay-data="{field:'totalWork',sort:true,totalRow: true}">出勤数</th>
+                                    <th lay-data="{field:'totalOver',sort:true,totalRow: true}">加班数</th>
+                                    <th lay-data="{field:'totalOff',sort:true,totalRow: true}">请假数</th>
                                     <th lay-data="{field:'attendance',sort:true}">出勤率</th>
                                     
                                     
@@ -148,6 +167,13 @@
         laydate.render({
         	  elem: '#time1'
         	  ,type: 'month'
+        	  ,theme: '#FFB90F'
+        	});
+        
+        laydate.render({
+        	  elem: '#time2'
+        	  ,type: 'month'
+        	  ,range: true
         	});
       });
 
@@ -185,10 +211,7 @@
 			}
 		}
 
-		
-
-
-
+		 
       function delAll (argument) {
         var ids = [];
 

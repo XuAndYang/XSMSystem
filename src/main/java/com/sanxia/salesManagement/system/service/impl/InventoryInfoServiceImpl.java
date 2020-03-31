@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,13 @@ public class InventoryInfoServiceImpl implements InventoryInfoService {
 	public List<InventoryInfo> queryAllInventoryInfo() {
 		// TODO Auto-generated method stub
 		return inventoryInfoMapper.queryAllInventoryInfo();
+	}
+
+
+	@Override
+	public List<InventoryInfo> queryInventoryInfoByYear(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return inventoryInfoMapper.queryInventoryInfoByYear(map);
 	}
 
 }

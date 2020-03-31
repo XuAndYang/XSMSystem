@@ -57,14 +57,15 @@
                         <div class="layui-input-inline">
                             <input type="text" id="time2" name="end_time" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="请输入时间"></div>
                     </div>
-                    
-                    <div class="layui-form-item">
-                        <label for="login_name1" class="layui-form-label">
-                            <span class="x-red"></span>请假原因</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="login_name1" name="reason" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
-          
-                    </div>
+                 
+                     <div class="layui-form-item layui-form-text">
+						<label for="desc" class="layui-form-label">
+					 		<span class="x-red">*</span>请假原因 </label>
+						<div class="layui-input-block">
+							<textarea placeholder="请输入内容" id="desc" name="reason"
+							class="layui-textarea"></textarea>
+						</div>
+				      </div>
                       
                     <div class="layui-form-item">
                         <label for="repassword1" class="layui-form-label"></label>

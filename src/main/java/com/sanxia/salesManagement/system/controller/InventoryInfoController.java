@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sanxia.salesManagement.system.model.GoodsInfo;
 import com.sanxia.salesManagement.system.model.InventoryInfo;
 import com.sanxia.salesManagement.system.model.StatisticsInfo;
 import com.sanxia.salesManagement.system.service.GoodsInfoService;
@@ -136,5 +137,48 @@ public class InventoryInfoController {
 		}
 
 	}
+	
+	//查询一年内的考勤记录
+		@RequestMapping(value = "searchInfo.do")
+		public String searchInfo(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model,
+				GoodsInfo goodsInfo) throws ServletException, IOException, ParseException {
+
+			String goods_idStr = req.getParameter("goods_id2");
+			
+			String year_timeStr = req.getParameter("year_time");
+
+			if (goods_idStr != "" && year_timeStr!="") {
+				int goods_id = Integer.parseInt(goods_idStr);
+				
+				//截取时间字符串
+				String startStr = year_timeStr.substring(0, 7);
+				String endStr = year_timeStr.substring(10);
+				
+				// 得到开始时间
+				String start_timeStr = startStr  + "-" + "01";
+				Date start_time = new SimpleDateFormat("yyyy-MM-dd").parse(start_timeStr);
+
+				// 得到结束时间
+				String end_timeStr = endStr + "-" + "31";
+				Date end_time = new SimpleDateFormat("yyyy-MM-dd").parse(end_timeStr);
+				//查询
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put("goodsIdSearch", goods_id);
+				map.put("startTimeSearch", start_time);
+				map.put("endTimeSearch", end_time);
+				
+				List<InventoryInfo> inventoryInfoList = inventoryInfoService.queryInventoryInfoByYear(map); // 查询所有的商品信息数据
+				model.addAttribute("inventoryInfoList", inventoryInfoList); // 数据返回前端
+				return "view/inventoryInfo/inventoryInfoList";
+				
+			} else {
+				// 重新返回主页
+				List<InventoryInfo> inventoryInfoList = inventoryInfoService.queryAllInventoryInfo(); // 查询所有的商品信息数据
+				model.addAttribute("inventoryInfoList", inventoryInfoList); // 数据返回前端
+				return "view/inventoryInfo/inventoryInfoList";
+
+			}
+		 
+		}
 
 }

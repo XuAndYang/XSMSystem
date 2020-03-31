@@ -168,6 +168,14 @@
     select 
     <include refid="Base_Column_List" />
     from inventory_info
-    
+  </select>
+  
+  
+   <select id="queryInventoryInfoByYear" resultMap="BaseResultMap" parameterType="Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from inventory_info
+    where goods_id=#{goodsIdSearch} 
+    AND take_time BETWEEN #{startTimeSearch} AND #{endTimeSearch}
   </select>
 </mapper>

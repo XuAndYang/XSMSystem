@@ -20,7 +20,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sanxia.salesManagement.system.model.ChangeInfo;
+import com.sanxia.salesManagement.system.model.GoodsInfo;
 import com.sanxia.salesManagement.system.model.StatisticsInfo;
+import com.sanxia.salesManagement.system.model.TradeFinish;
 import com.sanxia.salesManagement.system.service.OffInfoService;
 import com.sanxia.salesManagement.system.service.OverInfoService;
 import com.sanxia.salesManagement.system.service.SalesmanInfoService;
@@ -144,6 +146,50 @@ public class StatisticsInfoController {
 
 			return "view/statisticsInfo/statisticsInfoList";
 		}
+	}
+	
+//查询一年内的考勤记录
+	@RequestMapping(value = "searchInfo.do")
+	public String searchInfo(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model,
+			GoodsInfo goodsInfo) throws ServletException, IOException, ParseException {
+
+		String salesman_idStr = req.getParameter("salesman_id2");
+		
+		String year_timeStr = req.getParameter("year_time");
+
+		if (salesman_idStr != "" && year_timeStr!="") {
+			int salesman_id = Integer.parseInt(salesman_idStr);
+			//截取时间字符串
+			String startStr = year_timeStr.substring(0, 7);
+			String endStr = year_timeStr.substring(10);
+			
+			// 得到开始时间
+			String start_timeStr = startStr  + "-" + "01";
+			Date start_time = new SimpleDateFormat("yyyy-MM-dd").parse(start_timeStr);
+
+			// 得到结束时间
+			String end_timeStr = endStr + "-" + "31";
+			Date end_time = new SimpleDateFormat("yyyy-MM-dd").parse(end_timeStr);
+			//查询
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("salesmanIdSearch", salesman_id);
+			map.put("startTimeSearch", start_time);
+			map.put("endTimeSearch", end_time);
+			List<StatisticsInfo> statisticsInfoList = statisticsInfoService.queryStatisticsInfoByYear(map);
+			model.addAttribute("statisticsInfoList", statisticsInfoList); // 数据返回前端
+
+			return "view/statisticsInfo/statisticsInfoList";
+			
+		} else {
+			// 重新返回主页
+
+			List<StatisticsInfo> statisticsInfoList = statisticsInfoService.queryAllStatisticsInfo(); // 查询所有的商品信息数据
+			model.addAttribute("statisticsInfoList", statisticsInfoList); // 数据返回前端
+
+			return "view/statisticsInfo/statisticsInfoList";
+
+		}
+	 
 	}
 
 }

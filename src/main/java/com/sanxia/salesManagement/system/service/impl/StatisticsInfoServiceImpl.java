@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,12 @@ public class StatisticsInfoServiceImpl implements StatisticsInfoService {
 	public List<StatisticsInfo> queryAllStatisticsInfo() {
 		// TODO Auto-generated method stub
 		return statisticsInfoMapper.queryAllStatisticsInfo();
+	}
+
+	@Override
+	public List<StatisticsInfo> queryStatisticsInfoByYear(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return statisticsInfoMapper.queryStatisticsInfoByYear(map);
 	}
 
 }

@@ -56,13 +56,14 @@
                         <div class="layui-input-inline">
                             <input type="text" id="time2" name="end_time" value="<fmt:formatDate value='${offInfo.endTime}' type='date' pattern='yyyy-MM-dd HH:mm:ss'/>" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" ></div>
                     </div>
-                    
-                     <div class="layui-form-item">
-                        <label for="login_name1" class="layui-form-label">
-                            <span class="x-red"></span>请假原因</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="login_name1" name="reason"  value="${offInfo.reason }" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
-           			 </div>
+           			 
+           			 <div class="layui-form-item layui-form-text">
+						<label for="desc" class="layui-form-label">
+					 		<span class="x-red">*</span>请假原因 </label>
+						<div class="layui-input-block">
+							<textarea  id="desc" name="reason"  class="layui-textarea">${offInfo.reason }</textarea>
+						</div>
+				      </div>
                       
                     <div class="layui-form-item">
                         <label for="repassword1" class="layui-form-label"></label>

@@ -93,16 +93,16 @@
                                       <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
                                     <td class="td-manage">
                                        <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
-                                         <i class="layui-icon" style="margin-right: 30px">&#xe601;</i>
+                                         <i class="layui-icon" style="margin-right: 30px ;font-size: 20px">&#xe601;</i>
                                      </a>
                                       <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>userController/updateUI.do?userId=${user.userId}',500,650)" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe642;</i>
+                                        <i class="layui-icon layui-icon-form" style="margin-right: 30px;font-size: 20px"></i>
                                       </a>
                                       <a onclick="xadmin.open('分配角色','<%=basePath%>roleController/FPRoleUI.do?userId=${user.userId }',600,400)" title="分配角色" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
+                                        <i class="layui-icon layui-icon-set-fill" style="margin-right: 30px ;font-size: 20px"> </i>
                                       </a>
                                       <a title="删除"  href="<%=basePath%>userController/deleteUser.do?userId=${user.userId}"  onclick="return del(1)">
-                                        <i class="layui-icon">&#xe640;</i>
+                                        <i class="layui-icon" style="font-size: 23px">&#xe640;</i>
                                       </a>
                                     </td>
                                   </tr>

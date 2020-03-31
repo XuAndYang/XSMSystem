@@ -148,4 +148,13 @@
     <include refid="Base_Column_List" />
     from statistics_info
     </select>
+    
+    
+    <select id="queryStatisticsInfoByYear" resultMap="BaseResultMap" parameterType="Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from statistics_info
+    where salesman_id=#{salesmanIdSearch} 
+    AND statistic_time BETWEEN #{startTimeSearch} AND #{endTimeSearch}
+  </select>
 </mapper>

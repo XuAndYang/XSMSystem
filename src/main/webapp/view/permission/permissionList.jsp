@@ -91,13 +91,13 @@
                                     <td class="td-manage">
                                       
                                       <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>permissionController/updateUI.do?permissionId=${permission.permissionId}',600,400)" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe642;</i>
+                                        <i class="layui-icon layui-icon-form" style="margin-right: 40px;font-size: 20px"></i>
                                       </a>
                                       <a onclick="xadmin.open('待用功能','',600,400)" title="待用功能" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
+                                        <i class="layui-icon" style="margin-right: 40px ;font-size: 20px">&#xe631;</i>
                                       </a>
                                       <a title="删除"  href="<%=basePath%>permissionController/deletePermission.do?permissionId=${permission.permissionId}"  onclick="return del(1)">
-                                        <i class="layui-icon">&#xe640;</i>
+                                        <i class="layui-icon" style="font-size: 23px">&#xe640;</i>
                                       </a>
                                     </td>
                                   </tr>

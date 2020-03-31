@@ -93,13 +93,13 @@
                                     <td class="td-manage">
                                       
                                       <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>salesmanInfoController/updateUI.do?salesmanId=${salesmanInfo.salesmanId}',500,650)" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe642;</i>
+                                        <i class="layui-icon layui-icon-form" style="margin-right: 40px ;font-size: 20px"> </i>
                                       </a>
                                       <a href="<%=basePath%>salesmanInfoController/selectWorkInfo.do?salesmanId=${salesmanInfo.salesmanId}" title="查看考勤信息" >
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
+                                        <i class="layui-icon" style="margin-right: 40px ;font-size: 20px">&#xe631;</i>
                                       </a>
                                       <a title="删除"  href="<%=basePath%>salesmanInfoController/deleteSalesmanInfo.do?salesmanId=${salesmanInfo.salesmanId}"  onclick="return del(1)">
-                                        <i class="layui-icon">&#xe640;</i>
+                                        <i class="layui-icon"  style="font-size: 23px">&#xe640;</i>
                                       </a>
                                     </td>
                                   </tr>

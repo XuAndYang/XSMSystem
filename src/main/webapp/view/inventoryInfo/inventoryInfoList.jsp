@@ -43,41 +43,56 @@
                     <div class="layui-card">
                         <div class="layui-card-body ">
                             <form class="layui-form layui-col-space5">
-                                 <button type="button" class="layui-btn"><i class="layui-icon"></i>请输入商品编号</button>
+                                 <button type="button" class="layui-btn layui-btn-warm"><i class="layui-icon"></i>盘点商品库存</button>
                                  
-                                <div class="layui-inline layui-show-xs-block" >
+                                <div class="layui-inline layui-show-xs-block" style="margin-left:40px">
                                     <input type="text" name="goods_id"  placeholder="请输入商品编号" autocomplete="off" class="layui-input" >
                                 </div>
                                  
-                                 <button type="button" class="layui-btn" style="margin-left:50px"><i class="layui-icon"></i>请输入盘点时间</button>
-                                
                               <div class="layui-input-inline">
-                            <input type="text" id="time1" name="year_month" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="请输入时间"></div>   
+                            <input type="text" id="time1" name="year_month" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="请输入月份"></div>   
                                
-                               
-                                <div class="layui-inline layui-show-xs-block" style="margin-left:50px">
+                                <div class="layui-inline layui-show-xs-block" >
                                 
-                                 <button class="layui-btn"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>inventoryInfoController/inventorySearch.do';"  lay-filter="sreach" >
-                                 <i class="layui-icon">盘点库存</i></button>
+                                 <button class="layui-btn layui-btn-warm"  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>inventoryInfoController/inventorySearch.do';"  lay-filter="sreach" >
+                                 <i class="layui-icon">盘点</i></button>
                                 </div>
                             </form>
+                            
+                             <form class="layui-form layui-col-space5" style="margin-top: 20px">
+                                 <button type="button" class="layui-btn "><i class="layui-icon"></i>输入搜索条件</button>
+                                 
+                                <div class="layui-inline layui-show-xs-block" style="margin-left:40px">
+                                    <input type="text" name="goods_id2"  placeholder="请输入商品编号" autocomplete="off" class="layui-input" >
+                                </div>
+                                 
+                              <div class="layui-input-inline">
+                            <input type="text" id="time2" name="year_time" required="" lay-verify="login_name2" autocomplete="off" class="layui-input" placeholder="请输入年月范围"></div>   
+                               
+                                <div class="layui-inline layui-show-xs-block" >
+                                
+                                 <button class="layui-btn "  lay-submit="" onclick="javascript:this.form.action='<%=basePath%>inventoryInfoController/searchInfo.do';"  lay-filter="sreach" >
+                                 <i class="layui-icon">搜索</i></button>
+                                </div>
+                            </form>
+                            
                         </div>
                        
                         <div class="layui-card-body layui-table-body layui-table-main">
-                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test'}" lay-filter="test">
+                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test',totalRow: true}" lay-filter="test">
                                 <thead>
                                   <tr>
                                    
-                                     <th lay-data="{type:'checkbox'}"></th>
-                                    <th lay-data="{field:'id2',sort:true}">ID</th>
+                                    <th lay-data="{type:'checkbox'}"></th>
+                                    <th lay-data="{field:'id2',sort:true,totalRowText: '合计'}">ID</th>
                                     <th lay-data="{field:'id',sort:true}">商品编号</th>
                                     <th lay-data="{field:'goodsName',sort:true}">商品名称</th>
-                                    <th lay-data="{field:'purchasePrice',sort:true}">商品进价</th>
-                                    <th lay-data="{field:'purchaseTotalPrice',sort:true}">进货总成本</th>
-                                    <th lay-data="{field:'saleNumber',sort:true}">售出数量</th>
-                                    <th lay-data="{field:'saleTotalPrice',sort:true}">售出总金额</th>
-                                    <th lay-data="{field:'profit',sort:true}">总盈利</th>
-                                    <th lay-data="{field:'remainingNumber',sort:true}">剩余库存数</th>
+                                    <th lay-data="{field:'purchasePrice',sort:true,totalRow: true}">商品进价</th>
+                                    <th lay-data="{field:'purchaseTotalPrice',sort:true,totalRow: true}">进货总成本</th>
+                                    <th lay-data="{field:'saleNumber',sort:true,totalRow: true}">售出数量</th>
+                                    <th lay-data="{field:'saleTotalPrice',sort:true,totalRow: true}">售出总金额</th>
+                                    <th lay-data="{field:'profit',sort:true,totalRow: true}">总盈利</th>
+                                    <th lay-data="{field:'remainingNumber',sort:true,totalRow: true}">剩余库存数</th>
                                     <th lay-data="{field:'takeTime',sort:true}">盘点时间</th>
                                     
                                     
@@ -147,7 +162,13 @@
         laydate.render({
             elem: '#time1', //指定元素
             type:'month'
+            ,theme: '#FFB90F'
           });
+        laydate.render({
+      	  elem: '#time2'
+      	  ,type: 'month'
+      	  ,range: true
+      	});
 
       });
 
