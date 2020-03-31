@@ -96,10 +96,10 @@
 									<td>${saleInfo.tradeStatus}</td>
                                     <td class="td-manage" >        
                                       <a title="确认订单"  href="<%=basePath%>saleInfoController/updateStatus.do?saleId=${saleInfo.saleId}">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
+                                        <i class="layui-icon layui-icon-form" style="margin-right: 30px; font-size: 20px"> </i>
                                       </a>                                     
                                       <a title="编辑" onclick="xadmin.open('编辑','<%=basePath%>saleInfoController/updateUI.do?saleId=${saleInfo.saleId}',600,400)" href="javascript:;">
-                                                <i class="layui-icon"  style="margin-right:30px">&#xe63c;</i>
+                                                <i class="layui-icon"  style="margin-right:30px; font-size: 20px">&#xe642;</i>
                                       </a>
                                     </td>
                                   </tr>

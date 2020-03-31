@@ -99,7 +99,7 @@
 				<c:forEach items="${menuList }" var="menu">
 					<li><c:if test="${menu.pId==1}">
 					 <a href="javascript:;"> <i class="iconfont left-nav-li"
-						lay-tips="系统管理">&#xe6b4;</i> <cite>${menu.permissionName }</cite>
+						lay-tips="系统管理" style="font-size: 20px">&#xe6f6;</i> <cite>${menu.permissionName }</cite>
 						<i class="iconfont nav_right">&#xe697;</i></a>
 						<ul class="sub-menu">
                       <c:forEach items="${permissionList }" var="permission">

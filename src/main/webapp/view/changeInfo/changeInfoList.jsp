@@ -80,7 +80,7 @@
 									<th>换货原因</th>
 									<th>更换时间</th>
 									<th>申请状态</th>
-									<th>操作</th>
+									<th>换货操作</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -100,7 +100,7 @@
 										<td>${changeInfo.applyStatus }</td>
 										<td class="td-manage"><a title="确认换货"
 											href="<%=basePath%>changeInfoController/updateStatus.do?changeId=${changeInfo.changeId}">
-												<i class="layui-icon">&#xe631;</i>
+												<i class="layui-icon layui-icon-form" style="font-size: 20px"></i>
 										</a></td>
 									</tr>
 								</c:forEach>

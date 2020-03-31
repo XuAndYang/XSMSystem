@@ -43,7 +43,7 @@ public class MemberInfoController {
 		return "view/memberInfo/memberInfoList";
 	}
 
-	// 增加商品信息
+	// 增加会员信息
 	@RequestMapping(value = "addUI.do")
 	public String addUI(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model)
 			throws ServletException, IOException {
@@ -78,40 +78,6 @@ public class MemberInfoController {
 		return "view/memberInfo/memberInfoList";
 	}
 
-	// 搜索查询会员信息
-	@RequestMapping(value = "searchMemberInfo.do")
-	public String searchSupplierGoods(HttpServletRequest req, HttpServletResponse resp, HttpSession session,
-			Model model, MemberInfo memberInfo,
-			@RequestParam(value = "memberInfo_search", required = false) String memberInfo_search)
-			throws ServletException, IOException {
-		// 判断传入的是会员ID还是会员名
-		// 输入ID是精确查询 输入名字是模糊查询
-		if (memberInfo_search != "") {
-			char first = memberInfo_search.trim().charAt(0);
-			if (first == '1' || first == '2' || first == '3' || first == '4' || first == '5' || first == '6'
-					|| first == '7' || first == '8' || first == '9' || first == '0') {
-				int member_id = Integer.parseInt(memberInfo_search);
-
-				List<MemberInfo> memberInfoList = memberInfoService.selectMemberInfoByMemberId(member_id);
-
-				model.addAttribute("memberInfoList", memberInfoList);
-				return "view/memberInfo/memberInfoList";
-			} else {
-				String member_name = "%" + memberInfo_search + "%";
-				List<MemberInfo> memberInfoList = memberInfoService.selectMemberInfoByMemberName(member_name);
-
-				model.addAttribute("memberInfoList", memberInfoList);
-				return "view/memberInfo/memberInfoList";
-			}
-		} else {
-			// 重新返回主页
-			List<MemberInfo> memberInfoList = memberInfoService.queryAllMemberInfo();
-			model.addAttribute("memberInfoList", memberInfoList);
-			return "view/memberInfo/memberInfoList";
-
-		}
-
-	}
 
 	// 搜索指定的会员信息
 	@RequestMapping(value = "searchInfo.do")
@@ -119,6 +85,8 @@ public class MemberInfoController {
 			GoodsInfo goodsInfo) throws ServletException, IOException {
 
 		String Info_search = req.getParameter("Info_search");
+		// 判断传入的是会员ID还是会员名
+		// 输入ID是精确查询 输入名字是模糊查询
 
 		if (Info_search != "") {
 			// 判断传入的是编号还是名字

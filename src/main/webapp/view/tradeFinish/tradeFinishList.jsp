@@ -54,25 +54,24 @@
                         </div>
                        
                         <div class="layui-card-body layui-table-body layui-table-main">
-                            <table class="layui-table layui-form">
+                             <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test'}" lay-filter="test">
                                 <thead>
                                   <tr>
-                                    <th>
-                                      <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
-                                    </th>
-                                    <th>交易号</th>
-                                    <th>订单号</th>
-                                    <th>商品ID</th>
-                                    <th>商品名</th>
-                                    <th>会员号</th>
-                                    <th>会员名</th>
-                                    <th>单价</th>
-                                    <th>折扣</th>
-                                    <th>销售数量</th>
-                                    <th>实付</th>
-                                    <th>下单时间</th>
-                                    <th>配送方式</th>
-                                    <th>订单状态</th>
+                                    <th lay-data="{type:'checkbox'}"></th>
+                                    <th lay-data="{field:'tradeId',sort:true}">交易号</th>
+                                    <th lay-data="{field:'saleId',sort:true}">订单号</th>
+                                    <th lay-data="{field:'goodsId',sort:true}">商品ID</th>
+                                    <th lay-data="{field:'goodsName'}">商品名</th>
+                                    <th lay-data="{field:'vipId',sort:true}">会员号</th>
+                                    <th lay-data="{field:'vipName'}">会员名</th>
+                                    <th lay-data="{field:'unitPrice',sort:true}">单价</th>
+                                    <th lay-data="{field:'discountPrice',sort:true}">折扣</th>
+                                    <th lay-data="{field:'saleNumber',sort:true}">销售数量</th>
+                                    <th lay-data="{field:'consumeMoney',sort:true}">实付</th>
+                                    <th lay-data="{field:'time',sort:true}">下单时间</th>
+                                    <th lay-data="{field:'deliType'}">配送方式</th>
+                                    <th lay-data="{field:'finishType'}">订单状态</th>
+                                    
                                     
                                     </tr>
                                 </thead>
@@ -105,23 +104,19 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="layui-card-body ">
-                            <div class="page">
-                                <div>
-                                  <a class="prev" href="">&lt;&lt;</a>
-                                  <a class="num" href="">1</a>
-                                  <span class="current">2</span>
-                                  <a class="num" href="">3</a>
-                                  <a class="num" href="">489</a>
-                                  <a class="next" href="">&gt;&gt;</a>
-                                </div>
-                            </div>
-                        </div>
+                         
                     </div>
                 </div>
             </div>
         </div> 
     </body>
+     <script type="text/html" id="toolbarDemo">
+        <div class = "layui-btn-container" > 
+             
+            <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button > 
+            <button class = "layui-btn layui-btn-sm" lay-event = "isAll" > 验证是否全选</button>
+        </div > 
+    </script>
     <script>
       layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
@@ -215,4 +210,39 @@
         });
       }
     </script>
+    
+    <script>layui.use('table',
+        function() {
+            var table = layui.table;
+
+            //监听单元格编辑
+            table.on('edit(test)',
+            function(obj) {
+                var value = obj.value //得到修改后的值
+                ,
+                data = obj.data //得到所在行所有键值
+                ,
+                field = obj.field; //得到字段
+                layer.msg('[ID: ' + data.id + '] ' + field + ' 字段更改为：' + value);
+            });
+
+            //头工具栏事件
+            table.on('toolbar(test)',
+            function(obj) {
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+                };
+            });
+        });</script>
 </html>

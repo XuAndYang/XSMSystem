@@ -90,13 +90,13 @@
                                     <td class="td-manage">
                                       
                                       <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>goodsInfoController/updateUI.do?goodsId=${goodsInfo.goodsId}',600,400)" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe642;</i>
+                                        <i class="layui-icon" style="margin-right: 40px;font-size: 20px">&#xe642;</i>
                                       </a>
                                       <a onclick="xadmin.open('待用功能','',600,400)" title="待用功能" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
+                                        <i class="layui-icon" style="margin-right: 40px;font-size: 20px">&#xe631;</i>
                                       </a>
                                       <a title="删除"  href="<%=basePath%>goodsInfoController/deleteGoodsInfo.do?goodsId=${goodsInfo.goodsId}"  onclick="return del(1)">
-                                        <i class="layui-icon">&#xe640;</i>
+                                        <i class="layui-icon" style=" font-size: 23px">&#xe640;</i>
                                        
                                       </a>
                                     </td>

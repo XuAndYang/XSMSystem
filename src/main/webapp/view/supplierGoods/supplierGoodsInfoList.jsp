@@ -94,13 +94,13 @@
                                     <td class="td-manage">
                                       
                                       <a title="编辑"  onclick="xadmin.open('编辑','<%=basePath%>supplierGoodsController/updateUI.do?id=${supplierGoodsInfo.id}',600,630)" href="javascript:;">
-                                        <i class="layui-icon" style="margin-right: 30px">&#xe642;</i>
+                                        <i class="layui-icon" style="margin-right: 30px ;font-size: 20px">&#xe642;</i>
                                       </a>
                                       <a title="查看供应商信息"  onclick="xadmin.open('供应商信息','<%=basePath%>supplierGoodsController/watchSupplierInfo.do?id=${supplierGoodsInfo.id}',500,400)" href="javascript:;">
-                                   		 <i class="layui-icon" style="margin-right: 30px">&#xe631;</i>
+                                   		 <i class="layui-icon layui-icon-read" style="margin-right: 30px ;font-size: 20px"></i>
                                       </a>
                                       <a title="删除"  href="<%=basePath%>supplierGoodsController/deleteSupplierInfo.do?id=${supplierGoodsInfo.id}"  onclick="return del(1)">
-                                        <i class="layui-icon">&#xe640;</i>
+                                        <i class="layui-icon" style=" font-size: 23px">&#xe640;</i>
                                        
                                       </a>
                                     </td>

@@ -73,7 +73,7 @@
                                     <th>退货时间</th>
                                     <th>退款方式</th>
                                     <th>申请状态</th>
-                                    <th>操作</th>
+                                    <th>退货操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,7 +97,7 @@
                                     <td class="td-manage">
                                       
                                       <a title="确认退货"  href="<%=basePath%>returnInfoController/updateStatus.do?returnId=${returnInfo.returnId }">
-                                        <i class="layui-icon" >&#xe631;</i>
+                                        <i class="layui-icon layui-icon-form" style="font-size: 20px"></i>
                                       </a>
                                      
                                     </td>
