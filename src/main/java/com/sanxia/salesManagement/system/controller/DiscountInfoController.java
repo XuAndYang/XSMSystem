@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sanxia.salesManagement.system.model.DiscountInfo;
-import com.sanxia.salesManagement.system.model.DistributionInfo;
 import com.sanxia.salesManagement.system.model.User;
 import com.sanxia.salesManagement.system.service.DiscountInfoService;
 import com.sanxia.salesManagement.system.service.GoodsInfoService;
@@ -137,7 +136,7 @@ public class DiscountInfoController {
 			d.setGoodsId(goods_id);
 			d.setGoodsName(goods_name);
 			d.setStartTime(start_time);
-			d.setId(id);
+			d.setId(id); 
 
 			int i = discountInfoService.updateDistributionInfoByDistribution(d);
 		}else {
