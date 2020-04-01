@@ -80,18 +80,15 @@ public class DiscountInfoController {
 			d.setStartTime(start_time);
 			
 			int n = discountInfoService.addDiscountInfoByInfo(d);
-			
+			 
 		}else {
 			List<DiscountInfo> discountInfoList = discountInfoService.queryAllDiscountInfo();
 			model.addAttribute("discountInfoList", discountInfoList);
-
 			return "view/discountInfo/discountInfoList";
 		}
 
-
 		List<DiscountInfo> discountInfoList = discountInfoService.queryAllDiscountInfo();
 		model.addAttribute("discountInfoList", discountInfoList);
-
 		return "view/discountInfo/discountInfoList";
 	}
 
@@ -137,13 +134,14 @@ public class DiscountInfoController {
 			d.setGoodsName(goods_name);
 			d.setStartTime(start_time);
 			d.setId(id); 
-
+			
 			int i = discountInfoService.updateDistributionInfoByDistribution(d);
+		 
+		 
 		}else {
 			// 重新返回主页
 			List<DiscountInfo> discountInfoList = discountInfoService.queryAllDiscountInfo();
 			model.addAttribute("discountInfoList", discountInfoList);
-
 			return "view/discountInfo/discountInfoList";
 		}
 
