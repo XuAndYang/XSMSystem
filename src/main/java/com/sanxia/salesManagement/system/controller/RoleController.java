@@ -127,7 +127,7 @@ public class RoleController {
 
 	}
 
-/////////////
+//分配角色
 	@RequestMapping("FPRoleUI.do")
 	public String FPRoleUI(HttpServletRequest req, HttpServletResponse resp, @RequestParam("userId") String userId,
 			Model model) throws ServletException, IOException {

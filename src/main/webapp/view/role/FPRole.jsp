@@ -36,7 +36,7 @@
                 
                     <div class="panel admin-panel">
 			<div class="panel-head" id="add">
-				<strong><span class="icon-pencil-square-o"></span>分配角色: <font>
+				<strong><span class="icon-pencil-square-o"></span>用户姓名: <font>
                ${user.name }</font></strong> ${message }
 			</div>
 			 
