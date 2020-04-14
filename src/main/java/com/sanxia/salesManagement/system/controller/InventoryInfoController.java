@@ -138,7 +138,7 @@ public class InventoryInfoController {
 
 	}
 	
-	//查询一年内的考勤记录
+	//查询商品库存
 		@RequestMapping(value = "searchInfo.do")
 		public String searchInfo(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model,
 				GoodsInfo goodsInfo) throws ServletException, IOException, ParseException {
