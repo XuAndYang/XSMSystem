@@ -31,7 +31,53 @@
         <![endif]-->
 
 </head>
-<script>
+
+<body>
+	<div class="layui-fluid">
+		<div class="layui-row">
+			<form class="layui-form" action="<%=basePath%>permissionController/FPPermission.do">
+				<input type="hidden" name="roleId" value="${role.roleId }">
+				
+				<div class="layui-form-item" pane="" >
+				
+				<div class="panel-head" id="">
+						<strong><span class="icon-pencil-square-o"></span>分配权限: <font>
+								${role.roleName }</font></strong>
+					</div>
+					
+                  <div class="layui-input-block" style="margin-top: 30px">
+				      <c:forEach items="${permissionList }" var="permission">
+				      
+								<input type="checkbox"    name="permissionId"
+									value="${permission.permissionId }" 
+									id="${permission.permissionId }">${permission.permissionName }
+								<div class="tips"></div>
+							
+						</c:forEach>
+                  </div>
+                  
+                </div>
+					
+		<div class="layui-form-item" style="margin-top: 40px">
+			<label for="repassword" class="layui-form-label"></label>
+			<button class="layui-btn" lay-filter="add" lay-submit="">确认分配</button>
+		</div>
+		
+		</form>
+	</div>
+</div>
+
+
+	<script>layui.use(['form', 'layer','jquery'],
+            function() {
+                $ = layui.jquery;
+                var form = layui.form,
+                layer = layui.layer;
+
+            });
+    </script>
+    
+    <script>
 	$(function() {
 		var array = new Array();
 		<c:forEach items="${ids}" var="item" >
@@ -41,90 +87,8 @@
 			$("#" + array[i]).attr("checked", "checked");
 		}
 	})
-</script>
-<body>
-	<div class="layui-fluid">
-		<div class="layui-row">
-			<form class="layui-form" action="<%=basePath%>permissionController/FPPermission.do">
-				<input type="hidden" name="roleId" value="${role.roleId }">
-				<div class="panel admin-panel">
-					<div class="panel-head" id="add">
-						<strong><span class="icon-pencil-square-o"></span>分配权限: <font>
-								${role.roleName }</font></strong> ${message }
-					</div>
+   </script>
 
-					<div class="body-content" style="margin-top: 30px">
-
-						<c:forEach items="${permissionList }" var="permission">
-							<div class="field">
-								<input type="checkbox" name="permissionId"
-									value="${permission.permissionId }" style="width: auto;"
-									id="${permission.permissionId }">${permission.permissionName }
-								<div class="tips"></div>
-						</c:forEach>
-
-					</div>
-				</div>
-		</div>
-		<div class="layui-form-item" style="margin-top: 40px">
-			<label for="repassword" class="layui-form-label"></label>
-			<button class="layui-btn" lay-filter="add" lay-submit="">确认分配</button>
-		</div>
-		</form>
-	</div>
-	</div>
-
-
-	<script>layui.use(['form', 'layer','jquery'],
-            function() {
-                $ = layui.jquery;
-                var form = layui.form,
-                layer = layui.layer;
-
-                //自定义验证规则
-                form.verify({
-                	login_name: function(value) {
-                        if (value.length < 5) {
-                            return '昵称至少得5个字符啊';
-                        }
-                    },
-                    password: [/(.+){6,12}$/, '密码必须6到12位'],
-                    repassword: function(value) {
-                        if ($('#password').val() != $('#repassword').val()) {
-                            return '两次密码不一致';
-                        }
-                    }
-                });
-
-                //监听提交
-                form.on('submit(add)',
-                function(data) {
-                    console.log(data);
-                    //发异步，把数据提交给php
-                   // layer.alert("增加成功", {
-                   //     icon: 6
-                   // },
-                    //function() {
-                      
-                   // });
-                    parent.parent.location.reload();
-                    //关闭当前frame
-                    xadmin.close();
-                    // 可以对父窗口进行刷新 
-                    //xadmin.father_reload();
-                    //return false;
-                });
-                 
-            });
-        setTimeout(function(){
-        	var id = document.getElementById('login_name');
-            id.value='';
-            var password = document.getElementById('password');
-            password.value='';
-        },506)
-        
-        
-        </script>
 	<script>var _hmt = _hmt || []; (function() {
                 var hm = document.createElement("script");
                 hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
