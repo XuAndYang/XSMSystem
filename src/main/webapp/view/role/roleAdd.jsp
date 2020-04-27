@@ -37,29 +37,35 @@
                             <span class="x-red">*</span>角色名称</label>
                         <div class="layui-input-inline">
                             <input type="text" id="role_name" name="role_name" required="" lay-verify="role_name" autocomplete="off" class="layui-input"></div>
-                        
+                        </div>
                           
-                    <div class="layui-form-item">
+                     <div class="layui-form-item">
                         <label for="empty" class="layui-form-label">
                             <span class="x-red"></span></label>
-                       
-                            
-                    <div class="layui-form-item">
+                    </div>
+                   
+                     <div class="layui-form-item">
                         <label for="role_state" class="layui-form-label">
                             <span class="x-red">*</span>角色状态</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="role_state" name="role_state" required="" lay-verify="role_state" autocomplete="off" class="layui-input"></div>
-                    </div>
+                           <select name="role_state">
+							<option>请选择角色状态</option>
+							<option value='开启'>开启</option>
+							<option value='关闭'>关闭</option>	 
+						  </select>
+                        </div>
+                    </div>     
                     
-                          
-                    <div class="layui-form-item">
+                     <div class="layui-form-item">
                         <label for="empty" class="layui-form-label">
                             <span class="x-red"></span></label>
-                    
+                    </div>
                     
                     <div class="layui-form-item">
                         <label for="repassword" class="layui-form-label"></label>
-                        <button class="layui-btn" lay-filter="add" lay-submit="" >增加</button></div>
+                        <button class="layui-btn" lay-filter="add" lay-submit="" >立即添加</button>
+                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
                 </form>
             </div>
         </div>

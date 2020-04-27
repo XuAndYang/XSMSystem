@@ -84,18 +84,18 @@
                         </div>
                        
                         <div class="layui-card-body layui-table-body layui-table-main" id="show" >
-                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test' }" lay-filter="test">
+                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test' ,totalRow: true}" lay-filter="test">
                                 <thead>
                                   <tr>
                                    
-                                    <th lay-data="{type:'checkbox'}"></th>
-                                    <th lay-data="{field:'id2',sort:true }">ID</th>
+                                    <th lay-data="{type:'checkbox' }"></th>
+                                    <th lay-data="{field:'id2',sort:true ,totalRowText: '合计'}">ID</th>
                                     <th lay-data="{field:'salemanId',sort:true}">销售员工号</th>
                                     <th lay-data="{field:'username',sort:true}">销售员姓名</th>
                                     <th lay-data="{field:'time',sort:true}">统计时间</th>
-                                    <th lay-data="{field:'totalWork',sort:true }">出勤数</th>
-                                    <th lay-data="{field:'totalOver',sort:true }">加班数</th>
-                                    <th lay-data="{field:'totalOff',sort:true }">请假数</th>
+                                    <th lay-data="{field:'totalWork',sort:true ,totalRow: true}">出勤数</th>
+                                    <th lay-data="{field:'totalOver',sort:true ,totalRow: true}">加班数</th>
+                                    <th lay-data="{field:'totalOff',sort:true ,totalRow: true}">请假数</th>
                                     <th lay-data="{field:'attendance',sort:true}">出勤率</th>
                                     
                                     

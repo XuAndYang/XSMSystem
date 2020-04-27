@@ -58,19 +58,27 @@
                         <label for="type" class="layui-form-label">
                             <span class="x-red">*</span>权限类型</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="type" name="type" required="" lay-verify="type" autocomplete="off" class="layui-input"></div>
-                    </div>      
+                           <select name="type">
+							<option>请选择权限类型</option>
+							<option value='根级节点'>根级节点</option>
+							<option value='一级菜单'>一级菜单</option>
+							<option value='二级菜单'>二级菜单</option>
+						  </select>
+                        </div>
+                    </div>     
                     
                      <div class="layui-form-item">
                         <label for="permission_url" class="layui-form-label">
                             <span class="x-red">*</span>权限url</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="permission_url" name="permission_url" required="" lay-verify="permission_url" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="permission_url" name="permission_url" style="width: 300px" required="" lay-verify="permission_url" autocomplete="off" class="layui-input"></div>
                     </div>   
                     
                     <div class="layui-form-item">
                         <label for="repassword" class="layui-form-label"></label>
-                        <button class="layui-btn" lay-filter="add" lay-submit="" >增加</button></div>
+                        <button class="layui-btn" lay-filter="add" lay-submit="" >立即添加</button>
+                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
                 </form>
             </div>
         </div>

@@ -178,4 +178,11 @@
     from permission
     where permission_name like #{permissionName,jdbcType=VARCHAR}
   </select>
+  
+   <select id="queryAllPermissionByPID" resultMap="BaseResultMap" parameterType="Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from permission
+    where p_id = #{pId1} OR p_id = #{pId2}
+  </select>
 </mapper>

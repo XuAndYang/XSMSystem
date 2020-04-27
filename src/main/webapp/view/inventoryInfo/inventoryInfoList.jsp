@@ -79,20 +79,20 @@
                         </div>
                        
                         <div class="layui-card-body layui-table-body layui-table-main">
-                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test'}" lay-filter="test">
+                            <table class="layui-table layui-form" lay-data="{page:true,toolbar: '#toolbarDemo',id:'test',totalRow: true}" lay-filter="test">
                                 <thead>
                                   <tr>
                                    
                                     <th lay-data="{type:'checkbox'}"></th>
-                                    <th lay-data="{field:'id2',sort:true}">ID</th>
+                                    <th lay-data="{field:'id2',sort:true , totalRowText: '合计'}">ID</th>
                                     <th lay-data="{field:'id',sort:true}">商品编号</th>
                                     <th lay-data="{field:'goodsName',sort:true}">商品名称</th>
-                                    <th lay-data="{field:'purchasePrice',sort:true}">商品进价</th>
-                                    <th lay-data="{field:'purchaseTotalPrice',sort:true }">进货总成本</th>
-                                    <th lay-data="{field:'saleNumber',sort:true }">售出数量</th>
-                                    <th lay-data="{field:'saleTotalPrice',sort:true }">售出总金额</th>
-                                    <th lay-data="{field:'profit',sort:true }">总盈利</th>
-                                    <th lay-data="{field:'remainingNumber',sort:true }">剩余库存数</th>
+                                    <th lay-data="{field:'purchasePrice',sort:true,totalRow: true}">商品进价</th>
+                                    <th lay-data="{field:'purchaseTotalPrice',sort:true ,totalRow: true}">进货总成本</th>
+                                    <th lay-data="{field:'saleNumber',sort:true ,totalRow: true}">售出数量</th>
+                                    <th lay-data="{field:'saleTotalPrice',sort:true ,totalRow: true}">售出总金额</th>
+                                    <th lay-data="{field:'profit',sort:true ,totalRow: true}">总盈利</th>
+                                    <th lay-data="{field:'remainingNumber',sort:true ,totalRow: true}">剩余库存数</th>
                                     <th lay-data="{field:'takeTime',sort:true}">盘点时间</th>
                                     
                                     

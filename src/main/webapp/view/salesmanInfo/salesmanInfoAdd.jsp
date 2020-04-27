@@ -72,7 +72,9 @@
                     
                     <div class="layui-form-item">
                         <label for="repassword1" class="layui-form-label"></label>
-                        <button class="layui-btn" lay-filter="add" lay-submit="" >增加</button></div>
+                        <button class="layui-btn" lay-filter="add" lay-submit="" >立即添加</button>
+                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
                 </form>
             </div>
         </div>

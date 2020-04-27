@@ -82,7 +82,7 @@ public class SalesmanInfoController {
 		String salesman_tel = req.getParameter("salesman_tel");
 
 		String time = req.getParameter("join_time");
-//			String time= req.getParameter("create_time");
+
 		Date join_time = new SimpleDateFormat("yyyy-MM-dd").parse(time);
 
 		SalesmanInfo s = new SalesmanInfo();
@@ -94,27 +94,35 @@ public class SalesmanInfoController {
 		s.setJoinTime(join_time);
 
 		int n = salesmanInfoService.addsalesmanInfoBysalesmanInfo(s);
-		// 在添加销售员的同时也要添加一条用户信息
-		User u = new User();
-		String login_name = Integer.toString(salesman_id);
-		u.setName(salesman_name);
-		u.setLoginName(login_name);// 初始化用户名为工号
-		u.setPassword("123456");// 初始化密码123456
-		u.setCreateTime(new Date());
-		int a = userService.addUserByUser(u);
+		if(n==1) {
+			// 在添加销售员的同时也要添加一条用户信息
+			User u = new User();
+			String login_name = Integer.toString(salesman_id);
+			u.setName(salesman_name);
+			u.setLoginName(login_name);// 初始化用户名为工号
+			u.setPassword("123456");// 初始化密码123456
+			u.setCreateTime(new Date());
+			int a = userService.addUserByUser(u);
 
-		// 给添加的用户自动分配权限
-		// 先查询销售员的角色id
-		String role_name = "销售员";
-		int role_id = roleService.queryRole_idByRole_name(role_name);
-		// 根据工号查询用户表的用户id
-		int user_id = userService.queryUserIdByLoginName(login_name);
-		// 再往用户角色表里添加数据
-		UserRole ur = new UserRole();
-		ur.setRoleId(role_id);
-		ur.setUserId(user_id);
-		int b = userRoleService.addUserRoleByUserRole(ur);
+			// 给添加的用户自动分配权限
+			// 先查询销售员的角色id
+			String role_name = "销售员";
+			int role_id = roleService.queryRole_idByRole_name(role_name);
+			// 根据工号查询用户表的用户id
+			int user_id = userService.queryUserIdByLoginName(login_name);
+			// 再往用户角色表里添加数据
+			UserRole ur = new UserRole();
+			ur.setRoleId(role_id);
+			ur.setUserId(user_id);
+			int b = userRoleService.addUserRoleByUserRole(ur);
+		}else {
+			// 重新返回页面
+			List<SalesmanInfo> salesmanInfoList = salesmanInfoService.queryAllSalesmanInfo();
+			model.addAttribute("salesmanInfoList", salesmanInfoList);
 
+			return "view/salesmanInfo/salesmanInfoList";
+		}
+	
 		// 重新返回页面
 		List<SalesmanInfo> salesmanInfoList = salesmanInfoService.queryAllSalesmanInfo();
 		model.addAttribute("salesmanInfoList", salesmanInfoList);
@@ -160,7 +168,7 @@ public class SalesmanInfoController {
 		s.setSalesmanName(salesman_name);
 		s.setSalesmanSex(salesman_sex);
 		s.setSalesmanTel(salesman_tel);
-
+		
 		// 修改用户
 		User u = new User();
 		String login_name = Integer.toString(salesman_id);
@@ -170,9 +178,17 @@ public class SalesmanInfoController {
 		u.setUserId(user_id);
 
 		int i = salesmanInfoService.updateSalesmanInfoById(s);
+		
+		if(i==1) {
+			
+			int n = userService.updateUserNameById(u);
+		}else {
+			// 重新返回主页
+			List<SalesmanInfo> salesmanInfoList = salesmanInfoService.queryAllSalesmanInfo();
+			model.addAttribute("salesmanInfoList", salesmanInfoList);
 
-		int n = userService.updateUserNameById(u);
-
+			return "view/salesmanInfo/salesmanInfoList";
+		}
 		// 重新返回主页
 		List<SalesmanInfo> salesmanInfoList = salesmanInfoService.queryAllSalesmanInfo();
 		model.addAttribute("salesmanInfoList", salesmanInfoList);
@@ -194,12 +210,19 @@ public class SalesmanInfoController {
 
 		String login_name = salesmanIdStr;
 		int user_id = userService.queryUserIdByLoginName(login_name);
+		if(i==1) {
+			// 同时也要删除用户表信息
+			int n = userService.deleteUserByLoginName(login_name);
 
-		// 同时也要删除用户表信息
-		int n = userService.deleteUserByLoginName(login_name);
+			// 删除用户角色的中间表
+			int m = userRoleService.deleteUserRoleByUser_id(user_id);
+		}else {
+			// 重新返回主页
+			List<SalesmanInfo> salesmanInfoList = salesmanInfoService.queryAllSalesmanInfo();
+			model.addAttribute("salesmanInfoList", salesmanInfoList);
 
-		// 删除用户角色的中间表
-		int m = userRoleService.deleteUserRoleByUser_id(user_id);
+			return "view/salesmanInfo/salesmanInfoList";
+		}
 
 		// 重新返回主页
 		List<SalesmanInfo> salesmanInfoList = salesmanInfoService.queryAllSalesmanInfo();

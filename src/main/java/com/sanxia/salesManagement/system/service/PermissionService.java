@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.sanxia.salesManagement.system.model.Permission;
@@ -24,5 +25,7 @@ public interface PermissionService {
 	List<Permission> query_XZ_CByrole_id(int id);
 
 	List<Permission> selectPermissionByName(String name);
+
+	List<Permission> queryAllPermissionByPID(HashMap<String, Object> map);
 
 }

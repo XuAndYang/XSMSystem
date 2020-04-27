@@ -3,6 +3,7 @@ package com.sanxia.salesManagement.system.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -52,8 +53,15 @@ public class PermissionController {
 	@RequestMapping(value = "addUI.do")
 	public String addUI(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model)
 			throws ServletException, IOException {
-
-		List<Permission> permissionList = permissionService.queryAllPermission();
+		
+		int p_id1=-1;
+		int p_id2= 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("pId1", p_id1);
+		map.put("pId2", p_id2);
+		
+		List<Permission> permissionList = permissionService.queryAllPermissionByPID(map);
 		model.addAttribute("permissionList", permissionList);
 		// 跳转到增加的页面
 		return "view/permission/permissionAdd";
@@ -92,7 +100,15 @@ public class PermissionController {
 		Permission permission = permissionService.queryPermissionById(id);
 		model.addAttribute("p", permission);
 
-		List<Permission> permissionList = permissionService.queryAllPermission();
+		//显示权限信息
+		int p_id1=-1;
+		int p_id2= 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("pId1", p_id1);
+		map.put("pId2", p_id2);
+		
+		List<Permission> permissionList = permissionService.queryAllPermissionByPID(map);
 		model.addAttribute("permissionList", permissionList);
 
 		return "view/permission/permissionUpdate";

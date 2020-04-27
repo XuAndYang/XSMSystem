@@ -51,8 +51,7 @@
 								</c:if>
 							</c:forEach>
 						</select>
-						  
-                            </div>
+						 </div>  
                             
                    <div class="layui-form-item">
                         <label for="permission_name" class="layui-form-label">
@@ -61,25 +60,31 @@
                             <input type="text" id="permission_name" name="permission_name" value="${p.permissionName }" required="" lay-verify="permission_name" autocomplete="off" class="layui-input"></div>
                     </div>
                     
-                    <div class="layui-form-item">
+                   <div class="layui-form-item">
                         <label for="type" class="layui-form-label">
                             <span class="x-red">*</span>权限类型</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="type" name="type" value="${p.type }" required="" lay-verify="type" autocomplete="off" class="layui-input"></div>
-                    </div>      
+                           <select name="type">
+							<option value='根级节点' <c:if test="${'根级节点' eq p.type}">selected</c:if>>根级节点</option>
+							<option value='一级菜单' <c:if test="${'一级菜单' eq p.type}">selected</c:if>>一级菜单</option>
+							<option value='二级菜单' <c:if test="${'二级菜单' eq p.type}">selected</c:if>>二级菜单</option>
+						  </select>
+                        </div>
+                    </div>           
                     
                      <div class="layui-form-item">
                         <label for="permission_url" class="layui-form-label">
                             <span class="x-red">*</span>权限url</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="permission_url" name="permission_url" value="${p.permissionUrl }" required="" lay-verify="permission_url" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="permission_url" name="permission_url" value="${p.permissionUrl }" style="width: 300px"  required="" lay-verify="permission_url" autocomplete="off" class="layui-input"></div>
                     </div>   
                     
                     <div class="layui-form-item">
                         <label for="repassword" class="layui-form-label"></label>
-                        <button class="layui-btn" lay-filter="add" lay-submit="" >确认修改</button></div>
+                        <button class="layui-btn" lay-filter="add" lay-submit="" >立即修改</button></div>
                 </form>
             </div>
+            
         </div>
         <script>layui.use(['form', 'layer','jquery'],
             function() {

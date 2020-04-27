@@ -1,5 +1,6 @@
 package com.sanxia.salesManagement.system.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,12 @@ public class PermissionServiceImpl implements PermissionService{
 	public List<Permission> selectPermissionByName(String name) {
 		// TODO Auto-generated method stub
 		return permissionMapper.selectPermissionByName(name);
+	}
+
+	@Override
+	public List<Permission> queryAllPermissionByPID(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return permissionMapper.queryAllPermissionByPID(map);
 	}
 
 	 

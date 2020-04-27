@@ -25,7 +25,7 @@
         <!--[if lt IE 9]>
             <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
             <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <![endif]--> 
       
     </head>
     <body>
@@ -61,7 +61,9 @@
                     </div>
                     <div class="layui-form-item">
                         <label for="repassword" class="layui-form-label"></label>
-                        <button class="layui-btn" lay-filter="add" lay-submit="" >增加</button></div>
+                        <button class="layui-btn" lay-filter="add" lay-submit="" >立即添加</button>
+                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
                 </form>
             </div>
         </div>
@@ -106,6 +108,7 @@
                 });
                  
             });
+        
         setTimeout(function(){
         	var id = document.getElementById('login_name');
             id.value='';
