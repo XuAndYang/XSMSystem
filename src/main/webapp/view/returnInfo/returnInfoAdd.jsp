@@ -51,8 +51,7 @@
 					</select>
 					</div>
                 </div>
-                       
-                        
+                                              
 					<div class="layui-form-item layui-form-text">
 						<label for="desc" class="layui-form-label">
 					 		<span class="x-red">*</span>退货原因 </label>

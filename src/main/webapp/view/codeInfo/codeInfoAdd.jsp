@@ -45,7 +45,6 @@
 					</div>
 				</div>
 
-
 				<div class="layui-form-item">
 					<label for="repassword" class="layui-form-label"> <span
 						class="x-red">*</span>条形码

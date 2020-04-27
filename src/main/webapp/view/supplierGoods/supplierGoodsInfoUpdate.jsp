@@ -41,7 +41,6 @@
                             <input type="text" value="${supplierGoods.supplierId}" id="name" name="supplier_id" required="" lay-verify="name" autocomplete="off" class="layui-input"></div>
                      </div>                 
                     
-                   
                     
                      <div class="layui-inline layui-show-xs-block" style="margin-bottom:15px">
                       <label for="login_name3" class="layui-form-label">

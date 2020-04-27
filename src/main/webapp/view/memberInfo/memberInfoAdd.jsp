@@ -76,7 +76,6 @@
             var laydate = layui.laydate;
             var  form = layui.form;
 
-
             // 监听全选
             form.on('checkbox(checkall)', function(data){
 

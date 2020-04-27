@@ -80,7 +80,6 @@
                 layer = layui.layer;
 
 
-
                 //监听提交
                 form.on('submit(add)',
                 function(data) {

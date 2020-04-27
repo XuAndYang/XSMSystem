@@ -63,8 +63,7 @@
                             <span class="x-red"></span>生日</label>
                             <input class="layui-input"  autocomplete="off" placeholder="请输入生日" name="vip_birthday" value="<fmt:formatDate value='${member.vipBirthday}' type='date' pattern='yyyy-MM-dd'/>" id="start" style="width:190px">
                         </div>
-                        
-                      
+                          
                     
                     
                     <div class="layui-form-item">

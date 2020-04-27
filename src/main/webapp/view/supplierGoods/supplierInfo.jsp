@@ -60,8 +60,7 @@
                             <input type="text" readonly value="${supplierInfo.supplierTel}" id="login_name1" name="goods_id" required="" lay-verify="login_name1" autocomplete="off" class="layui-input"></div>
                     </div>
                    
-                   
-                   
+                                      
                 </form>
             </div>
         </div>
