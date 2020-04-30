@@ -59,6 +59,7 @@
                         <div class="layui-input-inline">
                             <input type="password" id="repassword" name="repassword" required="" lay-verify="repassword" autocomplete="off" class="layui-input"></div>
                     </div>
+                    
                     <div class="layui-form-item">
                         <label for="repassword" class="layui-form-label"></label>
                         <button class="layui-btn" lay-filter="add" lay-submit="" >立即添加</button>
