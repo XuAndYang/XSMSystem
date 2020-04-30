@@ -97,8 +97,7 @@
                                     <th lay-data="{field:'totalOver',sort:true ,totalRow: true}">加班数</th>
                                     <th lay-data="{field:'totalOff',sort:true ,totalRow: true}">请假数</th>
                                     <th lay-data="{field:'attendance',sort:true}">出勤率</th>
-                                    
-                                    
+                                     
                                     </tr>
                                 </thead>
                                 <tbody>

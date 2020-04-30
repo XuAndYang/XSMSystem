@@ -95,7 +95,7 @@
                                     <th lay-data="{field:'remainingNumber',sort:true ,totalRow: true}">剩余库存数</th>
                                     <th lay-data="{field:'takeTime',sort:true}">盘点时间</th>
                                                                      
-                                    </tr>
+                                  </tr>
                                 </thead>
                                 <tbody>
                                  <c:forEach items="${inventoryInfoList }" var="inventoryInfo">
