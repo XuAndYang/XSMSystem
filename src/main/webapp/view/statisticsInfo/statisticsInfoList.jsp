@@ -139,8 +139,7 @@
     <script>
       layui.use(['laydate','form'], function(){
        var laydate = layui.laydate;
-        var  form = layui.form;
-        
+        var  form = layui.form; 
 
         // 监听全选
         form.on('checkbox(checkall)', function(data){

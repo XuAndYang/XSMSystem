@@ -94,8 +94,7 @@
                                     <th lay-data="{field:'profit',sort:true ,totalRow: true}">总盈利</th>
                                     <th lay-data="{field:'remainingNumber',sort:true ,totalRow: true}">剩余库存数</th>
                                     <th lay-data="{field:'takeTime',sort:true}">盘点时间</th>
-                                    
-                                    
+                                                                     
                                     </tr>
                                 </thead>
                                 <tbody>
