@@ -40,10 +40,6 @@
                             <input type="text" id="role_name" name="role_name" value="${role.roleName }" required="" lay-verify="role_name" autocomplete="off" class="layui-input"></div>
                           </div> 
                           
-                           <div class="layui-form-item">
-                        <label for="empty" class="layui-form-label">
-                            <span class="x-red"></span></label>
-                    </div>
                   
                      <div class="layui-form-item">
                         <label for="role_state" class="layui-form-label">
